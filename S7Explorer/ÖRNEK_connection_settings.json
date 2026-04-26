@@ -1,0 +1,7 @@
+{
+  "CpuType": "S7-1200",
+  "IpAddress": "192.168.0.1",
+  "Port": 102,
+  "Rack": 0,
+  "Slot": 1
+}

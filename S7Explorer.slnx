@@ -1,0 +1,15 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="All" />
+    <BuildType Name="Debug" />
+    <BuildType Name="DefaultBuild" />
+    <BuildType Name="Release" />
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="S7Explorer/S7Explorer.csproj">
+    <BuildType Solution="All|*" Project="Debug" />
+    <BuildType Solution="DefaultBuild|*" Project="Release" />
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+</Solution>

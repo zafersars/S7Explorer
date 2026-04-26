@@ -1,0 +1,27 @@
+DATA_BLOCK "DB_PC"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+NON_RETAIN
+   STRUCT
+      Send : Struct
+         Other : Struct
+            Result : String[32];   // Kamera okunan veri
+            PLC_Serial : String[16];
+            Plc_Name : String[16];
+            Plc_Time : String[32];   // PLC'nin aktif lokal tarih saat
+         END_STRUCT;
+      END_STRUCT;
+      Receive : Struct
+         Control : Struct
+            Life : Bool;   // Heartbeat
+            Start : Bool;   // Başlat
+            Stop : Bool;   // Durdur
+         END_STRUCT;
+         State : Struct
+            Run : Bool;   // Çalışıyor
+            Error : Bool;   // Hata var
+         END_STRUCT;
+      END_STRUCT;
+   END_STRUCT;
+BEGIN
+END_DATA_BLOCK

@@ -1,0 +1,33 @@
+﻿<Window x:Class="S7Explorer.MessageDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ui="http://schemas.modernwpf.com/2019" ui:WindowHelper.UseModernWindowStyle="True" ResizeMode="NoResize" SizeToContent="Height" Width="420" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+    <Window.Resources>
+        <SolidColorBrush x:Key="IconError" Color="#E53935"/>
+        <SolidColorBrush x:Key="IconWarning" Color="#FB8C00"/>
+        <SolidColorBrush x:Key="IconInfo" Color="#1E88E5"/>
+        <SolidColorBrush x:Key="IconSuccess" Color="#43A047"/>
+        <SolidColorBrush x:Key="IconQuestion" Color="#8E24AA"/>
+    </Window.Resources>
+    <Border Margin="8"
+            BorderBrush="#D0D0D0"
+            BorderThickness="1"
+            CornerRadius="6"
+            Padding="24,20">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,12">
+            <ui:FontIcon x:Name="DialogIcon" FontSize="20" Margin="0,0,10,0" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtTitle" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap"/>
+        </StackPanel>
+        <TextBlock x:Name="TxtMessage" Grid.Row="1" FontSize="13" TextWrapping="Wrap" MaxWidth="472" Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+        <ui:SimpleStackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+            <Button x:Name="BtnYes" MinWidth="88" Height="32" Click="BtnYes_Click" Style="{StaticResource AccentButtonStyle}"/>
+            <Button x:Name="BtnNo" MinWidth="88" Height="32" Click="BtnNo_Click"/>
+            <Button x:Name="BtnCancel" MinWidth="88" Height="32" Click="BtnCancel_Click"/>
+        </ui:SimpleStackPanel>
+    </Grid>
+        </Border>
+</Window>

@@ -1,0 +1,994 @@
+{
+  "Receive": {
+    "Type": "Struct",
+    "Comment": "",
+    "ByteOffset": 0,
+    "BitOffset": 0,
+    "Fields": {
+      "Control": {
+        "Type": "Struct",
+        "Comment": "PC'den Gelen Kontrol Bitleri",
+        "ByteOffset": 0,
+        "BitOffset": 0,
+        "Fields": {
+          "Life": {
+            "PhysicalAddress": "DB88.DBX0.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "PC - PLC haberleşme var biti",
+            "ByteOffset": 0,
+            "BitOffset": 0
+          },
+          "Start": {
+            "PhysicalAddress": "DB88.DBX0.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Otomatik Başlat",
+            "ByteOffset": 0,
+            "BitOffset": 1
+          },
+          "Stop": {
+            "PhysicalAddress": "DB88.DBX0.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Otomatik Durdur",
+            "ByteOffset": 0,
+            "BitOffset": 2
+          }
+        }
+      },
+      "Time": {
+        "Type": "Struct",
+        "Comment": "İşlem zamanları (Aksi belirtilmeyen tüm zamanlar milisaniye)",
+        "ByteOffset": 2,
+        "BitOffset": 0,
+        "Fields": {
+          "StartDelay": {
+            "PhysicalAddress": "DB88.DBW2",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 2,
+            "BitOffset": 0
+          },
+          "StopDelay": {
+            "PhysicalAddress": "DB88.DBW4",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 4,
+            "BitOffset": 0
+          },
+          "AplicatorDelay": {
+            "PhysicalAddress": "DB88.DBW6",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 6,
+            "BitOffset": 0
+          }
+        }
+      },
+      "Velocity": {
+        "Type": "Struct",
+        "Comment": "AC Motor hız değerleri",
+        "ByteOffset": 8,
+        "BitOffset": 0,
+        "Fields": {
+          "Main": {
+            "PhysicalAddress": "DB88.DBW8",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Ana konveyör hız bilgisi (Hz)",
+            "ByteOffset": 8,
+            "BitOffset": 0
+          },
+          "Spacing": {
+            "PhysicalAddress": "DB88.DBW10",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Ara açma hız bilgisi (Hz)",
+            "ByteOffset": 10,
+            "BitOffset": 0
+          },
+          "SideHolding": {
+            "PhysicalAddress": "DB88.DBW12",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Yan baskı hız bilgisi (Hz)",
+            "ByteOffset": 12,
+            "BitOffset": 0
+          },
+          "TopHolding": {
+            "PhysicalAddress": "DB88.DBW14",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Üst baskı hız bilgisi (Hz)",
+            "ByteOffset": 14,
+            "BitOffset": 0
+          },
+          "Idler": {
+            "PhysicalAddress": "DB88.DBW16",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Boş konveyör hız bilgisi (Hz)",
+            "ByteOffset": 16,
+            "BitOffset": 0
+          }
+        }
+      },
+      "Other": {
+        "Type": "Struct",
+        "Comment": "Diğer parametreler",
+        "ByteOffset": 18,
+        "BitOffset": 0,
+        "Fields": {
+          "ACDriveCount": {
+            "PhysicalAddress": "DB88.DBW18",
+            "DataType": "INT",
+            "DefaultValue": "0",
+            "Description": "Modbus ile kontrol edilecek AC sürücü sayısı",
+            "ByteOffset": 18,
+            "BitOffset": 0
+          },
+          "DischargeCount": {
+            "PhysicalAddress": "DB88.DBW20",
+            "DataType": "INT",
+            "DefaultValue": "0",
+            "Description": "Peşpeşe okunamayan QR kod sayısı",
+            "ByteOffset": 20,
+            "BitOffset": 0
+          },
+          "Reserve_3": {
+            "PhysicalAddress": "DB88.DBW22",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 22,
+            "BitOffset": 0
+          },
+          "Reserve_4": {
+            "PhysicalAddress": "DB88.DBW24",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 24,
+            "BitOffset": 0
+          }
+        }
+      }
+    }
+  },
+  "Send": {
+    "Type": "Struct",
+    "Comment": "",
+    "ByteOffset": 26,
+    "BitOffset": 0,
+    "Fields": {
+      "Control": {
+        "Type": "Struct",
+        "Comment": "PC'ye Gönderilen kontrol bitleri",
+        "ByteOffset": 26,
+        "BitOffset": 0,
+        "Fields": {
+          "Life": {
+            "PhysicalAddress": "DB88.DBX26.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "PC - PLC haberleşme var biti",
+            "ByteOffset": 26,
+            "BitOffset": 0
+          },
+          "Reserve_2": {
+            "PhysicalAddress": "DB88.DBX26.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 26,
+            "BitOffset": 1
+          }
+        }
+      },
+      "State": {
+        "Type": "Struct",
+        "Comment": "PC'ye Gönderilen durum bitleri",
+        "ByteOffset": 28,
+        "BitOffset": 0,
+        "Fields": {
+          "Stop": {
+            "PhysicalAddress": "DB88.DBX28.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Makine Stop modda",
+            "ByteOffset": 28,
+            "BitOffset": 0
+          },
+          "Run": {
+            "PhysicalAddress": "DB88.DBX28.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Otomatik modda çalışyor",
+            "ByteOffset": 28,
+            "BitOffset": 1
+          },
+          "Manual": {
+            "PhysicalAddress": "DB88.DBX28.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda çalışıyor",
+            "ByteOffset": 28,
+            "BitOffset": 2
+          },
+          "Bypass": {
+            "PhysicalAddress": "DB88.DBX28.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Bypass modda çalışıyor",
+            "ByteOffset": 28,
+            "BitOffset": 3
+          },
+          "Test": {
+            "PhysicalAddress": "DB88.DBX28.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Test modda çalışıyor",
+            "ByteOffset": 28,
+            "BitOffset": 4
+          },
+          "Reset_DO": {
+            "PhysicalAddress": "DB88.DBX28.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reset yapılıyor",
+            "ByteOffset": 28,
+            "BitOffset": 5
+          },
+          "Reset_OK": {
+            "PhysicalAddress": "DB88.DBX28.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reset yapıldı",
+            "ByteOffset": 28,
+            "BitOffset": 6
+          },
+          "Home_DO": {
+            "PhysicalAddress": "DB88.DBX28.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Home yapılıyor",
+            "ByteOffset": 28,
+            "BitOffset": 7
+          },
+          "Home_OK": {
+            "PhysicalAddress": "DB88.DBX29.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Home yapıldı",
+            "ByteOffset": 29,
+            "BitOffset": 0
+          },
+          "Pos_DO": {
+            "PhysicalAddress": "DB88.DBX29.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Pozisyona gidiliyor",
+            "ByteOffset": 29,
+            "BitOffset": 1
+          },
+          "Pos_OK": {
+            "PhysicalAddress": "DB88.DBX29.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Pozisyona gidildi",
+            "ByteOffset": 29,
+            "BitOffset": 2
+          },
+          "Ready": {
+            "PhysicalAddress": "DB88.DBX29.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Çalışmaya hazır",
+            "ByteOffset": 29,
+            "BitOffset": 3
+          },
+          "Message": {
+            "PhysicalAddress": "DB88.DBX29.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Mesaj var (Alarm bitleri kontrol edilecek)",
+            "ByteOffset": 29,
+            "BitOffset": 4
+          },
+          "Warning": {
+            "PhysicalAddress": "DB88.DBX29.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Uyarı var (Alarm bitleri kontrol edilecek)",
+            "ByteOffset": 29,
+            "BitOffset": 5
+          },
+          "Error": {
+            "PhysicalAddress": "DB88.DBX29.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Hata var (Alarm bitleri kontrol edilecek)",
+            "ByteOffset": 29,
+            "BitOffset": 6
+          },
+          "Reserve_15": {
+            "PhysicalAddress": "DB88.DBX29.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 29,
+            "BitOffset": 7
+          },
+          "Reserve_16": {
+            "PhysicalAddress": "DB88.DBX30.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 30,
+            "BitOffset": 0
+          }
+        }
+      },
+      "Alarm": {
+        "Type": "Struct",
+        "Comment": "PC'ye Gönderilen alarm bilgileri",
+        "ByteOffset": 32,
+        "BitOffset": 0,
+        "Fields": {
+          "Emergency": {
+            "PhysicalAddress": "DB88.DBX32.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Acil stop basılı (Acil stop bırakılıp reset yapılana kadar gönderilir.)",
+            "ByteOffset": 32,
+            "BitOffset": 0
+          },
+          "Gate": {
+            "PhysicalAddress": "DB88.DBX32.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Kapı açık",
+            "ByteOffset": 32,
+            "BitOffset": 1
+          },
+          "Reserve_3": {
+            "PhysicalAddress": "DB88.DBX32.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 32,
+            "BitOffset": 2
+          },
+          "Reserve_4": {
+            "PhysicalAddress": "DB88.DBX32.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 32,
+            "BitOffset": 3
+          },
+          "Reserve_5": {
+            "PhysicalAddress": "DB88.DBX32.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 32,
+            "BitOffset": 4
+          },
+          "Reserve_6": {
+            "PhysicalAddress": "DB88.DBX32.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 32,
+            "BitOffset": 5
+          },
+          "Reserve_7": {
+            "PhysicalAddress": "DB88.DBX32.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 32,
+            "BitOffset": 6
+          },
+          "Reserve_8": {
+            "PhysicalAddress": "DB88.DBX32.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 32,
+            "BitOffset": 7
+          },
+          "Reserve_9": {
+            "PhysicalAddress": "DB88.DBX33.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 33,
+            "BitOffset": 0
+          },
+          "Main": {
+            "PhysicalAddress": "DB88.DBX33.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Ana konveyör alarm",
+            "ByteOffset": 33,
+            "BitOffset": 1
+          },
+          "Spacing": {
+            "PhysicalAddress": "DB88.DBX33.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Ara açma konveyör alarm",
+            "ByteOffset": 33,
+            "BitOffset": 2
+          },
+          "SideHolding": {
+            "PhysicalAddress": "DB88.DBX33.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Yan baskı konveyör alarm",
+            "ByteOffset": 33,
+            "BitOffset": 3
+          },
+          "TopHolding": {
+            "PhysicalAddress": "DB88.DBX33.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Üst baskı konveyör alarm",
+            "ByteOffset": 33,
+            "BitOffset": 4
+          },
+          "Idler": {
+            "PhysicalAddress": "DB88.DBX33.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Boş konveyör alarm",
+            "ByteOffset": 33,
+            "BitOffset": 5
+          },
+          "Reserve_15": {
+            "PhysicalAddress": "DB88.DBX33.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 33,
+            "BitOffset": 6
+          },
+          "Reserve_16": {
+            "PhysicalAddress": "DB88.DBX33.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 33,
+            "BitOffset": 7
+          },
+          "RejectAlmS": {
+            "PhysicalAddress": "DB88.DBX34.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reject pistonu ileri gidemedi",
+            "ByteOffset": 34,
+            "BitOffset": 0
+          },
+          "RejectAlmR": {
+            "PhysicalAddress": "DB88.DBX34.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reject pistonu geri gidemedi",
+            "ByteOffset": 34,
+            "BitOffset": 1
+          }
+        }
+      },
+      "IO": {
+        "Type": "Struct",
+        "Comment": "PLC IO bitleri, ekranda gösterilmesi için",
+        "ByteOffset": 36,
+        "BitOffset": 0,
+        "Fields": {
+          "Input": {
+            "Type": "Struct",
+            "Comment": "",
+            "ByteOffset": 36,
+            "BitOffset": 0,
+            "Fields": {
+              "Start": {
+                "PhysicalAddress": "DB88.DBX36.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Start butonu",
+                "ByteOffset": 36,
+                "BitOffset": 0
+              },
+              "Stop": {
+                "PhysicalAddress": "DB88.DBX36.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Stop butonu",
+                "ByteOffset": 36,
+                "BitOffset": 1
+              },
+              "Reset": {
+                "PhysicalAddress": "DB88.DBX36.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Reset butonu",
+                "ByteOffset": 36,
+                "BitOffset": 2
+              },
+              "Emergency": {
+                "PhysicalAddress": "DB88.DBX36.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Acil Stop röle hazır",
+                "ByteOffset": 36,
+                "BitOffset": 3
+              },
+              "Gate": {
+                "PhysicalAddress": "DB88.DBX36.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kapı açık",
+                "ByteOffset": 36,
+                "BitOffset": 4
+              },
+              "RejectBw": {
+                "PhysicalAddress": "DB88.DBX36.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma pistonu geride",
+                "ByteOffset": 36,
+                "BitOffset": 5
+              },
+              "RejectFw": {
+                "PhysicalAddress": "DB88.DBX36.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma pistonu ileride",
+                "ByteOffset": 36,
+                "BitOffset": 6
+              },
+              "RejectPoke": {
+                "PhysicalAddress": "DB88.DBX36.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma ürün varlık sensörü",
+                "ByteOffset": 36,
+                "BitOffset": 7
+              },
+              "CameraPoke": {
+                "PhysicalAddress": "DB88.DBX37.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kamere ürün varlık sensörü",
+                "ByteOffset": 37,
+                "BitOffset": 0
+              },
+              "ApplicatorReady_L": {
+                "PhysicalAddress": "DB88.DBX37.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sol aplikatör hazır sinyali",
+                "ByteOffset": 37,
+                "BitOffset": 1
+              },
+              "ApplicatorReserve_L": {
+                "PhysicalAddress": "DB88.DBX37.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sol aplikatör rezerv sinyal",
+                "ByteOffset": 37,
+                "BitOffset": 2
+              },
+              "ApplicatorReady_R": {
+                "PhysicalAddress": "DB88.DBX37.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sağ aplikatör hazır sinyali",
+                "ByteOffset": 37,
+                "BitOffset": 3
+              },
+              "ApplicatorReserve_R": {
+                "PhysicalAddress": "DB88.DBX37.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sağ aplikatör rezerv sinyal",
+                "ByteOffset": 37,
+                "BitOffset": 4
+              },
+              "ApplicatorPoke": {
+                "PhysicalAddress": "DB88.DBX37.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Apilkatör ürün varlık sensörü",
+                "ByteOffset": 37,
+                "BitOffset": 5
+              },
+              "ResultsOK": {
+                "PhysicalAddress": "DB88.DBX37.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kamera okuma başarılı",
+                "ByteOffset": 37,
+                "BitOffset": 6
+              },
+              "ResultsNG": {
+                "PhysicalAddress": "DB88.DBX37.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kamera okuma başarısız",
+                "ByteOffset": 37,
+                "BitOffset": 7
+              },
+              "Reserve_I9.0": {
+                "PhysicalAddress": "DB88.DBX38.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 38,
+                "BitOffset": 0
+              },
+              "Reserve_I9.1": {
+                "PhysicalAddress": "DB88.DBX38.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 38,
+                "BitOffset": 1
+              },
+              "Reserve_I9.2": {
+                "PhysicalAddress": "DB88.DBX38.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 38,
+                "BitOffset": 2
+              },
+              "Reserve_I9.3": {
+                "PhysicalAddress": "DB88.DBX38.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 38,
+                "BitOffset": 3
+              },
+              "Reserve_I9.4": {
+                "PhysicalAddress": "DB88.DBX38.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 38,
+                "BitOffset": 4
+              },
+              "Reserve_I9.5": {
+                "PhysicalAddress": "DB88.DBX38.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 38,
+                "BitOffset": 5
+              },
+              "Reserve_I9.6": {
+                "PhysicalAddress": "DB88.DBX38.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 38,
+                "BitOffset": 6
+              },
+              "Reserve_I9.7": {
+                "PhysicalAddress": "DB88.DBX38.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 38,
+                "BitOffset": 7
+              }
+            }
+          },
+          "Output": {
+            "Type": "Struct",
+            "Comment": "",
+            "ByteOffset": 40,
+            "BitOffset": 0,
+            "Fields": {
+              "Reserve_0.0": {
+                "PhysicalAddress": "DB88.DBX40.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 40,
+                "BitOffset": 0
+              },
+              "Reserve_0.1": {
+                "PhysicalAddress": "DB88.DBX40.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 40,
+                "BitOffset": 1
+              },
+              "CameraTrigger": {
+                "PhysicalAddress": "DB88.DBX40.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kamera tetik",
+                "ByteOffset": 40,
+                "BitOffset": 2
+              },
+              "Emg_Relay": {
+                "PhysicalAddress": "DB88.DBX40.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Acil Stop rölesi kur",
+                "ByteOffset": 40,
+                "BitOffset": 3
+              },
+              "RejectBw": {
+                "PhysicalAddress": "DB88.DBX40.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma pistonu geride",
+                "ByteOffset": 40,
+                "BitOffset": 4
+              },
+              "RejectFw": {
+                "PhysicalAddress": "DB88.DBX40.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma pistonu ileride",
+                "ByteOffset": 40,
+                "BitOffset": 5
+              },
+              "Reserve_0.6": {
+                "PhysicalAddress": "DB88.DBX40.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Işık kulesi yeşil lamba",
+                "ByteOffset": 40,
+                "BitOffset": 6
+              },
+              "Reserve_0.7": {
+                "PhysicalAddress": "DB88.DBX40.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Işık kulesi kırmızı lamba",
+                "ByteOffset": 40,
+                "BitOffset": 7
+              },
+              "Lt_Green": {
+                "PhysicalAddress": "DB88.DBX41.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Işık kulesi sarı lamba",
+                "ByteOffset": 41,
+                "BitOffset": 0
+              },
+              "Lt_Red": {
+                "PhysicalAddress": "DB88.DBX41.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Işık kulesi sesli ikaz",
+                "ByteOffset": 41,
+                "BitOffset": 1
+              },
+              "Lt_Yellow": {
+                "PhysicalAddress": "DB88.DBX41.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sol aplikatör başlat sinyali",
+                "ByteOffset": 41,
+                "BitOffset": 2
+              },
+              "Lt_Buzzer": {
+                "PhysicalAddress": "DB88.DBX41.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sol aplikatör reset sinyali",
+                "ByteOffset": 41,
+                "BitOffset": 3
+              },
+              "ApplicatorStart_L": {
+                "PhysicalAddress": "DB88.DBX41.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sağ aplikatör başlat sinyali",
+                "ByteOffset": 41,
+                "BitOffset": 4
+              },
+              "ApplicatorReset_L": {
+                "PhysicalAddress": "DB88.DBX41.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sağ aplikatör reset sinyal",
+                "ByteOffset": 41,
+                "BitOffset": 5
+              },
+              "ApplicatorStart_R": {
+                "PhysicalAddress": "DB88.DBX41.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 41,
+                "BitOffset": 6
+              },
+              "ApplicatorReset_R": {
+                "PhysicalAddress": "DB88.DBX41.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 41,
+                "BitOffset": 7
+              },
+              "Reserve_9.0": {
+                "PhysicalAddress": "DB88.DBX42.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 42,
+                "BitOffset": 0
+              },
+              "Reserve_9.1": {
+                "PhysicalAddress": "DB88.DBX42.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 42,
+                "BitOffset": 1
+              },
+              "Reserve_9.2": {
+                "PhysicalAddress": "DB88.DBX42.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 42,
+                "BitOffset": 2
+              },
+              "Reserve_9.3": {
+                "PhysicalAddress": "DB88.DBX42.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 42,
+                "BitOffset": 3
+              },
+              "Reserve_9.4": {
+                "PhysicalAddress": "DB88.DBX42.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 42,
+                "BitOffset": 4
+              },
+              "Reserve_9.5": {
+                "PhysicalAddress": "DB88.DBX42.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 42,
+                "BitOffset": 5
+              },
+              "Reserve_9.6": {
+                "PhysicalAddress": "DB88.DBX42.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 42,
+                "BitOffset": 6
+              },
+              "Reserve_9.7": {
+                "PhysicalAddress": "DB88.DBX42.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 42,
+                "BitOffset": 7
+              }
+            }
+          }
+        }
+      },
+      "Velocity": {
+        "Type": "Struct",
+        "Comment": "AC Motor hız değerleri",
+        "ByteOffset": 44,
+        "BitOffset": 0,
+        "Fields": {
+          "Main": {
+            "PhysicalAddress": "DB88.DBW44",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Ana konveyör hız bilgisi (Hz)",
+            "ByteOffset": 44,
+            "BitOffset": 0
+          },
+          "Spacing": {
+            "PhysicalAddress": "DB88.DBW46",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Ara açma hız bilgisi (Hz)",
+            "ByteOffset": 46,
+            "BitOffset": 0
+          },
+          "SideHoldingL": {
+            "PhysicalAddress": "DB88.DBW48",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Yan baskı hız bilgisi (Hz)",
+            "ByteOffset": 48,
+            "BitOffset": 0
+          },
+          "TopHolding": {
+            "PhysicalAddress": "DB88.DBW50",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Üst baskı hız bilgisi (Hz)",
+            "ByteOffset": 50,
+            "BitOffset": 0
+          },
+          "Idler": {
+            "PhysicalAddress": "DB88.DBW52",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Boş konveyör hız bilgisi (Hz)",
+            "ByteOffset": 52,
+            "BitOffset": 0
+          }
+        }
+      },
+      "Other": {
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 54,
+        "BitOffset": 0,
+        "Fields": {
+          "Reserve_1": {
+            "PhysicalAddress": "DB88.DBW54",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 54,
+            "BitOffset": 0
+          },
+          "Reserve_2": {
+            "PhysicalAddress": "DB88.DBW56",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 56,
+            "BitOffset": 0
+          },
+          "Reserve_23": {
+            "PhysicalAddress": "DB88.DBW58",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 58,
+            "BitOffset": 0
+          },
+          "Result Length": {
+            "PhysicalAddress": "DB88.DBW60",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 60,
+            "BitOffset": 0
+          },
+          "Result": {
+            "PhysicalAddress": "DB88.DBB62",
+            "DataType": "STRING[254]",
+            "DefaultValue": "",
+            "Description": "",
+            "ByteOffset": 62,
+            "BitOffset": 0
+          }
+        }
+      }
+    }
+  }
+}

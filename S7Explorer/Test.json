@@ -1,0 +1,1198 @@
+{
+  "DbName": "DB_TEST",
+  "Structure": {
+    "Level": 0,
+    "Fields": [
+      {
+        "Name": "Receive",
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 0,
+        "BitOffset": 0,
+        "StringLength": 254,
+        "NestedStructure": {
+          "Level": 1,
+          "Fields": [
+            {
+              "Name": "Control",
+              "Type": "Struct",
+              "Comment": "PC'den Gelen Kontrol Bitleri",
+              "ByteOffset": 0,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Life",
+                    "Type": "Bool",
+                    "Comment": "PC - PLC haberleşme var biti",
+                    "ByteOffset": 0,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Start",
+                    "Type": "Bool",
+                    "Comment": "Otomatik Başlat",
+                    "ByteOffset": 0,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Stop",
+                    "Type": "Bool",
+                    "Comment": "Otomatik Durdur",
+                    "ByteOffset": 0,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Time",
+              "Type": "Struct",
+              "Comment": "İşlem zamanları (Aksi belirtilmeyen tüm zamanlar milisaniye)",
+              "ByteOffset": 2,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "StartDelay",
+                    "Type": "UInt",
+                    "Comment": "",
+                    "ByteOffset": 2,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "StopDelay",
+                    "Type": "UInt",
+                    "Comment": "",
+                    "ByteOffset": 4,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "AplicatorDelay",
+                    "Type": "UInt",
+                    "Comment": "",
+                    "ByteOffset": 6,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Velocity",
+              "Type": "Struct",
+              "Comment": "AC Motor hız değerleri",
+              "ByteOffset": 8,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Main",
+                    "Type": "Word",
+                    "Comment": "Ana konveyör hız bilgisi (Hz)",
+                    "ByteOffset": 8,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Spacing",
+                    "Type": "Word",
+                    "Comment": "Ara açma hız bilgisi (Hz)",
+                    "ByteOffset": 10,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SideHolding",
+                    "Type": "Word",
+                    "Comment": "Yan baskı hız bilgisi (Hz)",
+                    "ByteOffset": 12,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "TopHolding",
+                    "Type": "Word",
+                    "Comment": "Üst baskı hız bilgisi (Hz)",
+                    "ByteOffset": 14,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Idler",
+                    "Type": "Word",
+                    "Comment": "Boş konveyör hız bilgisi (Hz)",
+                    "ByteOffset": 16,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Other",
+              "Type": "Struct",
+              "Comment": "Diğer parametreler",
+              "ByteOffset": 18,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "ACDriveCount",
+                    "Type": "Int",
+                    "Comment": "Modbus ile kontrol edilecek AC sürücü sayısı",
+                    "ByteOffset": 18,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "DischargeCount",
+                    "Type": "Int",
+                    "Comment": "Peşpeşe okunamayan QR kod sayısı",
+                    "ByteOffset": 20,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_3",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 22,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_4",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 24,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Name": "Send",
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 26,
+        "BitOffset": 0,
+        "StringLength": 254,
+        "NestedStructure": {
+          "Level": 1,
+          "Fields": [
+            {
+              "Name": "Control",
+              "Type": "Struct",
+              "Comment": "PC'ye Gönderilen kontrol bitleri",
+              "ByteOffset": 26,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Life",
+                    "Type": "Bool",
+                    "Comment": "PC - PLC haberleşme var biti",
+                    "ByteOffset": 26,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_2",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 26,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "State",
+              "Type": "Struct",
+              "Comment": "PC'ye Gönderilen durum bitleri",
+              "ByteOffset": 28,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Stop",
+                    "Type": "Bool",
+                    "Comment": "Makine Stop modda",
+                    "ByteOffset": 28,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Run",
+                    "Type": "Bool",
+                    "Comment": "Otomatik modda çalışyor",
+                    "ByteOffset": 28,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Manual",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda çalışıyor",
+                    "ByteOffset": 28,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Bypass",
+                    "Type": "Bool",
+                    "Comment": "Bypass modda çalışıyor",
+                    "ByteOffset": 28,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Test",
+                    "Type": "Bool",
+                    "Comment": "Test modda çalışıyor",
+                    "ByteOffset": 28,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reset_DO",
+                    "Type": "Bool",
+                    "Comment": "Reset yapılıyor",
+                    "ByteOffset": 28,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reset_OK",
+                    "Type": "Bool",
+                    "Comment": "Reset yapıldı",
+                    "ByteOffset": 28,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Home_DO",
+                    "Type": "Bool",
+                    "Comment": "Home yapılıyor",
+                    "ByteOffset": 28,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Home_OK",
+                    "Type": "Bool",
+                    "Comment": "Home yapıldı",
+                    "ByteOffset": 29,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Pos_DO",
+                    "Type": "Bool",
+                    "Comment": "Pozisyona gidiliyor",
+                    "ByteOffset": 29,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Pos_OK",
+                    "Type": "Bool",
+                    "Comment": "Pozisyona gidildi",
+                    "ByteOffset": 29,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Ready",
+                    "Type": "Bool",
+                    "Comment": "Çalışmaya hazır",
+                    "ByteOffset": 29,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Message",
+                    "Type": "Bool",
+                    "Comment": "Mesaj var (Alarm bitleri kontrol edilecek)",
+                    "ByteOffset": 29,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Warning",
+                    "Type": "Bool",
+                    "Comment": "Uyarı var (Alarm bitleri kontrol edilecek)",
+                    "ByteOffset": 29,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Error",
+                    "Type": "Bool",
+                    "Comment": "Hata var (Alarm bitleri kontrol edilecek)",
+                    "ByteOffset": 29,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_15",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 29,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_16",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 30,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Alarm",
+              "Type": "Struct",
+              "Comment": "PC'ye Gönderilen alarm bilgileri",
+              "ByteOffset": 32,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Emergency",
+                    "Type": "Bool",
+                    "Comment": "Acil stop basılı (Acil stop bırakılıp reset yapılana kadar gönderilir.)",
+                    "ByteOffset": 32,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Gate",
+                    "Type": "Bool",
+                    "Comment": "Kapı açık",
+                    "ByteOffset": 32,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_3",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 32,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_4",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 32,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_5",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 32,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_6",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 32,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_7",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 32,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_8",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 32,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_9",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 33,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Main",
+                    "Type": "Bool",
+                    "Comment": "Ana konveyör alarm",
+                    "ByteOffset": 33,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Spacing",
+                    "Type": "Bool",
+                    "Comment": "Ara açma konveyör alarm",
+                    "ByteOffset": 33,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SideHolding",
+                    "Type": "Bool",
+                    "Comment": "Yan baskı konveyör alarm",
+                    "ByteOffset": 33,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "TopHolding",
+                    "Type": "Bool",
+                    "Comment": "Üst baskı konveyör alarm",
+                    "ByteOffset": 33,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Idler",
+                    "Type": "Bool",
+                    "Comment": "Boş konveyör alarm",
+                    "ByteOffset": 33,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_15",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 33,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_16",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 33,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectAlmS",
+                    "Type": "Bool",
+                    "Comment": "Reject pistonu ileri gidemedi",
+                    "ByteOffset": 34,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectAlmR",
+                    "Type": "Bool",
+                    "Comment": "Reject pistonu geri gidemedi",
+                    "ByteOffset": 34,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "IO",
+              "Type": "Struct",
+              "Comment": "PLC IO bitleri, ekranda gösterilmesi için",
+              "ByteOffset": 36,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Input",
+                    "Type": "Struct",
+                    "Comment": "",
+                    "ByteOffset": 36,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": {
+                      "Level": 3,
+                      "Fields": [
+                        {
+                          "Name": "Start",
+                          "Type": "Bool",
+                          "Comment": "Start butonu",
+                          "ByteOffset": 36,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Stop",
+                          "Type": "Bool",
+                          "Comment": "Stop butonu",
+                          "ByteOffset": 36,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reset",
+                          "Type": "Bool",
+                          "Comment": "Reset butonu",
+                          "ByteOffset": 36,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Emergency",
+                          "Type": "Bool",
+                          "Comment": "Acil Stop röle hazır",
+                          "ByteOffset": 36,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Gate",
+                          "Type": "Bool",
+                          "Comment": "Kapı açık",
+                          "ByteOffset": 36,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectBw",
+                          "Type": "Bool",
+                          "Comment": "Atma pistonu geride",
+                          "ByteOffset": 36,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectFw",
+                          "Type": "Bool",
+                          "Comment": "Atma pistonu ileride",
+                          "ByteOffset": 36,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectPoke",
+                          "Type": "Bool",
+                          "Comment": "Atma ürün varlık sensörü",
+                          "ByteOffset": 36,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "CameraPoke",
+                          "Type": "Bool",
+                          "Comment": "Kamere ürün varlık sensörü",
+                          "ByteOffset": 37,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReady_L",
+                          "Type": "Bool",
+                          "Comment": "Sol aplikatör hazır sinyali",
+                          "ByteOffset": 37,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReserve_L",
+                          "Type": "Bool",
+                          "Comment": "Sol aplikatör rezerv sinyal",
+                          "ByteOffset": 37,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReady_R",
+                          "Type": "Bool",
+                          "Comment": "Sağ aplikatör hazır sinyali",
+                          "ByteOffset": 37,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReserve_R",
+                          "Type": "Bool",
+                          "Comment": "Sağ aplikatör rezerv sinyal",
+                          "ByteOffset": 37,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorPoke",
+                          "Type": "Bool",
+                          "Comment": "Apilkatör ürün varlık sensörü",
+                          "ByteOffset": 37,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ResultsOK",
+                          "Type": "Bool",
+                          "Comment": "Kamera okuma başarılı",
+                          "ByteOffset": 37,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ResultsNG",
+                          "Type": "Bool",
+                          "Comment": "Kamera okuma başarısız",
+                          "ByteOffset": 37,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.0",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 38,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.1",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 38,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.2",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 38,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.3",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 38,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.4",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 38,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.5",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 38,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.6",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 38,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.7",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 38,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "Name": "Output",
+                    "Type": "Struct",
+                    "Comment": "",
+                    "ByteOffset": 40,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": {
+                      "Level": 3,
+                      "Fields": [
+                        {
+                          "Name": "Reserve_0.0",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 40,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_0.1",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 40,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "CameraTrigger",
+                          "Type": "Bool",
+                          "Comment": "Kamera tetik",
+                          "ByteOffset": 40,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Emg_Relay",
+                          "Type": "Bool",
+                          "Comment": "Acil Stop rölesi kur",
+                          "ByteOffset": 40,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectBw",
+                          "Type": "Bool",
+                          "Comment": "Atma pistonu geride",
+                          "ByteOffset": 40,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectFw",
+                          "Type": "Bool",
+                          "Comment": "Atma pistonu ileride",
+                          "ByteOffset": 40,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_0.6",
+                          "Type": "Bool",
+                          "Comment": "Işık kulesi yeşil lamba",
+                          "ByteOffset": 40,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_0.7",
+                          "Type": "Bool",
+                          "Comment": "Işık kulesi kırmızı lamba",
+                          "ByteOffset": 40,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Lt_Green",
+                          "Type": "Bool",
+                          "Comment": "Işık kulesi sarı lamba",
+                          "ByteOffset": 41,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Lt_Red",
+                          "Type": "Bool",
+                          "Comment": "Işık kulesi sesli ikaz",
+                          "ByteOffset": 41,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Lt_Yellow",
+                          "Type": "Bool",
+                          "Comment": "Sol aplikatör başlat sinyali",
+                          "ByteOffset": 41,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Lt_Buzzer",
+                          "Type": "Bool",
+                          "Comment": "Sol aplikatör reset sinyali",
+                          "ByteOffset": 41,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorStart_L",
+                          "Type": "Bool",
+                          "Comment": "Sağ aplikatör başlat sinyali",
+                          "ByteOffset": 41,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReset_L",
+                          "Type": "Bool",
+                          "Comment": "Sağ aplikatör reset sinyal",
+                          "ByteOffset": 41,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorStart_R",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 41,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReset_R",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 41,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.0",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 42,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.1",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 42,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.2",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 42,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.3",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 42,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.4",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 42,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.5",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 42,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.6",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 42,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.7",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 42,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Velocity",
+              "Type": "Struct",
+              "Comment": "AC Motor hız değerleri",
+              "ByteOffset": 44,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Main",
+                    "Type": "Word",
+                    "Comment": "Ana konveyör hız bilgisi (Hz)",
+                    "ByteOffset": 44,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Spacing",
+                    "Type": "Word",
+                    "Comment": "Ara açma hız bilgisi (Hz)",
+                    "ByteOffset": 46,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SideHoldingL",
+                    "Type": "Word",
+                    "Comment": "Yan baskı hız bilgisi (Hz)",
+                    "ByteOffset": 48,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "TopHolding",
+                    "Type": "Word",
+                    "Comment": "Üst baskı hız bilgisi (Hz)",
+                    "ByteOffset": 50,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Idler",
+                    "Type": "Word",
+                    "Comment": "Boş konveyör hız bilgisi (Hz)",
+                    "ByteOffset": 52,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Other",
+              "Type": "Struct",
+              "Comment": "",
+              "ByteOffset": 54,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Reserve_1",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 54,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_2",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 56,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_23",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 58,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Result Length",
+                    "Type": "UInt",
+                    "Comment": "",
+                    "ByteOffset": 60,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Result",
+                    "Type": "String",
+                    "Comment": "",
+                    "ByteOffset": 62,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "DefaultValues": {
+    "Receive.Control.Stop": "true",
+    "Receive.Control.MainAct": "true",
+    "Receive.Control.SpacingAct": "true",
+    "Receive.Control.SideHoldingAct": "true",
+    "Receive.Control.TopHoldingAct": "true",
+    "Receive.Velocity.Main": "200",
+    "Receive.Velocity.Spacing": "200",
+    "Receive.Velocity.SideHolding": "200",
+    "Receive.Velocity.TopHolding": "200",
+    "Receive.Velocity.Idler": "200",
+    "Receive.Other.ACDriveCount": "4",
+    "Send.Velocity.Main": "200",
+    "Send.Velocity.Spacing": "200",
+    "Send.Velocity.SideHoldingL": "200",
+    "Send.Velocity.TopHolding": "200",
+    "Send.Velocity.Idler": "200"
+  }
+}

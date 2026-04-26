@@ -1,0 +1,84 @@
+<Window x:Class="S7Explorer.DbNumberInputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        Title="Enter DB Number" Height="180" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:TitleBar.ExtendViewIntoTitleBar="True"
+        Style="{DynamicResource {x:Type Window}}">
+    <Grid Margin="20,52,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Ba�l�k -->
+        <TextBlock x:Name="LblDbPrompt" Grid.Row="0" Text="Enter the number of the parsed DB block:" 
+                   FontSize="14" FontWeight="SemiBold" Margin="0,0,0,15"
+                   TextTrimming="CharacterEllipsis"
+                   ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+
+        <!-- DB Numaras� -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+            <TextBlock x:Name="LblDbNumberLabel" Text="DB Number:" VerticalAlignment="Center" Width="80" HorizontalAlignment="Right"
+                       TextTrimming="CharacterEllipsis"
+                       ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+            <TextBox x:Name="TxtDbNumber" Text="1" Width="60" Padding="5"
+                     KeyDown="TxtDbNumber_KeyDown" Margin="0,0,20,0"/>
+            <Button x:Name="BtnOk" Content="OK" Width="80" Height="30" 
+                    Click="BtnOk_Click" IsDefault="True" Margin="0,0,10,0"/>
+            <Button x:Name="BtnCancel" Content="Cancel" Width="80" Height="30" 
+                    Click="BtnCancel_Click" IsCancel="True"/>
+        </StackPanel>
+
+        <!-- A��klama -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,0">
+            <TextBlock x:Name="LblDbDescription" TextWrapping="Wrap" FontStyle="Italic" Foreground="Gray"
+                       Text="This number will be used to convert symbolic addresses to physical addresses."/>
+            <TextBlock x:Name="LblDbExample" FontStyle="Italic" Foreground="Gray" Margin="0,4,0,0"
+                       Text="Example: DB1.DBX0.0, DB2.DBW10 etc."/>
+        </StackPanel>
+            <!-- Ba�l�k �ubu�u: Dil se�me butonu -->
+            <Button x:Name="BtnToggleLanguage"
+                    Grid.RowSpan="3"
+                    VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Margin="0,-52,160,0"
+                    Width="36" Height="32"
+                    Click="BtnToggleLanguage_Click"
+                    ToolTip="Select language"
+                    WindowChrome.IsHitTestVisibleInChrome="True"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Padding="0">
+                <ui:FontIcon Glyph="&#xE909;" FontSize="16"/>
+            </Button>
+
+            <!-- Ba�l�k �ubu�u: Tema de�i�tirme butonu -->
+            <Button x:Name="BtnToggleTheme"
+                    Grid.RowSpan="3"
+                    VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Margin="0,-52,118,0"
+                    Width="36" Height="32"
+                    Click="BtnToggleTheme_Click"
+                    ToolTip="Select theme"
+                    WindowChrome.IsHitTestVisibleInChrome="True"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Padding="0">
+                <Button.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="?  Light"          Tag="Light"      IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                        <MenuItem Header="??  Dark"          Tag="Dark"       IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                        <MenuItem Header="?  Industrial"   Tag="Industrial" IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                        <MenuItem Header="?  Night"           Tag="Night"      IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+                <ui:FontIcon Glyph="&#xE771;" FontSize="16"/>
+            </Button>
+        </Grid>
+    </Window>

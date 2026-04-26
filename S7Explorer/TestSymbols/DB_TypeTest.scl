@@ -1,0 +1,132 @@
+// ============================================================
+// DB_TypeTest (DB99) — Tüm S7.Net Desteklenen Tipleri Test DB
+// TIA Portal SCL Kaynak Kodu
+//
+// Kullanım:
+//   1. TIA Portal'da yeni bir Global DB ekleyin (DB numarası: 99)
+//   2. DB özelliklerinden "Optimized block access" seçeneğini KAPATIN
+//   3. Bu dosyanın içeriğini SCL editörüne yapıştırın
+//
+// CPU Uyumluluğu:
+//   [*] S7-300 / S7-400  → WChar, LInt, ULInt, LWord, LReal, DTL, WString KALDIR
+//   [*] S7-1200          → WChar, LInt, ULInt, LWord, LReal, DTL, WString KALDIR
+//   [*] S7-1500          → Tüm tipler desteklenir
+// ============================================================
+
+DATA_BLOCK "DB_TypeTest"
+{ S7_Optimized_Access := 'FALSE' }
+TITLE = 'S7.Net Type Test'
+VERSION : 0.1
+NON_RETAIN
+
+VAR
+    // ---- BIT TİPLERİ (Offset 0.x) ----
+    Bool1   : Bool;         // Offset 0.0 → DB99.DBX0.0
+    Bool2   : Bool;         // Offset 0.1 → DB99.DBX0.1
+    Bool3   : Bool;         // Offset 0.2 → DB99.DBX0.2
+
+    // ---- BYTE TİPLERİ (1 byte) ----
+    Byte1   : Byte;         // Offset 1   → DB99.DBB1
+    Char1   : Char;         // Offset 2   → DB99.DBB2    (ASCII karakter)
+    SInt1   : SInt;         // Offset 3   → DB99.DBB3    (işaretli -128..127)
+    USInt1  : USInt;        // Offset 4   → DB99.DBB4    (işaretsiz 0..255)
+    //                         Offset 5: padding (INT word hizalaması için)
+
+    // ---- WORD TİPLERİ (2 byte) ----
+    Int1    : Int;          // Offset 6   → DB99.DBW6
+    UInt1   : UInt;         // Offset 8   → DB99.DBW8
+    Word1   : Word;         // Offset 10  → DB99.DBW10   (bitfield)
+    WChar1  : WChar;        // Offset 12  → DB99.DBW12   [S7-1500]
+    Date1   : Date;         // Offset 14  → DB99.DBW14   (yyyy-MM-dd)
+    S5Time1 : S5Time;       // Offset 16  → DB99.DBW16   (ms)
+
+    // ---- DWORD TİPLERİ (4 byte) ----
+    DInt1   : DInt;         // Offset 18  → DB99.DBD18
+    UDInt1  : UDInt;        // Offset 22  → DB99.DBD22
+    DWord1  : DWord;        // Offset 26  → DB99.DBD26   (bitfield)
+    Real1   : Real;         // Offset 30  → DB99.DBD30   (32-bit IEEE float)
+    Time1   : Time;         // Offset 34  → DB99.DBD34   (ms, T#...)
+    TOD1    : Time_Of_Day;  // Offset 38  → DB99.DBD38   (HH:mm:ss.fff)
+
+    // ---- 8 BYTE TİPLERİ ----
+    DT1     : Date_And_Time; // Offset 42 → DB99.DBD42   (8 byte, tüm CPU)
+    LInt1   : LInt;          // Offset 50 → DB99.DBD50   [S7-1500]
+    ULInt1  : ULInt;         // Offset 58 → DB99.DBD58   [S7-1500]
+    LWord1  : LWord;         // Offset 66 → DB99.DBD66   [S7-1500]
+    LReal1  : LReal;         // Offset 74 → DB99.DBD74   [S7-1500]
+
+    // ---- YAPISAL TİPLER ----
+    DTL1    : DTL;           // Offset 82 → DB99.DBD82   (12 byte) [S7-1500]
+    String1 : String[20];    // Offset 94 → DB99.DBB94   (2 header + 20 data = 22 byte)
+    WString1: WString[10];   // Offset 116→ DB99.DBB116  (4 header + 10*2 = 24 byte) [S7-1500]
+    //                          Toplam: ~140 byte
+
+END_VAR
+
+BEGIN
+    // Başlangıç değerleri
+    Bool1    := FALSE;
+    Bool2    := FALSE;
+    Bool3    := FALSE;
+    Byte1    := 0;
+    Char1    := 'A';
+    SInt1    := 0;
+    USInt1   := 0;
+    Int1     := 0;
+    UInt1    := 0;
+    Word1    := 0;
+    WChar1   := "A";
+    Date1    := D#2024-01-01;
+    S5Time1  := T#0ms;
+    DInt1    := 0;
+    UDInt1   := 0;
+    DWord1   := 0;
+    Real1    := 0.0;
+    Time1    := T#0ms;
+    TOD1     := TOD#00:00:00;
+    LInt1    := 0;
+    ULInt1   := 0;
+    LWord1   := 0;
+    LReal1   := 0.0;
+    String1  := '';
+    WString1 := "";
+END_DATA_BLOCK
+
+
+// ============================================================
+// TEST DEĞERLERİ (S7WpfApp Yazma Adresi Kutusuna Girilebilecekler)
+// ============================================================
+//
+//  Sembol Adı                    Veri Tipi       Örnek Giriş
+//  ----------------------------  ----------      ---------------------------
+//  DB_TypeTest.Bool1             BOOL            true / false / 1 / 0
+//  DB_TypeTest.Bool2             BOOL            true
+//  DB_TypeTest.Bool3             BOOL            false
+//  DB_TypeTest.Byte1             BYTE            200
+//  DB_TypeTest.Char1             CHAR            A
+//  DB_TypeTest.SInt1             SINT            -100
+//  DB_TypeTest.USInt1            USINT           200
+//  DB_TypeTest.Int1              INT             -1000
+//  DB_TypeTest.UInt1             UINT            65000
+//  DB_TypeTest.Word1             WORD            1234
+//  DB_TypeTest.WChar1            WCHAR           Ş               (S7-1500)
+//  DB_TypeTest.Date1             DATE            2024-06-15
+//  DB_TypeTest.S5Time1           S5TIME          5000            (ms)
+//  DB_TypeTest.DInt1             DINT            -100000
+//  DB_TypeTest.UDInt1            UDINT           3000000000
+//  DB_TypeTest.DWord1            DWORD           305419896
+//  DB_TypeTest.Real1             REAL            3.14
+//  DB_TypeTest.Time1             TIME            5000            (ms = T#5s)
+//  DB_TypeTest.TOD1              TIME_OF_DAY     12:30:00
+//  DB_TypeTest.DT1               DATE_AND_TIME   2024-06-15 12:30:00
+//  DB_TypeTest.LInt1             LINT            9000000000      (S7-1500)
+//  DB_TypeTest.ULInt1            ULINT           18000000000     (S7-1500)
+//  DB_TypeTest.LWord1            LWORD           12345678901234  (S7-1500)
+//  DB_TypeTest.LReal1            LREAL           3.141592653589  (S7-1500)
+//  DB_TypeTest.DTL1              DTL             2024-06-15 12:30:00 (S7-1500)
+//  DB_TypeTest.String1           STRING[20]      Merhaba
+//  DB_TypeTest.WString1          WSTRING[10]     Merhaba         (S7-1500)
+//
+// NOT: 8-byte tipler (LINT, ULINT, LWORD, LREAL, DT, DTL) için
+//      S7.Net "DBD" notasyonunu kullanır — bu adresler geçerlidir.
+// ============================================================

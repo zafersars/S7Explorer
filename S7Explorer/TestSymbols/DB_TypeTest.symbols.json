@@ -1,0 +1,164 @@
+{
+  "DB_TypeTest.Bool1": {
+    "PhysicalAddress": "DB99.DBX0.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Test BOOL bit 0"
+  },
+  "DB_TypeTest.Bool2": {
+    "PhysicalAddress": "DB99.DBX0.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Test BOOL bit 1"
+  },
+  "DB_TypeTest.Bool3": {
+    "PhysicalAddress": "DB99.DBX0.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Test BOOL bit 2"
+  },
+  "DB_TypeTest.Byte1": {
+    "PhysicalAddress": "DB99.DBB1",
+    "DataType": "BYTE",
+    "DefaultValue": "0",
+    "Description": "Test BYTE (0-255)"
+  },
+  "DB_TypeTest.Char1": {
+    "PhysicalAddress": "DB99.DBB2",
+    "DataType": "CHAR",
+    "DefaultValue": "A",
+    "Description": "Test CHAR (tek ASCII karakter)"
+  },
+  "DB_TypeTest.SInt1": {
+    "PhysicalAddress": "DB99.DBB3",
+    "DataType": "SINT",
+    "DefaultValue": "0",
+    "Description": "Test SINT (-128 ile 127)"
+  },
+  "DB_TypeTest.USInt1": {
+    "PhysicalAddress": "DB99.DBB4",
+    "DataType": "USINT",
+    "DefaultValue": "0",
+    "Description": "Test USINT (0-255)"
+  },
+  "DB_TypeTest.Int1": {
+    "PhysicalAddress": "DB99.DBW6",
+    "DataType": "INT",
+    "DefaultValue": "0",
+    "Description": "Test INT (-32768 ile 32767)"
+  },
+  "DB_TypeTest.UInt1": {
+    "PhysicalAddress": "DB99.DBW8",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Test UINT (0-65535)"
+  },
+  "DB_TypeTest.Word1": {
+    "PhysicalAddress": "DB99.DBW10",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": "Test WORD (16-bit bitfield)"
+  },
+  "DB_TypeTest.WChar1": {
+    "PhysicalAddress": "DB99.DBW12",
+    "DataType": "WCHAR",
+    "DefaultValue": "A",
+    "Description": "Test WCHAR (Unicode karakter, S7-1500)"
+  },
+  "DB_TypeTest.Date1": {
+    "PhysicalAddress": "DB99.DBW14",
+    "DataType": "DATE",
+    "DefaultValue": "2024-01-01",
+    "Description": "Test DATE (giris: yyyy-MM-dd)"
+  },
+  "DB_TypeTest.S5Time1": {
+    "PhysicalAddress": "DB99.DBW16",
+    "DataType": "S5TIME",
+    "DefaultValue": "0",
+    "Description": "Test S5TIME (ms cinsinden)"
+  },
+  "DB_TypeTest.DInt1": {
+    "PhysicalAddress": "DB99.DBD18",
+    "DataType": "DINT",
+    "DefaultValue": "0",
+    "Description": "Test DINT (-2147483648 ile 2147483647)"
+  },
+  "DB_TypeTest.UDInt1": {
+    "PhysicalAddress": "DB99.DBD22",
+    "DataType": "UDINT",
+    "DefaultValue": "0",
+    "Description": "Test UDINT (0-4294967295)"
+  },
+  "DB_TypeTest.DWord1": {
+    "PhysicalAddress": "DB99.DBD26",
+    "DataType": "DWORD",
+    "DefaultValue": "0",
+    "Description": "Test DWORD (32-bit bitfield)"
+  },
+  "DB_TypeTest.Real1": {
+    "PhysicalAddress": "DB99.DBD30",
+    "DataType": "REAL",
+    "DefaultValue": "0.0",
+    "Description": "Test REAL (32-bit IEEE float)"
+  },
+  "DB_TypeTest.Time1": {
+    "PhysicalAddress": "DB99.DBD34",
+    "DataType": "TIME",
+    "DefaultValue": "0",
+    "Description": "Test TIME (giris: ms, orn. 5000 = T#5s)"
+  },
+  "DB_TypeTest.TOD1": {
+    "PhysicalAddress": "DB99.DBD38",
+    "DataType": "TIME_OF_DAY",
+    "DefaultValue": "0",
+    "Description": "Test TIME_OF_DAY (giris: HH:mm:ss, orn. 12:30:00)"
+  },
+  "DB_TypeTest.DT1": {
+    "PhysicalAddress": "DB99.DBD42",
+    "DataType": "DATE_AND_TIME",
+    "DefaultValue": "2024-01-01 00:00:00",
+    "Description": "Test DATE_AND_TIME (giris: yyyy-MM-dd HH:mm:ss)"
+  },
+  "DB_TypeTest.LInt1": {
+    "PhysicalAddress": "DB99.DBD50",
+    "DataType": "LINT",
+    "DefaultValue": "0",
+    "Description": "Test LINT (64-bit signed, S7-1500)"
+  },
+  "DB_TypeTest.ULInt1": {
+    "PhysicalAddress": "DB99.DBD58",
+    "DataType": "ULINT",
+    "DefaultValue": "0",
+    "Description": "Test ULINT (64-bit unsigned, S7-1500)"
+  },
+  "DB_TypeTest.LWord1": {
+    "PhysicalAddress": "DB99.DBD66",
+    "DataType": "LWORD",
+    "DefaultValue": "0",
+    "Description": "Test LWORD (64-bit bitfield, S7-1500)"
+  },
+  "DB_TypeTest.LReal1": {
+    "PhysicalAddress": "DB99.DBD74",
+    "DataType": "LREAL",
+    "DefaultValue": "0.0",
+    "Description": "Test LREAL (64-bit IEEE double, S7-1500)"
+  },
+  "DB_TypeTest.DTL1": {
+    "PhysicalAddress": "DB99.DBD82",
+    "DataType": "DTL",
+    "DefaultValue": "2024-01-01 00:00:00",
+    "Description": "Test DTL (Date_And_Time_Long, S7-1500)"
+  },
+  "DB_TypeTest.String1": {
+    "PhysicalAddress": "DB99.DBB94",
+    "DataType": "STRING[20]",
+    "DefaultValue": "",
+    "Description": "Test STRING (maks. 20 karakter)"
+  },
+  "DB_TypeTest.WString1": {
+    "PhysicalAddress": "DB99.DBB116",
+    "DataType": "WSTRING[10]",
+    "DefaultValue": "",
+    "Description": "Test WSTRING (maks. 10 Unicode karakter, S7-1500)"
+  }
+}

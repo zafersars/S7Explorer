@@ -1,0 +1,662 @@
+{
+  "DB_TEST.Receive.Control.Life": {
+    "PhysicalAddress": "DB88.DBX0.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "PC - PLC haberleşme var biti"
+  },
+  "DB_TEST.Receive.Control.Start": {
+    "PhysicalAddress": "DB88.DBX0.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Otomatik Başlat"
+  },
+  "DB_TEST.Receive.Control.Stop": {
+    "PhysicalAddress": "DB88.DBX0.2",
+    "DataType": "BOOL",
+    "DefaultValue": "true",
+    "Description": "Otomatik Durdur"
+  },
+  "DB_TEST.Receive.Time.StartDelay": {
+    "PhysicalAddress": "DB88.DBW2",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Receive.Time.StopDelay": {
+    "PhysicalAddress": "DB88.DBW4",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Receive.Time.AplicatorDelay": {
+    "PhysicalAddress": "DB88.DBW6",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Receive.Velocity.Main": {
+    "PhysicalAddress": "DB88.DBW8",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Ana konveyör hız bilgisi (Hz)"
+  },
+  "DB_TEST.Receive.Velocity.Spacing": {
+    "PhysicalAddress": "DB88.DBW10",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Ara açma hız bilgisi (Hz)"
+  },
+  "DB_TEST.Receive.Velocity.SideHolding": {
+    "PhysicalAddress": "DB88.DBW12",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Yan baskı hız bilgisi (Hz)"
+  },
+  "DB_TEST.Receive.Velocity.TopHolding": {
+    "PhysicalAddress": "DB88.DBW14",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Üst baskı hız bilgisi (Hz)"
+  },
+  "DB_TEST.Receive.Velocity.Idler": {
+    "PhysicalAddress": "DB88.DBW16",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Boş konveyör hız bilgisi (Hz)"
+  },
+  "DB_TEST.Receive.Other.ACDriveCount": {
+    "PhysicalAddress": "DB88.DBW18",
+    "DataType": "INT",
+    "DefaultValue": "4",
+    "Description": "Modbus ile kontrol edilecek AC sürücü sayısı"
+  },
+  "DB_TEST.Receive.Other.DischargeCount": {
+    "PhysicalAddress": "DB88.DBW20",
+    "DataType": "INT",
+    "DefaultValue": "0",
+    "Description": "Peşpeşe okunamayan QR kod sayısı"
+  },
+  "DB_TEST.Receive.Other.Reserve_3": {
+    "PhysicalAddress": "DB88.DBW22",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Receive.Other.Reserve_4": {
+    "PhysicalAddress": "DB88.DBW24",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Send.Control.Life": {
+    "PhysicalAddress": "DB88.DBX26.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "PC - PLC haberleşme var biti"
+  },
+  "DB_TEST.Send.Control.Reserve_2": {
+    "PhysicalAddress": "DB88.DBX26.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.State.Stop": {
+    "PhysicalAddress": "DB88.DBX28.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Makine Stop modda"
+  },
+  "DB_TEST.Send.State.Run": {
+    "PhysicalAddress": "DB88.DBX28.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Otomatik modda çalışyor"
+  },
+  "DB_TEST.Send.State.Manual": {
+    "PhysicalAddress": "DB88.DBX28.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda çalışıyor"
+  },
+  "DB_TEST.Send.State.Bypass": {
+    "PhysicalAddress": "DB88.DBX28.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Bypass modda çalışıyor"
+  },
+  "DB_TEST.Send.State.Test": {
+    "PhysicalAddress": "DB88.DBX28.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Test modda çalışıyor"
+  },
+  "DB_TEST.Send.State.Reset_DO": {
+    "PhysicalAddress": "DB88.DBX28.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reset yapılıyor"
+  },
+  "DB_TEST.Send.State.Reset_OK": {
+    "PhysicalAddress": "DB88.DBX28.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reset yapıldı"
+  },
+  "DB_TEST.Send.State.Home_DO": {
+    "PhysicalAddress": "DB88.DBX28.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Home yapılıyor"
+  },
+  "DB_TEST.Send.State.Home_OK": {
+    "PhysicalAddress": "DB88.DBX29.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Home yapıldı"
+  },
+  "DB_TEST.Send.State.Pos_DO": {
+    "PhysicalAddress": "DB88.DBX29.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Pozisyona gidiliyor"
+  },
+  "DB_TEST.Send.State.Pos_OK": {
+    "PhysicalAddress": "DB88.DBX29.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Pozisyona gidildi"
+  },
+  "DB_TEST.Send.State.Ready": {
+    "PhysicalAddress": "DB88.DBX29.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Çalışmaya hazır"
+  },
+  "DB_TEST.Send.State.Message": {
+    "PhysicalAddress": "DB88.DBX29.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Mesaj var (Alarm bitleri kontrol edilecek)"
+  },
+  "DB_TEST.Send.State.Warning": {
+    "PhysicalAddress": "DB88.DBX29.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Uyarı var (Alarm bitleri kontrol edilecek)"
+  },
+  "DB_TEST.Send.State.Error": {
+    "PhysicalAddress": "DB88.DBX29.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Hata var (Alarm bitleri kontrol edilecek)"
+  },
+  "DB_TEST.Send.State.Reserve_15": {
+    "PhysicalAddress": "DB88.DBX29.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.State.Reserve_16": {
+    "PhysicalAddress": "DB88.DBX30.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Emergency": {
+    "PhysicalAddress": "DB88.DBX32.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Acil stop basılı (Acil stop bırakılıp reset yapılana kadar gönderilir.)"
+  },
+  "DB_TEST.Send.Alarm.Gate": {
+    "PhysicalAddress": "DB88.DBX32.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kapı açık"
+  },
+  "DB_TEST.Send.Alarm.Reserve_3": {
+    "PhysicalAddress": "DB88.DBX32.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Reserve_4": {
+    "PhysicalAddress": "DB88.DBX32.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Reserve_5": {
+    "PhysicalAddress": "DB88.DBX32.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Reserve_6": {
+    "PhysicalAddress": "DB88.DBX32.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Reserve_7": {
+    "PhysicalAddress": "DB88.DBX32.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Reserve_8": {
+    "PhysicalAddress": "DB88.DBX32.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Reserve_9": {
+    "PhysicalAddress": "DB88.DBX33.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Main": {
+    "PhysicalAddress": "DB88.DBX33.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Ana konveyör alarm"
+  },
+  "DB_TEST.Send.Alarm.Spacing": {
+    "PhysicalAddress": "DB88.DBX33.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Ara açma konveyör alarm"
+  },
+  "DB_TEST.Send.Alarm.SideHolding": {
+    "PhysicalAddress": "DB88.DBX33.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Yan baskı konveyör alarm"
+  },
+  "DB_TEST.Send.Alarm.TopHolding": {
+    "PhysicalAddress": "DB88.DBX33.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Üst baskı konveyör alarm"
+  },
+  "DB_TEST.Send.Alarm.Idler": {
+    "PhysicalAddress": "DB88.DBX33.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Boş konveyör alarm"
+  },
+  "DB_TEST.Send.Alarm.Reserve_15": {
+    "PhysicalAddress": "DB88.DBX33.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.Reserve_16": {
+    "PhysicalAddress": "DB88.DBX33.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Alarm.RejectAlmS": {
+    "PhysicalAddress": "DB88.DBX34.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reject pistonu ileri gidemedi"
+  },
+  "DB_TEST.Send.Alarm.RejectAlmR": {
+    "PhysicalAddress": "DB88.DBX34.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reject pistonu geri gidemedi"
+  },
+  "DB_TEST.Send.IO.Input.Start": {
+    "PhysicalAddress": "DB88.DBX36.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Start butonu"
+  },
+  "DB_TEST.Send.IO.Input.Stop": {
+    "PhysicalAddress": "DB88.DBX36.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Stop butonu"
+  },
+  "DB_TEST.Send.IO.Input.Reset": {
+    "PhysicalAddress": "DB88.DBX36.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reset butonu"
+  },
+  "DB_TEST.Send.IO.Input.Emergency": {
+    "PhysicalAddress": "DB88.DBX36.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Acil Stop röle hazır"
+  },
+  "DB_TEST.Send.IO.Input.Gate": {
+    "PhysicalAddress": "DB88.DBX36.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kapı açık"
+  },
+  "DB_TEST.Send.IO.Input.RejectBw": {
+    "PhysicalAddress": "DB88.DBX36.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma pistonu geride"
+  },
+  "DB_TEST.Send.IO.Input.RejectFw": {
+    "PhysicalAddress": "DB88.DBX36.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma pistonu ileride"
+  },
+  "DB_TEST.Send.IO.Input.RejectPoke": {
+    "PhysicalAddress": "DB88.DBX36.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma ürün varlık sensörü"
+  },
+  "DB_TEST.Send.IO.Input.CameraPoke": {
+    "PhysicalAddress": "DB88.DBX37.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kamere ürün varlık sensörü"
+  },
+  "DB_TEST.Send.IO.Input.ApplicatorReady_L": {
+    "PhysicalAddress": "DB88.DBX37.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sol aplikatör hazır sinyali"
+  },
+  "DB_TEST.Send.IO.Input.ApplicatorReserve_L": {
+    "PhysicalAddress": "DB88.DBX37.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sol aplikatör rezerv sinyal"
+  },
+  "DB_TEST.Send.IO.Input.ApplicatorReady_R": {
+    "PhysicalAddress": "DB88.DBX37.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sağ aplikatör hazır sinyali"
+  },
+  "DB_TEST.Send.IO.Input.ApplicatorReserve_R": {
+    "PhysicalAddress": "DB88.DBX37.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sağ aplikatör rezerv sinyal"
+  },
+  "DB_TEST.Send.IO.Input.ApplicatorPoke": {
+    "PhysicalAddress": "DB88.DBX37.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Apilkatör ürün varlık sensörü"
+  },
+  "DB_TEST.Send.IO.Input.ResultsOK": {
+    "PhysicalAddress": "DB88.DBX37.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kamera okuma başarılı"
+  },
+  "DB_TEST.Send.IO.Input.ResultsNG": {
+    "PhysicalAddress": "DB88.DBX37.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kamera okuma başarısız"
+  },
+  "DB_TEST.Send.IO.Input.Reserve_I9.0": {
+    "PhysicalAddress": "DB88.DBX38.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Input.Reserve_I9.1": {
+    "PhysicalAddress": "DB88.DBX38.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Input.Reserve_I9.2": {
+    "PhysicalAddress": "DB88.DBX38.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Input.Reserve_I9.3": {
+    "PhysicalAddress": "DB88.DBX38.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Input.Reserve_I9.4": {
+    "PhysicalAddress": "DB88.DBX38.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Input.Reserve_I9.5": {
+    "PhysicalAddress": "DB88.DBX38.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Input.Reserve_I9.6": {
+    "PhysicalAddress": "DB88.DBX38.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Input.Reserve_I9.7": {
+    "PhysicalAddress": "DB88.DBX38.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_0.0": {
+    "PhysicalAddress": "DB88.DBX40.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_0.1": {
+    "PhysicalAddress": "DB88.DBX40.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.CameraTrigger": {
+    "PhysicalAddress": "DB88.DBX40.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kamera tetik"
+  },
+  "DB_TEST.Send.IO.Output.Emg_Relay": {
+    "PhysicalAddress": "DB88.DBX40.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Acil Stop rölesi kur"
+  },
+  "DB_TEST.Send.IO.Output.RejectBw": {
+    "PhysicalAddress": "DB88.DBX40.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma pistonu geride"
+  },
+  "DB_TEST.Send.IO.Output.RejectFw": {
+    "PhysicalAddress": "DB88.DBX40.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma pistonu ileride"
+  },
+  "DB_TEST.Send.IO.Output.Reserve_0.6": {
+    "PhysicalAddress": "DB88.DBX40.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Işık kulesi yeşil lamba"
+  },
+  "DB_TEST.Send.IO.Output.Reserve_0.7": {
+    "PhysicalAddress": "DB88.DBX40.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Işık kulesi kırmızı lamba"
+  },
+  "DB_TEST.Send.IO.Output.Lt_Green": {
+    "PhysicalAddress": "DB88.DBX41.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Işık kulesi sarı lamba"
+  },
+  "DB_TEST.Send.IO.Output.Lt_Red": {
+    "PhysicalAddress": "DB88.DBX41.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Işık kulesi sesli ikaz"
+  },
+  "DB_TEST.Send.IO.Output.Lt_Yellow": {
+    "PhysicalAddress": "DB88.DBX41.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sol aplikatör başlat sinyali"
+  },
+  "DB_TEST.Send.IO.Output.Lt_Buzzer": {
+    "PhysicalAddress": "DB88.DBX41.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sol aplikatör reset sinyali"
+  },
+  "DB_TEST.Send.IO.Output.ApplicatorStart_L": {
+    "PhysicalAddress": "DB88.DBX41.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sağ aplikatör başlat sinyali"
+  },
+  "DB_TEST.Send.IO.Output.ApplicatorReset_L": {
+    "PhysicalAddress": "DB88.DBX41.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sağ aplikatör reset sinyal"
+  },
+  "DB_TEST.Send.IO.Output.ApplicatorStart_R": {
+    "PhysicalAddress": "DB88.DBX41.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.ApplicatorReset_R": {
+    "PhysicalAddress": "DB88.DBX41.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_9.0": {
+    "PhysicalAddress": "DB88.DBX42.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_9.1": {
+    "PhysicalAddress": "DB88.DBX42.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_9.2": {
+    "PhysicalAddress": "DB88.DBX42.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_9.3": {
+    "PhysicalAddress": "DB88.DBX42.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_9.4": {
+    "PhysicalAddress": "DB88.DBX42.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_9.5": {
+    "PhysicalAddress": "DB88.DBX42.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_9.6": {
+    "PhysicalAddress": "DB88.DBX42.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.IO.Output.Reserve_9.7": {
+    "PhysicalAddress": "DB88.DBX42.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_TEST.Send.Velocity.Main": {
+    "PhysicalAddress": "DB88.DBW44",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Ana konveyör hız bilgisi (Hz)"
+  },
+  "DB_TEST.Send.Velocity.Spacing": {
+    "PhysicalAddress": "DB88.DBW46",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Ara açma hız bilgisi (Hz)"
+  },
+  "DB_TEST.Send.Velocity.SideHoldingL": {
+    "PhysicalAddress": "DB88.DBW48",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Yan baskı hız bilgisi (Hz)"
+  },
+  "DB_TEST.Send.Velocity.TopHolding": {
+    "PhysicalAddress": "DB88.DBW50",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Üst baskı hız bilgisi (Hz)"
+  },
+  "DB_TEST.Send.Velocity.Idler": {
+    "PhysicalAddress": "DB88.DBW52",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Boş konveyör hız bilgisi (Hz)"
+  },
+  "DB_TEST.Send.Other.Reserve_1": {
+    "PhysicalAddress": "DB88.DBW54",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Send.Other.Reserve_2": {
+    "PhysicalAddress": "DB88.DBW56",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Send.Other.Reserve_23": {
+    "PhysicalAddress": "DB88.DBW58",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Send.Other.Result Length": {
+    "PhysicalAddress": "DB88.DBW60",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_TEST.Send.Other.Result": {
+    "PhysicalAddress": "DB88.DBB62",
+    "DataType": "STRING[254]",
+    "DefaultValue": "",
+    "Description": ""
+  }
+}

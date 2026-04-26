@@ -1,0 +1,480 @@
+<Window x:Class="S7Explorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:S7Explorer"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        mc:Ignorable="d"
+        Title="Siemens PLC Control" Height="680" Width="1000" MinHeight="560" MinWidth="800"
+        WindowStartupLocation="CenterScreen"
+        Icon="Resources/app_icon.ico"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:TitleBar.ExtendViewIntoTitleBar="True"
+        ui:TitleBar.IsBackButtonVisible="False"
+        Style="{DynamicResource {x:Type Window}}">
+    <Grid Margin="10,42,10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sol: Sembol A�ac� (T�m Sayfa Y�ksekli�inde) -->
+        <Border Grid.Column="0" x:Name="LeftPanelBorder"
+                Width="250"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Background="{DynamicResource SystemControlPageBackgroundAltHighBrush}"
+                BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                BorderThickness="1" CornerRadius="4" Margin="0,0,10,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" 
+                        Background="{DynamicResource SystemControlBackgroundAccentBrush}"
+                        Padding="6,8" CornerRadius="4,4,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel x:Name="LeftPanelHeaderContent" Grid.Column="0" Orientation="Horizontal">
+                            <ui:FontIcon Glyph="&#xE8B7;" FontSize="14" Margin="0,0,8,0"
+                                         Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
+                            <TextBlock x:Name="LblLeftPanelTitle" Text="Symbolic Addresses" FontWeight="SemiBold" 
+                                       Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                       TextTrimming="CharacterEllipsis"
+                                       ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+                        </StackPanel>
+                        <Button x:Name="BtnToggleSymbolPanel" Grid.Column="1"
+                                Width="20" Height="20"
+                                Click="BtnToggleSymbolPanel_Click"
+                                ToolTip="Collapse/Expand Panel"
+                                Padding="0"
+                                Background="Transparent"
+                                BorderThickness="0">
+                            <ui:FontIcon x:Name="IconTogglePanel" Glyph="&#xE76B;" FontSize="11"
+                                         Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <TreeView x:Name="TreeSymbols" 
+                          Grid.Row="1"
+                          BorderThickness="0"
+                          Background="Transparent"
+                          SelectedItemChanged="TreeSymbols_SelectedItemChanged"
+                          Padding="5">
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                            <Setter Property="IsExpanded" Value="False"/>
+                            <Setter Property="Padding" Value="3,2"/>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel Orientation="Horizontal" Margin="2">
+                                <ui:FontIcon Glyph="{Binding Icon}" FontSize="14" Margin="0,0,6,0"/>
+                                <TextBlock Text="{Binding Name}" FontSize="12" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </Grid>
+        </Border>
+
+        <!-- Sa�: T�m ��erik -->
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Toolbar: Bağlan, Semboller, Durum -->
+            <ui:SimpleStackPanel Grid.Row="0" Orientation="Horizontal" Spacing="8" Margin="0,0,0,10"
+                             WindowChrome.IsHitTestVisibleInChrome="True">
+                <!-- Bağlan / Ayarlar split butonu -->
+                <Grid x:Name="ConnectButtonGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="BtnConnect" Grid.Column="0" Width="140" Height="36"
+                        Click="BtnConnect_Click"
+                        Style="{StaticResource AccentButtonStyle}"
+                        ui:ControlHelper.CornerRadius="4,0,0,4">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:FontIcon x:Name="IconConnect" Glyph="&#xE703;" FontSize="16" Margin="0,0,8,0"/>
+                            <TextBlock x:Name="TxtConnect" Text="Connect" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="BtnToggleSettings" Grid.Column="1" Width="36" Height="36"
+                        Click="BtnToggleSettings_Click"
+                        Style="{StaticResource AccentButtonStyle}"
+                        ui:ControlHelper.CornerRadius="0,4,4,0"
+                        Margin="-1,0,0,0"
+                        ToolTip="Show/hide connection settings">
+                        <ui:FontIcon Glyph="&#xE70D;" FontSize="12"/>
+                    </Button>
+
+                    <!-- Bağlantı Ayarları Popup -->
+                    <Popup x:Name="ConnectionSettingsPopup"
+                       PlacementTarget="{Binding ElementName=ConnectButtonGrid}"
+                       Placement="Bottom"
+                       VerticalOffset="5"
+                       StaysOpen="False"
+                       AllowsTransparency="True"
+                       PopupAnimation="Slide">
+                        <Border Background="{DynamicResource SystemControlPageBackgroundChromeLowBrush}"
+                            BorderBrush="{DynamicResource SystemControlHighlightAccentBrush}"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="16"
+                            MinWidth="560"
+                            MaxWidth="900">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="16" ShadowDepth="4" Opacity="0.25" Color="Black"/>
+                            </Border.Effect>
+                            <StackPanel Grid.IsSharedSizeScope="True">
+                                <!-- CPU Tipi ve IP Adresi -->
+                                <Grid Margin="0,4,0,12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="SettingLabel"/>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="SettingLabel"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="32"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock x:Name="LblCpuType" Grid.Column="0" Text="CPU Type :" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0"
+                                               TextTrimming="CharacterEllipsis"
+                                               ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+                                    <ComboBox x:Name="CmbCpuType" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="0"/>
+                                    <TextBlock x:Name="LblIpAddress" Grid.Column="2" Text="IP Address :" VerticalAlignment="Center" Margin="10,0,6,0" HorizontalAlignment="Right"
+                                               TextTrimming="CharacterEllipsis"
+                                               ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+                                    <TextBox x:Name="TxtIpAddress" Grid.Column="3" Text="192.168.0.1"
+                                         VerticalAlignment="Center"
+                                         PreviewTextInput="TxtIpAddress_PreviewTextInput"
+                                         LostFocus="TxtIpAddress_LostFocus"/>
+                                    <Button x:Name="BtnCloseSettings"
+                                        Grid.Column="4"
+                                        Width="28" Height="28"
+                                        Click="BtnCloseSettings_Click"
+                                        ToolTip="Hide connection settings"
+                                        Style="{StaticResource {x:Type Button}}"
+                                        VerticalAlignment="Top" Margin="6,-4,0,0">
+                                        <ui:FontIcon Glyph="&#xE106;" FontSize="11"/>
+                                    </Button>
+                                </Grid>
+                                <!-- Port, Rack, Slot -->
+                                <Grid Margin="0,0,0,4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="SettingLabel"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="SettingLabel"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="SettingLabel"/>
+                                        <ColumnDefinition Width="80"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock x:Name="LblPort" Grid.Column="0" Text="Port :" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0"
+                                               TextTrimming="CharacterEllipsis"
+                                               ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+                                    <TextBox x:Name="TxtPort" Grid.Column="1" Text="102" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <TextBlock x:Name="LblRack" Grid.Column="2" Text="Rack :" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0"
+                                               TextTrimming="CharacterEllipsis"
+                                               ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+                                    <TextBox x:Name="TxtRack" Grid.Column="3" Text="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <TextBlock x:Name="LblSlot" Grid.Column="4" Text="Slot :" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0"
+                                               TextTrimming="CharacterEllipsis"
+                                               ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+                                    <TextBox x:Name="TxtSlot" Grid.Column="5" Text="1" VerticalAlignment="Center"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                </Grid>
+
+                <!-- Semboller butonu -->
+                <Button x:Name="BtnSymbols" MinWidth="120" Height="36"
+                    Click="BtnSymbols_Click"
+                    ui:ControlHelper.CornerRadius="4">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xE8FD;" FontSize="14" Margin="0,0,6,0"/>
+                        <TextBlock x:Name="TxtBtnSymbols" Text="Symbols" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Durum göstergesi -->
+                <Border VerticalAlignment="Center" Margin="8,0,0,0"
+                    Background="{DynamicResource SystemControlPageBackgroundChromeLowBrush}"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                    BorderThickness="1" CornerRadius="4" Padding="12,6">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse x:Name="StatusIndicator" Width="10" Height="10"
+                             Fill="Gray" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="TxtStatus" Text="Not connected"
+                               FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </ui:SimpleStackPanel>
+
+            <!-- PLC İşlemleri -->
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="10,0,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="LblPlcOps" Grid.Row="0" Text="PLC Operations"
+                       FontSize="15" FontWeight="SemiBold" Margin="0,0,0,8"/>
+
+                <!-- Okuma Paneli -->
+                <Border Grid.Row="1"
+                    Background="{DynamicResource SystemControlPageBackgroundChromeLowBrush}"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                    BorderThickness="1" CornerRadius="6" Padding="14,10" Margin="0,0,0,8">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!-- Panel başlığı -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+                            <ui:FontIcon Glyph="&#xE8C8;" FontSize="13" Margin="0,0,6,0"
+                                     Foreground="{DynamicResource SystemControlHighlightAccentBrush}"/>
+                            <TextBlock x:Name="LblReadAddress" Text="Read Address"
+                                   FontWeight="SemiBold" FontSize="13"
+                                   Foreground="{DynamicResource SystemControlHighlightAccentBrush}"/>
+                        </StackPanel>
+                        <!-- Adres + Buton + Değer -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <ComboBox x:Name="CmbReadAddress" Margin="0,0,8,0"
+                                  VerticalAlignment="Center"
+                                  IsEditable="True"
+                                  SelectionChanged="CmbReadAddress_SelectionChanged"
+                                  ui:ControlHelper.PlaceholderText="Select symbolic address or enter physical address"/>
+                            <Button x:Name="BtnRead" Content="Read" MinWidth="100" Height="34"
+                                VerticalAlignment="Center" Margin="0,0,8,0"
+                                Click="BtnRead_Click" IsEnabled="False"
+                                Style="{StaticResource AccentButtonStyle}"/>
+                            <Border VerticalAlignment="Center"
+                                Background="{DynamicResource SystemControlHighlightListAccentLowBrush}"
+                                BorderBrush="{DynamicResource SystemControlHighlightAccentBrush}"
+                                BorderThickness="1" CornerRadius="4" Padding="10,3">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock x:Name="LblValuePrefix" Text="Value :" FontWeight="SemiBold" FontSize="13" Margin="0,0,8,0"
+                                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="TxtReadValue"
+                                         Text="No value read yet"
+                                         IsReadOnly="True"
+                                         FontWeight="SemiBold" FontSize="13"
+                                         BorderThickness="0"
+                                         Background="Transparent"
+                                         Padding="0" Margin="-2,0,0,0" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                        <!-- Fiziksel adres -->
+                        <TextBlock Grid.Row="2" x:Name="TxtReadPhysicalAddress"
+                               Margin="0,4,0,0" FontSize="11"
+                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                               Text=""/>
+                    </Grid>
+                </Border>
+
+                <!-- Yazma Paneli -->
+                <Border Grid.Row="2"
+                    Background="{DynamicResource SystemControlPageBackgroundChromeLowBrush}"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                    BorderThickness="1" CornerRadius="6" Padding="14,10" Margin="0,0,0,8">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!-- Panel başlığı -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+                            <ui:FontIcon Glyph="&#xE8C9;" FontSize="13" Margin="0,0,6,0"
+                                     Foreground="{DynamicResource SystemControlHighlightAccentBrush}"/>
+                            <TextBlock x:Name="LblWriteAddress" Text="Write Address"
+                                   FontWeight="SemiBold" FontSize="13"
+                                   Foreground="{DynamicResource SystemControlHighlightAccentBrush}"/>
+                        </StackPanel>
+                        <!-- Adres + Buton + Değer -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <ComboBox x:Name="CmbWriteAddress" Margin="0,0,8,0"
+                                  VerticalAlignment="Center"
+                                  IsEditable="True"
+                                  SelectionChanged="CmbWriteAddress_SelectionChanged"
+                                  ui:ControlHelper.PlaceholderText="Select symbolic address"/>
+                            <Button x:Name="BtnWrite" Content="Write" MinWidth="100" Height="34"
+                                VerticalAlignment="Center" Margin="0,0,8,0"
+                                Click="BtnWrite_Click" IsEnabled="False"
+                                Style="{StaticResource AccentButtonStyle}"/>
+                            <TextBox x:Name="TxtWriteValue"
+                                 VerticalAlignment="Center" MinWidth="120"
+                                 ui:ControlHelper.PlaceholderText="Value to write"/>
+                        </StackPanel>
+                        <!-- Fiziksel adres -->
+                        <TextBlock x:Name="TxtWritePhysicalAddress" Grid.Row="2"
+                               Margin="0,6,0,0" FontSize="11"
+                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                               VerticalAlignment="Center" Text=""/>
+                    </Grid>
+                </Border>
+
+                <!-- Bilgi -->
+                <Expander Grid.Row="3" 
+                      IsExpanded="False"
+                      Margin="0,0,0,10"
+                      Background="{DynamicResource SystemControlPageBackgroundAltHighBrush}"
+                      BorderBrush="{DynamicResource SystemControlHighlightAccentBrush}"
+                      BorderThickness="1">
+                    <Expander.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <ui:FontIcon Glyph="&#xE946;" FontSize="14" Margin="0,0,4,0"/>
+                            <TextBlock x:Name="TxtInfoExpanderHeader" Text="?? Info &amp; Example Definitions"
+                                   FontWeight="SemiBold" Margin="0,2,0,2"/>
+                        </StackPanel>
+                    </Expander.Header>
+                    <ScrollViewer MaxHeight="260" VerticalScrollBarVisibility="Auto" Padding="0,0,4,0">
+                        <TextBox x:Name="TxtInfoContent"
+                         IsReadOnly="True"
+                         TextWrapping="Wrap"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         FontFamily="Consolas"
+                         FontSize="12"
+                         Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                         Padding="10"/>
+                    </ScrollViewer>
+                </Expander>
+
+                <!-- Log Geçmişi -->
+                <Border Grid.Row="4"
+                    Background="{DynamicResource SystemControlPageBackgroundChromeLowBrush}"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                    BorderThickness="1" CornerRadius="6" Padding="14,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Log Başlık -->
+                        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,0,0,8">
+                            <ui:FontIcon Glyph="&#xE81C;" FontSize="13" Margin="0,0,6,0"
+                                     Foreground="{DynamicResource SystemControlHighlightAccentBrush}"/>
+                            <TextBlock x:Name="LblLogTitle" Text="Log History"
+                                   FontWeight="SemiBold" FontSize="13"
+                                   Foreground="{DynamicResource SystemControlHighlightAccentBrush}"/>
+                        </StackPanel>
+
+                        <!-- Log TextBox -->
+                        <Border Grid.Row="1" Grid.Column="0"
+                            Background="{DynamicResource SystemControlPageBackgroundAltHighBrush}"
+                            BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                            BorderThickness="1" CornerRadius="4" Padding="2">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBox x:Name="TxtLog" IsReadOnly="True" TextWrapping="Wrap"
+                                     BorderThickness="0" Background="Transparent" Padding="8"
+                                     FontSize="12"/>
+                            </ScrollViewer>
+                        </Border>
+
+                        <!-- Log Butonları -->
+                        <ui:SimpleStackPanel Grid.Row="1" Grid.Column="1"
+                                        Spacing="8" Margin="10,0,0,0" VerticalAlignment="Top">
+                            <Button x:Name="BtnClearLog" MinWidth="90" Height="32"
+                                Click="BtnClearLog_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <ui:FontIcon Glyph="&#xE74D;" FontSize="13" Margin="0,0,6,0"/>
+                                    <TextBlock x:Name="TxtBtnClearLog" Text="Clear" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="BtnSaveLog" MinWidth="90" Height="32"
+                                Click="BtnSaveLog_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <ui:FontIcon Glyph="&#xE74E;" FontSize="13" Margin="0,0,6,0"/>
+                                    <TextBlock x:Name="TxtBtnSaveLog" Text="Save" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </ui:SimpleStackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+            </ScrollViewer>
+
+            <!-- Durum Çubuğu -->
+            <Border Grid.Row="2"
+                    Background="{DynamicResource SystemControlBackgroundAccentBrush}"
+                    BorderThickness="0,1,0,0"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                    Padding="12,5">
+                <StackPanel Orientation="Horizontal">
+                    <ui:FontIcon Glyph="&#xE8F2;" FontSize="13"
+                                 Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                 Margin="0,0,8,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtStatusBar" Text="Not connected"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Başlık çubuğu sağ butonlar (Canvas ile sabit konumlandırma) -->
+        <Canvas Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
+                Width="80" Height="40" Margin="0,-40,130,0"
+                WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="1">
+            <!-- Dil seçimi -->
+            <Button x:Name="BtnToggleLanguage"
+                    Canvas.Left="0" Canvas.Top="4"
+                    Width="36" Height="32"
+                    Click="BtnToggleLanguage_Click"
+                    ToolTip="Select language"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Padding="0">
+                <ui:FontIcon Glyph="&#xE909;" FontSize="16"/>
+            </Button>
+            <!-- Tema seçimi -->
+            <Button x:Name="BtnToggleTheme"
+                    Canvas.Left="42" Canvas.Top="4"
+                    Width="36" Height="32"
+                    Click="BtnToggleTheme_Click"
+                    ToolTip="Select theme"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Padding="0">
+                <Button.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="☀  Light"       Tag="Light"      IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                        <MenuItem Header="🌙  Dark"        Tag="Dark"       IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                        <MenuItem Header="🔧  Industrial"  Tag="Industrial" IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                        <MenuItem Header="🌌  Night"       Tag="Night"      IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+                <ui:FontIcon Glyph="&#xE771;" FontSize="16"/>
+            </Button>
+        </Canvas>
+    </Grid>
+</Window>

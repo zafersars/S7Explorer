@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<ApplicationIcon>Resources\app_icon.ico</ApplicationIcon>
+		<Platforms>AnyCPU;x64</Platforms>
+		<!-- Boyut küçültme: SelfContained EXE ~150MB → ~100-110MB -->
+		<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<Resource Include="Resources\app_icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="lang\*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="ModernWpfUI" Version="0.9.6" />
+	  <PackageReference Include="S7netplus" Version="0.20.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Setup\" />
+	</ItemGroup>
+</Project>
