@@ -21,6 +21,11 @@ Thumbs.db
 .DS_Store
 
 # Local settings artifacts (optional)
+#*.local.settings.json
 S7Explorer/settings.json
-S7Explorer/connection_settings.json
 S7Explorer/symbols.json
+S7Explorer/connection_settings.json
+
+# Azure Functions Core Tools
+.azurefunctions/
+
