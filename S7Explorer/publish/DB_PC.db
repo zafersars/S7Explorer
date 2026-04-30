@@ -1,0 +1,396 @@
+﻿DATA_BLOCK "DB_PC"
+TITLE = Haberleşme DB
+{ S7_Optimized_Access := 'FALSE' }
+NAME : '12'
+VERSION : 0.1
+//PC ile haberleşme bloğu
+   STRUCT 
+      Receive : Struct
+         Control : Struct   // PC'den Gelen Kontrol Bitleri
+            Life : Bool;   // PC - PLC haberleşme var biti
+            Start : Bool;   // Otomatik Başlat
+            Stop : Bool;   // Otomatik Durdur
+            Reset : Bool;   // Program değerlerini sıfırla, PLC 0'a çekecek
+            Home : Bool;   // Program ve tüm ekipmanları başlangıç konumu al, PLC 0'a çekecek
+            Acknowledge : Bool;   // Alarmları onaylamak ve Sürücüler alarm reset
+            RejectSide : Bool;   // Boşaltma pistonı boşaltma yönü. 0 = Sol, 1 = Sağ
+            ApplicatorSide : Bool;   // Etiketleme çalışma yönü. 0 = Sol, 1 = Sol/Sağ
+            Test { ExternalVisible := 'False'} : Bool;   // Test modda çalışıyor
+            Manual : Bool;   // Manuel modda çalışma
+            ManRejFw : Bool;   // Manuel modda Reject pistonu ileri git
+            ManRejBw : Bool;   // Manuel modda Reject pistonu geri git
+            ManTrigger : Bool;   // Manuel modda Kamera tetik
+            ManApplicatorL : Bool;   // Manuel modda Sol aplikatör tetik
+            ManApplicatorR : Bool;   // Manuel modda Sağ aplikatör tetik
+            Reserve_16 : Bool;
+            ManMain : Bool;   // Manuel modda Ana konveyör kontrol
+            ManSpacing : Bool;   // Manuel modda Ara açma kontrol
+            ManSideHolding : Bool;   // Manuel modda Yan baskı kontrol
+            ManTopHolding : Bool;   // Manuel modda Üst baskı kontrol
+            ManIdler : Bool;   // Manuel modda boş konveyör kontrol
+            Reserve_22 : Bool;
+            Reserve_23 : Bool;
+            Reserve_24 : Bool;
+            MainAct : Bool;   // Ana konveyör aktif / pasif
+            SpacingAct : Bool;   // Ara açma aktif / pasif
+            TopHoldingAct : Bool;   // Üst baskı aktif / pasif
+            SideHoldingAct : Bool;   // Yan baskı aktif / pasif
+            IdlerAct : Bool;   // Boş konveyör aktif / pasif
+            Reserve_30 : Bool;
+            Reserve_31 : Bool;
+            Reserve_32 : Bool;
+         END_STRUCT;
+         "Time" : Struct   // İşlem zamanları (Aksi belirtilmeyen tüm zamanlar milisaniye)
+            StartDelay : UInt;   // Başlama işleminde ara açmanın gecikme süresi
+            StopDelay : UInt;   // Durma işleminde ana  konveyörün gecikme süresi
+            AplicatorDelay : UInt;   // Aplikatör poke sensörü gecikme süresi
+            AplicatorTrigger : UInt;   // Aplikatör tetik süresi
+            CameraDelay : UInt;   // Kamera poke sensörü gecikme süresi
+            CameraTimeout : UInt;   // Kamera zaman aşım süresi
+            BoxDelay : UInt;   // Kutu adet sayıcı gecikme süresi
+            BoxReset : UInt;   // Kutu adet sayıcı piston reset  süresi
+            Reserve_9 : UInt;
+            BuzzerDischarge : UInt;   // Sesli ikaz, bozuk atma için ötme süresi
+            BuzzerPoke : UInt;   // Sesli ikaz, poke için ötme süresi
+            RejectPreDelay : UInt;   // Reject pistonu ön gecikme
+            RejectDelayS : UInt;   // Reject pistonu set gecikme
+            RejectDelayR : UInt;   // Reject pistonu reset gecikme
+            RejectAlmS : UInt;   // Reject pistonu set alarm
+            RejectAlmR : UInt;   // Reject pistonu reset alarm
+         END_STRUCT;
+         Velocity : Struct   // AC Motor hız değerleri
+            Main : Word;   // Ana konveyör hız bilgisi (Hz)
+            Spacing : Word;   // Ara açma hız bilgisi (Hz)
+            TopHolding : Word;   // Üst baskı hız bilgisi (Hz)
+            SideHolding : Word;   // Yan baskı hız bilgisi (Hz)
+            Idler : Word;   // Boş konveyör hız bilgisi (Hz)
+            Reserve_6 : Word;
+            Reserve_7 : Word;
+            Reserve_8 : Word;
+         END_STRUCT;
+         Other : Struct   // Diğer parametreler
+            ACDriveCount : UInt;   // Modbus ile kontrol edilecek AC sürücü sayısı
+            DischargeCount : UInt;   // Peşpeşe okunamayan QR kod sayısı 
+            BoxCount : UInt;   // Kutu içi adet
+            ModbusRtuDelay : UInt;
+            LoadFreqDelay : UInt;
+            Reserve_6 : Word;
+            Reserve_7 : Word;
+            Reserve_8 : Word;
+            Reserve_9 : Word;
+            Reserve_10 : Word;
+            Reserve_11 : Word;
+            Reserve_12 : Word;
+            Reserve_13 : Word;
+            Reserve_14 : Word;
+            Reserve_15 : Word;
+            Reserve_16 : Word;
+            Reserve_17 : Word;
+            Reserve_18 : Word;
+            Reserve_19 : Word;
+            Reserve_20 : Word;
+            Reserve_21 : Word;
+            Reserve_22 : Word;
+            Reserve_23 : Word;
+            Reserve_24 : Word;
+         END_STRUCT;
+      END_STRUCT;
+      Send : Struct
+         Control : Struct   // PC'ye Gönderilen kontrol bitleri
+            Life : Bool;   // PC - PLC haberleşme var biti
+            Reserve_2 : Bool;
+            Reserve_3 : Bool;
+            Reserve_4 : Bool;
+            Reserve_5 : Bool;
+            Reserve_6 : Bool;
+            Reserve_7 : Bool;
+            Reserve_8 : Bool;
+            Reserve_9 : Bool;
+            Reserve_10 : Bool;
+            Reserve_11 : Bool;
+            Reserve_12 : Bool;
+            Reserve_13 : Bool;
+            Reserve_14 : Bool;
+            Reserve_15 : Bool;
+            Reserve_16 : Bool;
+            Reserve_17 : Bool;
+            Reserve_18 : Bool;
+            Reserve_19 : Bool;
+            Reserve_20 : Bool;
+            Reserve_21 : Bool;
+            Reserve_22 : Bool;
+            Reserve_23 : Bool;
+            Reserve_24 : Bool;
+            Reserve_25 : Bool;
+            Reserve_26 : Bool;
+            Reserve_27 : Bool;
+            Reserve_28 : Bool;
+            Reserve_29 : Bool;
+            Reserve_30 : Bool;
+            Reserve_31 : Bool;
+            Reserve_32 : Bool;
+         END_STRUCT;
+         State : Struct   // PC'ye Gönderilen durum bitleri
+            Stop : Bool;   // Makine Stop modda
+            Run : Bool;   // Otomatik modda çalışyor
+            Manual : Bool;   // Manuel modda çalışıyor
+            Bypass : Bool;   // Bypass modda çalışıyor
+            Test { ExternalVisible := 'False'} : Bool;   // Test modda çalışıyor
+            Reset_DO : Bool;   // Reset yapılıyor
+            Reset_OK : Bool;   // Reset yapıldı
+            Home_DO : Bool;   // Home yapılıyor
+            Home_OK : Bool;   // Home yapıldı
+            Pos_DO : Bool;   // Pozisyona gidiliyor
+            Pos_OK : Bool;   // Pozisyona gidildi
+            Ready : Bool;   // Çalışmaya hazır
+            Message : Bool;   // Mesaj var (Alarm bitleri kontrol edilecek)
+            Warning : Bool;   // Uyarı var (Alarm bitleri kontrol edilecek)
+            Error : Bool;   // Hata var (Alarm bitleri kontrol edilecek)
+            Reserve_16 : Bool;
+            Reserve_17 : Bool;
+            Reserve_18 : Bool;
+            Reserve_19 : Bool;
+            Reserve_20 : Bool;
+            Reserve_21 : Bool;
+            Reserve_22 : Bool;
+            Reserve_23 : Bool;
+            Reserve_24 : Bool;
+            Reserve_25 : Bool;
+            Reserve_26 : Bool;
+            Reserve_27 : Bool;
+            Reserve_28 : Bool;
+            Reserve_29 : Bool;
+            Reserve_30 : Bool;
+            Reserve_31 : Bool;
+            Reserve_32 : Bool;
+         END_STRUCT;
+         Alarm : Struct   // PC'ye Gönderilen alarm bilgileri
+            Emergency : Bool;   // Acil stop basılı (Acil stop bırakılıp reset yapılana kadar gönderilir.)
+            Gate : Bool;   // Kapı açık
+            NotStart : Bool;   // Makine çalıştırılamadı
+            NotStop : Bool;   // Makine durdurulamadı
+            ScrapRepeat : Bool;   // Peşpeşe hatalı ürün 
+            RejectFull : Bool;   // Reject haznesi dolu
+            AcFault : Bool;   // AC Sürücüler hatadan çıkartılamadı
+            Reserve_8 : Bool;
+            Main : Bool;   // Ana konveyör alarm
+            Spacing : Bool;   // Ara açma konveyör alarm
+            SideHolding : Bool;   // Yan baskı konveyör alarm
+            TopHolding : Bool;   // Üst baskı konveyör alarm
+            Idler : Bool;   // Boş konveyör alarm
+            Reserve_14 : Bool;
+            Reserve_15 : Bool;
+            RejectAlmS : Bool;   // Reject pistonu ileri gidemedi
+            RejectAlmR : Bool;   // Reject pistonu geri gidemedi
+            Reserve_18 : Bool;
+            Reserve_19 : Bool;
+            Reserve_20 : Bool;
+            Reserve_21 : Bool;
+            Reserve_22 : Bool;
+            Reserve_23 : Bool;
+            Reserve_24 : Bool;
+            Reserve_25 : Bool;
+            Reserve_26 : Bool;
+            Reserve_27 : Bool;
+            Reserve_28 : Bool;
+            Reserve_29 : Bool;
+            Reserve_30 : Bool;
+            Reserve_31 : Bool;
+            Reserve_32 : Bool;
+            Reserve_33 : Bool;
+            Reserve_34 : Bool;
+            Reserve_35 : Bool;
+            Reserve_36 : Bool;
+            Reserve_37 : Bool;
+            Reserve_38 : Bool;
+            Reserve_39 : Bool;
+            Reserve_40 : Bool;
+            Reserve_41 : Bool;
+            Reserve_42 : Bool;
+            Reserve_43 : Bool;
+            Reserve_44 : Bool;
+            Reserve_45 : Bool;
+            Reserve_46 : Bool;
+            Reserve_47 : Bool;
+            Reserve_48 : Bool;
+            Reserve_49 : Bool;
+            Reserve_50 : Bool;
+            Reserve_51 : Bool;
+            Reserve_52 : Bool;
+            Reserve_53 : Bool;
+            Reserve_54 : Bool;
+            Reserve_55 : Bool;
+            Reserve_56 : Bool;
+            Reserve_57 : Bool;
+            Reserve_58 : Bool;
+            Reserve_59 : Bool;
+            Reserve_60 : Bool;
+            Reserve_61 : Bool;
+            Reserve_62 : Bool;
+            Reserve_63 : Bool;
+            Reserve_64 : Bool;
+         END_STRUCT;
+         IO : Struct   // PLC IO bitleri, ekranda gösterilmesi için
+            Input : Struct
+               Start : Bool;   // Start butonu
+               Stop : Bool;   // Stop butonu
+               Reset : Bool;   // Reset butonu
+               Emergency : Bool;   // Acil Stop röle hazır
+               Gate : Bool;   // Kapı açık 
+               RejectBw : Bool;   // Atma pistonu geride
+               RejectFw : Bool;   // Atma pistonu ileride
+               RejectPoke : Bool;   // Atma ürün varlık sensörü
+               CameraPoke : Bool;   // Kamere ürün varlık sensörü
+               ApplicatorReady_L : Bool;   // Sol aplikatör hazır sinyali
+               ApplicatorReserve_L : Bool;   // Sol aplikatör rezerv sinyal
+               ApplicatorReady_R : Bool;   // Sağ aplikatör hazır sinyali
+               ApplicatorReserve_R : Bool;   // Sağ aplikatör rezerv sinyal
+               ApplicatorPoke : Bool;   // Apilkatör ürün varlık sensörü
+               ResultsOK : Bool;   // Kamera okuma başarılı
+               ResultsNG : Bool;   // Kamera okuma başarısız
+               "Reserve_I9.0" : Bool;
+               "Reserve_I9.1" : Bool;
+               "Reserve_I9.2" : Bool;
+               "Reserve_I9.3" : Bool;
+               "Reserve_I9.4" : Bool;
+               "Reserve_I9.5" : Bool;
+               "Reserve_I9.6" : Bool;
+               "Reserve_I9.7" : Bool;
+            END_STRUCT;
+            Output : Struct
+               "Reserve_0.0" : Bool;
+               "Reserve_0.1" : Bool;
+               CameraTrigger : Bool;   // Kamera tetik
+               Emg_Relay : Bool;   // Acil Stop rölesi kur
+               RejectBw : Bool;   // Atma pistonu geride
+               RejectFw : Bool;   // Atma pistonu ileride
+               "Reserve_0.6" : Bool;   // Işık kulesi yeşil lamba
+               "Reserve_0.7" : Bool;   // Işık kulesi kırmızı lamba
+               Lt_Green : Bool;   // Işık kulesi sarı lamba
+               Lt_Red : Bool;   // Işık kulesi sesli ikaz
+               Lt_Yellow : Bool;   // Sol aplikatör başlat sinyali
+               Lt_Buzzer : Bool;   // Sol aplikatör reset sinyali
+               ApplicatorStart_L : Bool;   // Sağ aplikatör başlat sinyali
+               ApplicatorReset_L : Bool;   // Sağ aplikatör reset sinyal
+               ApplicatorStart_R : Bool;
+               ApplicatorReset_R : Bool;
+               "Reserve_9.0" : Bool;
+               "Reserve_9.1" : Bool;
+               "Reserve_9.2" : Bool;
+               "Reserve_9.3" : Bool;
+               "Reserve_9.4" : Bool;
+               "Reserve_9.5" : Bool;
+               "Reserve_9.6" : Bool;
+               "Reserve_9.7" : Bool;
+            END_STRUCT;
+         END_STRUCT;
+         Velocity : Struct   // AC Motor hız değerleri
+            Main : Word;   // Ana konveyör hız bilgisi (Hz)
+            Spacing : Word;   // Ara açma hız bilgisi (Hz)
+            TopHolding : Word;   // Üst baskı hız bilgisi (Hz)
+            SideHolding : Word;   // Yan baskı hız bilgisi (Hz)
+            Idler : Word;   // Boş konveyör hız bilgisi (Hz)
+            Reserve_6 : Word;
+            Reserve_7 : Word;
+            Reserve_8 : Word;
+         END_STRUCT;
+         Other : Struct
+            Reserve_1 : Word;
+            Reserve_2 : Word;
+            Reserve_3 : Word;
+            Reserve_4 : Word;
+            Reserve_5 : Word;
+            Reserve_6 : Word;
+            Reserve_7 : Word;
+            Reserve_8 : Word;
+            Reserve_9 : Word;
+            Reserve_10 : Word;
+            Reserve_11 : Word;
+            Reserve_12 : Word;
+            Reserve_13 : Word;
+            Reserve_14 : Word;
+            Reserve_15 : Word;
+            Reserve_16 : Word;
+            Reserve_17 : Word;
+            Reserve_18 : Word;
+            Reserve_19 : Word;
+            Reserve_20 : Word;
+            Reserve_21 : Word;
+            Reserve_22 : Word;
+            Reserve_23 : Word;
+            Reserve_24 : Word;
+            Reserve_25 : Word;
+            Reserve_26 : Word;
+            Reserve_27 : Word;
+            "Result Length" : UInt;   // Kamera okunan veri uzunluğu
+            Result : String[32];   // Kamera okunan veri
+            PLC_Serial : String[16];
+            Plc_Name : String[16];
+            Plc_Time : String[32];   // PLC'nin aktif lokal tarih saat 
+         END_STRUCT;
+      END_STRUCT;
+      Local : Struct
+         AcDrive : Struct
+            MainAct : Bool;   // Ana konveyör aktif / pasif
+            SpacingAct : Bool;   // Ara açma aktif / pasif
+            TopHoldingAct : Bool;   // Üst baskı aktif / pasif
+            SideHoldingAct : Bool;   // Yan baskı aktif / pasif
+            IdlerAct : Bool;   // Boş konveyör aktif / pasif
+            "Reserve_700.5" : Bool;
+            "Reserve_700.6" : Bool;
+            "Reserve_700.7" : Bool;
+         END_STRUCT;
+         Control : Struct
+            Gate : Bool;   // Kapılar aktif / pasif
+            CameraTrig : Bool;   // Kamera tetiğinin çalışma şekli
+            Acknowledge : Bool;
+            Test1 : Char;
+            Test2 : Char;
+         END_STRUCT;
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+   Receive.Control.Stop := true;
+   Receive.Control.Test := true;
+   Receive.Control.MainAct := true;
+   Receive.Control.SpacingAct := true;
+   Receive."Time".StartDelay := 2000;
+   Receive."Time".StopDelay := 3000;
+   Receive."Time".AplicatorDelay := 200;
+   Receive."Time".AplicatorTrigger := 50;
+   Receive."Time".CameraDelay := 20;
+   Receive."Time".CameraTimeout := 500;
+   Receive."Time".BoxDelay := 500;
+   Receive."Time".BoxReset := 500;
+   Receive."Time".BuzzerDischarge := 5000;
+   Receive."Time".BuzzerPoke := 200;
+   Receive."Time".RejectPreDelay := 100;
+   Receive."Time".RejectDelayS := 100;
+   Receive."Time".RejectDelayR := 100;
+   Receive."Time".RejectAlmS := 5000;
+   Receive."Time".RejectAlmR := 5000;
+   Receive.Velocity.Main := 200;
+   Receive.Velocity.Spacing := 200;
+   Receive.Velocity.TopHolding := 200;
+   Receive.Velocity.SideHolding := 200;
+   Receive.Velocity.Idler := 200;
+   Receive.Other.ACDriveCount := 5;
+   Receive.Other.DischargeCount := 4;
+   Receive.Other.BoxCount := 20;
+   Receive.Other.ModbusRtuDelay := 100;
+   Receive.Other.LoadFreqDelay := 5000;
+   Send.Velocity.Main := 200;
+   Send.Velocity.Spacing := 200;
+   Send.Velocity.TopHolding := 200;
+   Send.Velocity.SideHolding := 200;
+   Send.Velocity.Idler := 200;
+   Local.AcDrive.MainAct := true;
+   Local.AcDrive.SpacingAct := true;
+   Local.Control.CameraTrig := true;
+   Local.Control.Test1 := 'a';
+   Local.Control.Test2 := 'b';
+
+END_DATA_BLOCK
+

@@ -1,0 +1,2610 @@
+{
+  "Receive": {
+    "Type": "Struct",
+    "Comment": "",
+    "ByteOffset": 0,
+    "BitOffset": 0,
+    "Fields": {
+      "Control": {
+        "Type": "Struct",
+        "Comment": "PC'den Gelen Kontrol Bitleri",
+        "ByteOffset": 0,
+        "BitOffset": 0,
+        "Fields": {
+          "Life": {
+            "PhysicalAddress": "DB1.DBX0.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "PC - PLC haberleşme var biti",
+            "ByteOffset": 0,
+            "BitOffset": 0
+          },
+          "Start": {
+            "PhysicalAddress": "DB1.DBX0.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Otomatik Başlat",
+            "ByteOffset": 0,
+            "BitOffset": 1
+          },
+          "Stop": {
+            "PhysicalAddress": "DB1.DBX0.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Otomatik Durdur",
+            "ByteOffset": 0,
+            "BitOffset": 2
+          },
+          "Reset": {
+            "PhysicalAddress": "DB1.DBX0.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Program değerlerini sıfırla, PLC 0'a çekecek",
+            "ByteOffset": 0,
+            "BitOffset": 3
+          },
+          "Home": {
+            "PhysicalAddress": "DB1.DBX0.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Program ve tüm ekipmanları başlangıç konumu al, PLC 0'a çekecek",
+            "ByteOffset": 0,
+            "BitOffset": 4
+          },
+          "Acknowledge": {
+            "PhysicalAddress": "DB1.DBX0.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Alarmları onaylamak ve Sürücüler alarm reset",
+            "ByteOffset": 0,
+            "BitOffset": 5
+          },
+          "RejectSide": {
+            "PhysicalAddress": "DB1.DBX0.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Boşaltma pistonı boşaltma yönü. 0 = Sol, 1 = Sağ",
+            "ByteOffset": 0,
+            "BitOffset": 6
+          },
+          "ApplicatorSide": {
+            "PhysicalAddress": "DB1.DBX0.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Etiketleme çalışma yönü. 0 = Sol, 1 = Sol/Sağ",
+            "ByteOffset": 0,
+            "BitOffset": 7
+          },
+          "Test": {
+            "PhysicalAddress": "DB1.DBX1.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Test modda çalışıyor",
+            "ByteOffset": 1,
+            "BitOffset": 0
+          },
+          "Manual": {
+            "PhysicalAddress": "DB1.DBX1.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda çalışma",
+            "ByteOffset": 1,
+            "BitOffset": 1
+          },
+          "ManRejFw": {
+            "PhysicalAddress": "DB1.DBX1.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Reject pistonu ileri git",
+            "ByteOffset": 1,
+            "BitOffset": 2
+          },
+          "ManRejBw": {
+            "PhysicalAddress": "DB1.DBX1.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Reject pistonu geri git",
+            "ByteOffset": 1,
+            "BitOffset": 3
+          },
+          "ManTrigger": {
+            "PhysicalAddress": "DB1.DBX1.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Kamera tetik",
+            "ByteOffset": 1,
+            "BitOffset": 4
+          },
+          "ManApplicatorL": {
+            "PhysicalAddress": "DB1.DBX1.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Sol aplikatör tetik",
+            "ByteOffset": 1,
+            "BitOffset": 5
+          },
+          "ManApplicatorR": {
+            "PhysicalAddress": "DB1.DBX1.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Sağ aplikatör tetik",
+            "ByteOffset": 1,
+            "BitOffset": 6
+          },
+          "Reserve_16": {
+            "PhysicalAddress": "DB1.DBX1.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 1,
+            "BitOffset": 7
+          },
+          "ManMain": {
+            "PhysicalAddress": "DB1.DBX2.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Ana konveyör kontrol",
+            "ByteOffset": 2,
+            "BitOffset": 0
+          },
+          "ManSpacing": {
+            "PhysicalAddress": "DB1.DBX2.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Ara açma kontrol",
+            "ByteOffset": 2,
+            "BitOffset": 1
+          },
+          "ManSideHolding": {
+            "PhysicalAddress": "DB1.DBX2.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Yan baskı kontrol",
+            "ByteOffset": 2,
+            "BitOffset": 2
+          },
+          "ManTopHolding": {
+            "PhysicalAddress": "DB1.DBX2.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda Üst baskı kontrol",
+            "ByteOffset": 2,
+            "BitOffset": 3
+          },
+          "ManIdler": {
+            "PhysicalAddress": "DB1.DBX2.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda boş konveyör kontrol",
+            "ByteOffset": 2,
+            "BitOffset": 4
+          },
+          "Reserve_22": {
+            "PhysicalAddress": "DB1.DBX2.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 2,
+            "BitOffset": 5
+          },
+          "Reserve_23": {
+            "PhysicalAddress": "DB1.DBX2.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 2,
+            "BitOffset": 6
+          },
+          "Reserve_24": {
+            "PhysicalAddress": "DB1.DBX2.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 2,
+            "BitOffset": 7
+          },
+          "MainAct": {
+            "PhysicalAddress": "DB1.DBX3.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Ana konveyör aktif / pasif",
+            "ByteOffset": 3,
+            "BitOffset": 0
+          },
+          "SpacingAct": {
+            "PhysicalAddress": "DB1.DBX3.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Ara açma aktif / pasif",
+            "ByteOffset": 3,
+            "BitOffset": 1
+          },
+          "TopHoldingAct": {
+            "PhysicalAddress": "DB1.DBX3.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Üst baskı aktif / pasif",
+            "ByteOffset": 3,
+            "BitOffset": 2
+          },
+          "SideHoldingAct": {
+            "PhysicalAddress": "DB1.DBX3.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Yan baskı aktif / pasif",
+            "ByteOffset": 3,
+            "BitOffset": 3
+          },
+          "IdlerAct": {
+            "PhysicalAddress": "DB1.DBX3.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Boş konveyör aktif / pasif",
+            "ByteOffset": 3,
+            "BitOffset": 4
+          },
+          "Reserve_30": {
+            "PhysicalAddress": "DB1.DBX3.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 3,
+            "BitOffset": 5
+          },
+          "Reserve_31": {
+            "PhysicalAddress": "DB1.DBX3.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 3,
+            "BitOffset": 6
+          },
+          "Reserve_32": {
+            "PhysicalAddress": "DB1.DBX3.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 3,
+            "BitOffset": 7
+          }
+        }
+      },
+      "Time": {
+        "Type": "Struct",
+        "Comment": "İşlem zamanları (Aksi belirtilmeyen tüm zamanlar milisaniye)",
+        "ByteOffset": 4,
+        "BitOffset": 0,
+        "Fields": {
+          "StartDelay": {
+            "PhysicalAddress": "DB1.DBW4",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Başlama işleminde ara açmanın gecikme süresi",
+            "ByteOffset": 4,
+            "BitOffset": 0
+          },
+          "StopDelay": {
+            "PhysicalAddress": "DB1.DBW6",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Durma işleminde ana  konveyörün gecikme süresi",
+            "ByteOffset": 6,
+            "BitOffset": 0
+          },
+          "AplicatorDelay": {
+            "PhysicalAddress": "DB1.DBW8",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Aplikatör poke sensörü gecikme süresi",
+            "ByteOffset": 8,
+            "BitOffset": 0
+          },
+          "AplicatorTrigger": {
+            "PhysicalAddress": "DB1.DBW10",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Aplikatör tetik süresi",
+            "ByteOffset": 10,
+            "BitOffset": 0
+          },
+          "CameraDelay": {
+            "PhysicalAddress": "DB1.DBW12",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Kamera poke sensörü gecikme süresi",
+            "ByteOffset": 12,
+            "BitOffset": 0
+          },
+          "CameraTimeout": {
+            "PhysicalAddress": "DB1.DBW14",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Kamera zaman aşım süresi",
+            "ByteOffset": 14,
+            "BitOffset": 0
+          },
+          "BoxDelay": {
+            "PhysicalAddress": "DB1.DBW16",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Kutu adet sayıcı gecikme süresi",
+            "ByteOffset": 16,
+            "BitOffset": 0
+          },
+          "BoxReset": {
+            "PhysicalAddress": "DB1.DBW18",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Kutu adet sayıcı piston reset  süresi",
+            "ByteOffset": 18,
+            "BitOffset": 0
+          },
+          "Reserve_9": {
+            "PhysicalAddress": "DB1.DBW20",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 20,
+            "BitOffset": 0
+          },
+          "BuzzerDischarge": {
+            "PhysicalAddress": "DB1.DBW22",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Sesli ikaz, bozuk atma için ötme süresi",
+            "ByteOffset": 22,
+            "BitOffset": 0
+          },
+          "BuzzerPoke": {
+            "PhysicalAddress": "DB1.DBW24",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Sesli ikaz, poke için ötme süresi",
+            "ByteOffset": 24,
+            "BitOffset": 0
+          },
+          "RejectPreDelay": {
+            "PhysicalAddress": "DB1.DBW26",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Reject pistonu ön gecikme",
+            "ByteOffset": 26,
+            "BitOffset": 0
+          },
+          "RejectDelayS": {
+            "PhysicalAddress": "DB1.DBW28",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Reject pistonu set gecikme",
+            "ByteOffset": 28,
+            "BitOffset": 0
+          },
+          "RejectDelayR": {
+            "PhysicalAddress": "DB1.DBW30",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Reject pistonu reset gecikme",
+            "ByteOffset": 30,
+            "BitOffset": 0
+          },
+          "RejectAlmS": {
+            "PhysicalAddress": "DB1.DBW32",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Reject pistonu set alarm",
+            "ByteOffset": 32,
+            "BitOffset": 0
+          },
+          "RejectAlmR": {
+            "PhysicalAddress": "DB1.DBW34",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Reject pistonu reset alarm",
+            "ByteOffset": 34,
+            "BitOffset": 0
+          }
+        }
+      },
+      "Velocity": {
+        "Type": "Struct",
+        "Comment": "AC Motor hız değerleri",
+        "ByteOffset": 36,
+        "BitOffset": 0,
+        "Fields": {
+          "Main": {
+            "PhysicalAddress": "DB1.DBW36",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Ana konveyör hız bilgisi (Hz)",
+            "ByteOffset": 36,
+            "BitOffset": 0
+          },
+          "Spacing": {
+            "PhysicalAddress": "DB1.DBW38",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Ara açma hız bilgisi (Hz)",
+            "ByteOffset": 38,
+            "BitOffset": 0
+          },
+          "TopHolding": {
+            "PhysicalAddress": "DB1.DBW40",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Üst baskı hız bilgisi (Hz)",
+            "ByteOffset": 40,
+            "BitOffset": 0
+          },
+          "SideHolding": {
+            "PhysicalAddress": "DB1.DBW42",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Yan baskı hız bilgisi (Hz)",
+            "ByteOffset": 42,
+            "BitOffset": 0
+          },
+          "Idler": {
+            "PhysicalAddress": "DB1.DBW44",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Boş konveyör hız bilgisi (Hz)",
+            "ByteOffset": 44,
+            "BitOffset": 0
+          },
+          "Reserve_6": {
+            "PhysicalAddress": "DB1.DBW46",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 46,
+            "BitOffset": 0
+          },
+          "Reserve_7": {
+            "PhysicalAddress": "DB1.DBW48",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 48,
+            "BitOffset": 0
+          },
+          "Reserve_8": {
+            "PhysicalAddress": "DB1.DBW50",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 50,
+            "BitOffset": 0
+          }
+        }
+      },
+      "Other": {
+        "Type": "Struct",
+        "Comment": "Diğer parametreler",
+        "ByteOffset": 52,
+        "BitOffset": 0,
+        "Fields": {
+          "ACDriveCount": {
+            "PhysicalAddress": "DB1.DBW52",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Modbus ile kontrol edilecek AC sürücü sayısı",
+            "ByteOffset": 52,
+            "BitOffset": 0
+          },
+          "DischargeCount": {
+            "PhysicalAddress": "DB1.DBW54",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Peşpeşe okunamayan QR kod sayısı",
+            "ByteOffset": 54,
+            "BitOffset": 0
+          },
+          "BoxCount": {
+            "PhysicalAddress": "DB1.DBW56",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Kutu içi adet",
+            "ByteOffset": 56,
+            "BitOffset": 0
+          },
+          "ModbusRtuDelay": {
+            "PhysicalAddress": "DB1.DBW58",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 58,
+            "BitOffset": 0
+          },
+          "LoadFreqDelay": {
+            "PhysicalAddress": "DB1.DBW60",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 60,
+            "BitOffset": 0
+          },
+          "Reserve_6": {
+            "PhysicalAddress": "DB1.DBW62",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 62,
+            "BitOffset": 0
+          },
+          "Reserve_7": {
+            "PhysicalAddress": "DB1.DBW64",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 64,
+            "BitOffset": 0
+          },
+          "Reserve_8": {
+            "PhysicalAddress": "DB1.DBW66",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 66,
+            "BitOffset": 0
+          },
+          "Reserve_9": {
+            "PhysicalAddress": "DB1.DBW68",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 68,
+            "BitOffset": 0
+          },
+          "Reserve_10": {
+            "PhysicalAddress": "DB1.DBW70",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 70,
+            "BitOffset": 0
+          },
+          "Reserve_11": {
+            "PhysicalAddress": "DB1.DBW72",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 72,
+            "BitOffset": 0
+          },
+          "Reserve_12": {
+            "PhysicalAddress": "DB1.DBW74",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 74,
+            "BitOffset": 0
+          },
+          "Reserve_13": {
+            "PhysicalAddress": "DB1.DBW76",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 76,
+            "BitOffset": 0
+          },
+          "Reserve_14": {
+            "PhysicalAddress": "DB1.DBW78",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 78,
+            "BitOffset": 0
+          },
+          "Reserve_15": {
+            "PhysicalAddress": "DB1.DBW80",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 80,
+            "BitOffset": 0
+          },
+          "Reserve_16": {
+            "PhysicalAddress": "DB1.DBW82",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 82,
+            "BitOffset": 0
+          },
+          "Reserve_17": {
+            "PhysicalAddress": "DB1.DBW84",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 84,
+            "BitOffset": 0
+          },
+          "Reserve_18": {
+            "PhysicalAddress": "DB1.DBW86",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 86,
+            "BitOffset": 0
+          },
+          "Reserve_19": {
+            "PhysicalAddress": "DB1.DBW88",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 88,
+            "BitOffset": 0
+          },
+          "Reserve_20": {
+            "PhysicalAddress": "DB1.DBW90",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 90,
+            "BitOffset": 0
+          },
+          "Reserve_21": {
+            "PhysicalAddress": "DB1.DBW92",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 92,
+            "BitOffset": 0
+          },
+          "Reserve_22": {
+            "PhysicalAddress": "DB1.DBW94",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 94,
+            "BitOffset": 0
+          },
+          "Reserve_23": {
+            "PhysicalAddress": "DB1.DBW96",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 96,
+            "BitOffset": 0
+          },
+          "Reserve_24": {
+            "PhysicalAddress": "DB1.DBW98",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 98,
+            "BitOffset": 0
+          }
+        }
+      }
+    }
+  },
+  "Send": {
+    "Type": "Struct",
+    "Comment": "",
+    "ByteOffset": 100,
+    "BitOffset": 0,
+    "Fields": {
+      "Control": {
+        "Type": "Struct",
+        "Comment": "PC'ye Gönderilen kontrol bitleri",
+        "ByteOffset": 100,
+        "BitOffset": 0,
+        "Fields": {
+          "Life": {
+            "PhysicalAddress": "DB1.DBX100.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "PC - PLC haberleşme var biti",
+            "ByteOffset": 100,
+            "BitOffset": 0
+          },
+          "Reserve_2": {
+            "PhysicalAddress": "DB1.DBX100.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 100,
+            "BitOffset": 1
+          },
+          "Reserve_3": {
+            "PhysicalAddress": "DB1.DBX100.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 100,
+            "BitOffset": 2
+          },
+          "Reserve_4": {
+            "PhysicalAddress": "DB1.DBX100.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 100,
+            "BitOffset": 3
+          },
+          "Reserve_5": {
+            "PhysicalAddress": "DB1.DBX100.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 100,
+            "BitOffset": 4
+          },
+          "Reserve_6": {
+            "PhysicalAddress": "DB1.DBX100.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 100,
+            "BitOffset": 5
+          },
+          "Reserve_7": {
+            "PhysicalAddress": "DB1.DBX100.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 100,
+            "BitOffset": 6
+          },
+          "Reserve_8": {
+            "PhysicalAddress": "DB1.DBX100.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 100,
+            "BitOffset": 7
+          },
+          "Reserve_9": {
+            "PhysicalAddress": "DB1.DBX101.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 101,
+            "BitOffset": 0
+          },
+          "Reserve_10": {
+            "PhysicalAddress": "DB1.DBX101.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 101,
+            "BitOffset": 1
+          },
+          "Reserve_11": {
+            "PhysicalAddress": "DB1.DBX101.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 101,
+            "BitOffset": 2
+          },
+          "Reserve_12": {
+            "PhysicalAddress": "DB1.DBX101.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 101,
+            "BitOffset": 3
+          },
+          "Reserve_13": {
+            "PhysicalAddress": "DB1.DBX101.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 101,
+            "BitOffset": 4
+          },
+          "Reserve_14": {
+            "PhysicalAddress": "DB1.DBX101.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 101,
+            "BitOffset": 5
+          },
+          "Reserve_15": {
+            "PhysicalAddress": "DB1.DBX101.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 101,
+            "BitOffset": 6
+          },
+          "Reserve_16": {
+            "PhysicalAddress": "DB1.DBX101.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 101,
+            "BitOffset": 7
+          },
+          "Reserve_17": {
+            "PhysicalAddress": "DB1.DBX102.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 102,
+            "BitOffset": 0
+          },
+          "Reserve_18": {
+            "PhysicalAddress": "DB1.DBX102.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 102,
+            "BitOffset": 1
+          },
+          "Reserve_19": {
+            "PhysicalAddress": "DB1.DBX102.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 102,
+            "BitOffset": 2
+          },
+          "Reserve_20": {
+            "PhysicalAddress": "DB1.DBX102.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 102,
+            "BitOffset": 3
+          },
+          "Reserve_21": {
+            "PhysicalAddress": "DB1.DBX102.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 102,
+            "BitOffset": 4
+          },
+          "Reserve_22": {
+            "PhysicalAddress": "DB1.DBX102.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 102,
+            "BitOffset": 5
+          },
+          "Reserve_23": {
+            "PhysicalAddress": "DB1.DBX102.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 102,
+            "BitOffset": 6
+          },
+          "Reserve_24": {
+            "PhysicalAddress": "DB1.DBX102.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 102,
+            "BitOffset": 7
+          },
+          "Reserve_25": {
+            "PhysicalAddress": "DB1.DBX103.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 103,
+            "BitOffset": 0
+          },
+          "Reserve_26": {
+            "PhysicalAddress": "DB1.DBX103.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 103,
+            "BitOffset": 1
+          },
+          "Reserve_27": {
+            "PhysicalAddress": "DB1.DBX103.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 103,
+            "BitOffset": 2
+          },
+          "Reserve_28": {
+            "PhysicalAddress": "DB1.DBX103.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 103,
+            "BitOffset": 3
+          },
+          "Reserve_29": {
+            "PhysicalAddress": "DB1.DBX103.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 103,
+            "BitOffset": 4
+          },
+          "Reserve_30": {
+            "PhysicalAddress": "DB1.DBX103.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 103,
+            "BitOffset": 5
+          },
+          "Reserve_31": {
+            "PhysicalAddress": "DB1.DBX103.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 103,
+            "BitOffset": 6
+          },
+          "Reserve_32": {
+            "PhysicalAddress": "DB1.DBX103.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 103,
+            "BitOffset": 7
+          }
+        }
+      },
+      "State": {
+        "Type": "Struct",
+        "Comment": "PC'ye Gönderilen durum bitleri",
+        "ByteOffset": 104,
+        "BitOffset": 0,
+        "Fields": {
+          "Stop": {
+            "PhysicalAddress": "DB1.DBX104.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Makine Stop modda",
+            "ByteOffset": 104,
+            "BitOffset": 0
+          },
+          "Run": {
+            "PhysicalAddress": "DB1.DBX104.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Otomatik modda çalışyor",
+            "ByteOffset": 104,
+            "BitOffset": 1
+          },
+          "Manual": {
+            "PhysicalAddress": "DB1.DBX104.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Manuel modda çalışıyor",
+            "ByteOffset": 104,
+            "BitOffset": 2
+          },
+          "Bypass": {
+            "PhysicalAddress": "DB1.DBX104.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Bypass modda çalışıyor",
+            "ByteOffset": 104,
+            "BitOffset": 3
+          },
+          "Test": {
+            "PhysicalAddress": "DB1.DBX104.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Test modda çalışıyor",
+            "ByteOffset": 104,
+            "BitOffset": 4
+          },
+          "Reset_DO": {
+            "PhysicalAddress": "DB1.DBX104.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reset yapılıyor",
+            "ByteOffset": 104,
+            "BitOffset": 5
+          },
+          "Reset_OK": {
+            "PhysicalAddress": "DB1.DBX104.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reset yapıldı",
+            "ByteOffset": 104,
+            "BitOffset": 6
+          },
+          "Home_DO": {
+            "PhysicalAddress": "DB1.DBX104.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Home yapılıyor",
+            "ByteOffset": 104,
+            "BitOffset": 7
+          },
+          "Home_OK": {
+            "PhysicalAddress": "DB1.DBX105.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Home yapıldı",
+            "ByteOffset": 105,
+            "BitOffset": 0
+          },
+          "Pos_DO": {
+            "PhysicalAddress": "DB1.DBX105.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Pozisyona gidiliyor",
+            "ByteOffset": 105,
+            "BitOffset": 1
+          },
+          "Pos_OK": {
+            "PhysicalAddress": "DB1.DBX105.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Pozisyona gidildi",
+            "ByteOffset": 105,
+            "BitOffset": 2
+          },
+          "Ready": {
+            "PhysicalAddress": "DB1.DBX105.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Çalışmaya hazır",
+            "ByteOffset": 105,
+            "BitOffset": 3
+          },
+          "Message": {
+            "PhysicalAddress": "DB1.DBX105.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Mesaj var (Alarm bitleri kontrol edilecek)",
+            "ByteOffset": 105,
+            "BitOffset": 4
+          },
+          "Warning": {
+            "PhysicalAddress": "DB1.DBX105.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Uyarı var (Alarm bitleri kontrol edilecek)",
+            "ByteOffset": 105,
+            "BitOffset": 5
+          },
+          "Error": {
+            "PhysicalAddress": "DB1.DBX105.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Hata var (Alarm bitleri kontrol edilecek)",
+            "ByteOffset": 105,
+            "BitOffset": 6
+          },
+          "Reserve_16": {
+            "PhysicalAddress": "DB1.DBX105.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 105,
+            "BitOffset": 7
+          },
+          "Reserve_17": {
+            "PhysicalAddress": "DB1.DBX106.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 106,
+            "BitOffset": 0
+          },
+          "Reserve_18": {
+            "PhysicalAddress": "DB1.DBX106.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 106,
+            "BitOffset": 1
+          },
+          "Reserve_19": {
+            "PhysicalAddress": "DB1.DBX106.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 106,
+            "BitOffset": 2
+          },
+          "Reserve_20": {
+            "PhysicalAddress": "DB1.DBX106.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 106,
+            "BitOffset": 3
+          },
+          "Reserve_21": {
+            "PhysicalAddress": "DB1.DBX106.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 106,
+            "BitOffset": 4
+          },
+          "Reserve_22": {
+            "PhysicalAddress": "DB1.DBX106.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 106,
+            "BitOffset": 5
+          },
+          "Reserve_23": {
+            "PhysicalAddress": "DB1.DBX106.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 106,
+            "BitOffset": 6
+          },
+          "Reserve_24": {
+            "PhysicalAddress": "DB1.DBX106.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 106,
+            "BitOffset": 7
+          },
+          "Reserve_25": {
+            "PhysicalAddress": "DB1.DBX107.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 107,
+            "BitOffset": 0
+          },
+          "Reserve_26": {
+            "PhysicalAddress": "DB1.DBX107.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 107,
+            "BitOffset": 1
+          },
+          "Reserve_27": {
+            "PhysicalAddress": "DB1.DBX107.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 107,
+            "BitOffset": 2
+          },
+          "Reserve_28": {
+            "PhysicalAddress": "DB1.DBX107.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 107,
+            "BitOffset": 3
+          },
+          "Reserve_29": {
+            "PhysicalAddress": "DB1.DBX107.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 107,
+            "BitOffset": 4
+          },
+          "Reserve_30": {
+            "PhysicalAddress": "DB1.DBX107.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 107,
+            "BitOffset": 5
+          },
+          "Reserve_31": {
+            "PhysicalAddress": "DB1.DBX107.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 107,
+            "BitOffset": 6
+          },
+          "Reserve_32": {
+            "PhysicalAddress": "DB1.DBX107.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 107,
+            "BitOffset": 7
+          }
+        }
+      },
+      "Alarm": {
+        "Type": "Struct",
+        "Comment": "PC'ye Gönderilen alarm bilgileri",
+        "ByteOffset": 108,
+        "BitOffset": 0,
+        "Fields": {
+          "Emergency": {
+            "PhysicalAddress": "DB1.DBX108.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Acil stop basılı (Acil stop bırakılıp reset yapılana kadar gönderilir.)",
+            "ByteOffset": 108,
+            "BitOffset": 0
+          },
+          "Gate": {
+            "PhysicalAddress": "DB1.DBX108.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Kapı açık",
+            "ByteOffset": 108,
+            "BitOffset": 1
+          },
+          "NotStart": {
+            "PhysicalAddress": "DB1.DBX108.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Makine çalıştırılamadı",
+            "ByteOffset": 108,
+            "BitOffset": 2
+          },
+          "NotStop": {
+            "PhysicalAddress": "DB1.DBX108.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Makine durdurulamadı",
+            "ByteOffset": 108,
+            "BitOffset": 3
+          },
+          "ScrapRepeat": {
+            "PhysicalAddress": "DB1.DBX108.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Peşpeşe hatalı ürün",
+            "ByteOffset": 108,
+            "BitOffset": 4
+          },
+          "RejectFull": {
+            "PhysicalAddress": "DB1.DBX108.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reject haznesi dolu",
+            "ByteOffset": 108,
+            "BitOffset": 5
+          },
+          "AcFault": {
+            "PhysicalAddress": "DB1.DBX108.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "AC Sürücüler hatadan çıkartılamadı",
+            "ByteOffset": 108,
+            "BitOffset": 6
+          },
+          "Reserve_8": {
+            "PhysicalAddress": "DB1.DBX108.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 108,
+            "BitOffset": 7
+          },
+          "Main": {
+            "PhysicalAddress": "DB1.DBX109.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Ana konveyör alarm",
+            "ByteOffset": 109,
+            "BitOffset": 0
+          },
+          "Spacing": {
+            "PhysicalAddress": "DB1.DBX109.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Ara açma konveyör alarm",
+            "ByteOffset": 109,
+            "BitOffset": 1
+          },
+          "SideHolding": {
+            "PhysicalAddress": "DB1.DBX109.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Yan baskı konveyör alarm",
+            "ByteOffset": 109,
+            "BitOffset": 2
+          },
+          "TopHolding": {
+            "PhysicalAddress": "DB1.DBX109.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Üst baskı konveyör alarm",
+            "ByteOffset": 109,
+            "BitOffset": 3
+          },
+          "Idler": {
+            "PhysicalAddress": "DB1.DBX109.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Boş konveyör alarm",
+            "ByteOffset": 109,
+            "BitOffset": 4
+          },
+          "Reserve_14": {
+            "PhysicalAddress": "DB1.DBX109.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 109,
+            "BitOffset": 5
+          },
+          "Reserve_15": {
+            "PhysicalAddress": "DB1.DBX109.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 109,
+            "BitOffset": 6
+          },
+          "RejectAlmS": {
+            "PhysicalAddress": "DB1.DBX109.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reject pistonu ileri gidemedi",
+            "ByteOffset": 109,
+            "BitOffset": 7
+          },
+          "RejectAlmR": {
+            "PhysicalAddress": "DB1.DBX110.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Reject pistonu geri gidemedi",
+            "ByteOffset": 110,
+            "BitOffset": 0
+          },
+          "Reserve_18": {
+            "PhysicalAddress": "DB1.DBX110.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 110,
+            "BitOffset": 1
+          },
+          "Reserve_19": {
+            "PhysicalAddress": "DB1.DBX110.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 110,
+            "BitOffset": 2
+          },
+          "Reserve_20": {
+            "PhysicalAddress": "DB1.DBX110.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 110,
+            "BitOffset": 3
+          },
+          "Reserve_21": {
+            "PhysicalAddress": "DB1.DBX110.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 110,
+            "BitOffset": 4
+          },
+          "Reserve_22": {
+            "PhysicalAddress": "DB1.DBX110.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 110,
+            "BitOffset": 5
+          },
+          "Reserve_23": {
+            "PhysicalAddress": "DB1.DBX110.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 110,
+            "BitOffset": 6
+          },
+          "Reserve_24": {
+            "PhysicalAddress": "DB1.DBX110.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 110,
+            "BitOffset": 7
+          },
+          "Reserve_25": {
+            "PhysicalAddress": "DB1.DBX111.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 111,
+            "BitOffset": 0
+          },
+          "Reserve_26": {
+            "PhysicalAddress": "DB1.DBX111.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 111,
+            "BitOffset": 1
+          },
+          "Reserve_27": {
+            "PhysicalAddress": "DB1.DBX111.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 111,
+            "BitOffset": 2
+          },
+          "Reserve_28": {
+            "PhysicalAddress": "DB1.DBX111.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 111,
+            "BitOffset": 3
+          },
+          "Reserve_29": {
+            "PhysicalAddress": "DB1.DBX111.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 111,
+            "BitOffset": 4
+          },
+          "Reserve_30": {
+            "PhysicalAddress": "DB1.DBX111.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 111,
+            "BitOffset": 5
+          },
+          "Reserve_31": {
+            "PhysicalAddress": "DB1.DBX111.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 111,
+            "BitOffset": 6
+          },
+          "Reserve_32": {
+            "PhysicalAddress": "DB1.DBX111.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 111,
+            "BitOffset": 7
+          },
+          "Reserve_33": {
+            "PhysicalAddress": "DB1.DBX112.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 112,
+            "BitOffset": 0
+          },
+          "Reserve_34": {
+            "PhysicalAddress": "DB1.DBX112.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 112,
+            "BitOffset": 1
+          },
+          "Reserve_35": {
+            "PhysicalAddress": "DB1.DBX112.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 112,
+            "BitOffset": 2
+          },
+          "Reserve_36": {
+            "PhysicalAddress": "DB1.DBX112.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 112,
+            "BitOffset": 3
+          },
+          "Reserve_37": {
+            "PhysicalAddress": "DB1.DBX112.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 112,
+            "BitOffset": 4
+          },
+          "Reserve_38": {
+            "PhysicalAddress": "DB1.DBX112.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 112,
+            "BitOffset": 5
+          },
+          "Reserve_39": {
+            "PhysicalAddress": "DB1.DBX112.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 112,
+            "BitOffset": 6
+          },
+          "Reserve_40": {
+            "PhysicalAddress": "DB1.DBX112.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 112,
+            "BitOffset": 7
+          },
+          "Reserve_41": {
+            "PhysicalAddress": "DB1.DBX113.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 113,
+            "BitOffset": 0
+          },
+          "Reserve_42": {
+            "PhysicalAddress": "DB1.DBX113.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 113,
+            "BitOffset": 1
+          },
+          "Reserve_43": {
+            "PhysicalAddress": "DB1.DBX113.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 113,
+            "BitOffset": 2
+          },
+          "Reserve_44": {
+            "PhysicalAddress": "DB1.DBX113.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 113,
+            "BitOffset": 3
+          },
+          "Reserve_45": {
+            "PhysicalAddress": "DB1.DBX113.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 113,
+            "BitOffset": 4
+          },
+          "Reserve_46": {
+            "PhysicalAddress": "DB1.DBX113.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 113,
+            "BitOffset": 5
+          },
+          "Reserve_47": {
+            "PhysicalAddress": "DB1.DBX113.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 113,
+            "BitOffset": 6
+          },
+          "Reserve_48": {
+            "PhysicalAddress": "DB1.DBX113.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 113,
+            "BitOffset": 7
+          },
+          "Reserve_49": {
+            "PhysicalAddress": "DB1.DBX114.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 114,
+            "BitOffset": 0
+          },
+          "Reserve_50": {
+            "PhysicalAddress": "DB1.DBX114.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 114,
+            "BitOffset": 1
+          },
+          "Reserve_51": {
+            "PhysicalAddress": "DB1.DBX114.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 114,
+            "BitOffset": 2
+          },
+          "Reserve_52": {
+            "PhysicalAddress": "DB1.DBX114.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 114,
+            "BitOffset": 3
+          },
+          "Reserve_53": {
+            "PhysicalAddress": "DB1.DBX114.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 114,
+            "BitOffset": 4
+          },
+          "Reserve_54": {
+            "PhysicalAddress": "DB1.DBX114.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 114,
+            "BitOffset": 5
+          },
+          "Reserve_55": {
+            "PhysicalAddress": "DB1.DBX114.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 114,
+            "BitOffset": 6
+          },
+          "Reserve_56": {
+            "PhysicalAddress": "DB1.DBX114.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 114,
+            "BitOffset": 7
+          },
+          "Reserve_57": {
+            "PhysicalAddress": "DB1.DBX115.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 115,
+            "BitOffset": 0
+          },
+          "Reserve_58": {
+            "PhysicalAddress": "DB1.DBX115.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 115,
+            "BitOffset": 1
+          },
+          "Reserve_59": {
+            "PhysicalAddress": "DB1.DBX115.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 115,
+            "BitOffset": 2
+          },
+          "Reserve_60": {
+            "PhysicalAddress": "DB1.DBX115.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 115,
+            "BitOffset": 3
+          },
+          "Reserve_61": {
+            "PhysicalAddress": "DB1.DBX115.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 115,
+            "BitOffset": 4
+          },
+          "Reserve_62": {
+            "PhysicalAddress": "DB1.DBX115.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 115,
+            "BitOffset": 5
+          },
+          "Reserve_63": {
+            "PhysicalAddress": "DB1.DBX115.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 115,
+            "BitOffset": 6
+          },
+          "Reserve_64": {
+            "PhysicalAddress": "DB1.DBX115.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 115,
+            "BitOffset": 7
+          }
+        }
+      },
+      "IO": {
+        "Type": "Struct",
+        "Comment": "PLC IO bitleri, ekranda gösterilmesi için",
+        "ByteOffset": 116,
+        "BitOffset": 0,
+        "Fields": {
+          "Input": {
+            "Type": "Struct",
+            "Comment": "",
+            "ByteOffset": 116,
+            "BitOffset": 0,
+            "Fields": {
+              "Start": {
+                "PhysicalAddress": "DB1.DBX116.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Start butonu",
+                "ByteOffset": 116,
+                "BitOffset": 0
+              },
+              "Stop": {
+                "PhysicalAddress": "DB1.DBX116.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Stop butonu",
+                "ByteOffset": 116,
+                "BitOffset": 1
+              },
+              "Reset": {
+                "PhysicalAddress": "DB1.DBX116.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Reset butonu",
+                "ByteOffset": 116,
+                "BitOffset": 2
+              },
+              "Emergency": {
+                "PhysicalAddress": "DB1.DBX116.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Acil Stop röle hazır",
+                "ByteOffset": 116,
+                "BitOffset": 3
+              },
+              "Gate": {
+                "PhysicalAddress": "DB1.DBX116.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kapı açık",
+                "ByteOffset": 116,
+                "BitOffset": 4
+              },
+              "RejectBw": {
+                "PhysicalAddress": "DB1.DBX116.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma pistonu geride",
+                "ByteOffset": 116,
+                "BitOffset": 5
+              },
+              "RejectFw": {
+                "PhysicalAddress": "DB1.DBX116.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma pistonu ileride",
+                "ByteOffset": 116,
+                "BitOffset": 6
+              },
+              "RejectPoke": {
+                "PhysicalAddress": "DB1.DBX116.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma ürün varlık sensörü",
+                "ByteOffset": 116,
+                "BitOffset": 7
+              },
+              "CameraPoke": {
+                "PhysicalAddress": "DB1.DBX117.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kamere ürün varlık sensörü",
+                "ByteOffset": 117,
+                "BitOffset": 0
+              },
+              "ApplicatorReady_L": {
+                "PhysicalAddress": "DB1.DBX117.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sol aplikatör hazır sinyali",
+                "ByteOffset": 117,
+                "BitOffset": 1
+              },
+              "ApplicatorReserve_L": {
+                "PhysicalAddress": "DB1.DBX117.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sol aplikatör rezerv sinyal",
+                "ByteOffset": 117,
+                "BitOffset": 2
+              },
+              "ApplicatorReady_R": {
+                "PhysicalAddress": "DB1.DBX117.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sağ aplikatör hazır sinyali",
+                "ByteOffset": 117,
+                "BitOffset": 3
+              },
+              "ApplicatorReserve_R": {
+                "PhysicalAddress": "DB1.DBX117.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sağ aplikatör rezerv sinyal",
+                "ByteOffset": 117,
+                "BitOffset": 4
+              },
+              "ApplicatorPoke": {
+                "PhysicalAddress": "DB1.DBX117.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Apilkatör ürün varlık sensörü",
+                "ByteOffset": 117,
+                "BitOffset": 5
+              },
+              "ResultsOK": {
+                "PhysicalAddress": "DB1.DBX117.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kamera okuma başarılı",
+                "ByteOffset": 117,
+                "BitOffset": 6
+              },
+              "ResultsNG": {
+                "PhysicalAddress": "DB1.DBX117.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kamera okuma başarısız",
+                "ByteOffset": 117,
+                "BitOffset": 7
+              },
+              "Reserve_I9.0": {
+                "PhysicalAddress": "DB1.DBX118.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 118,
+                "BitOffset": 0
+              },
+              "Reserve_I9.1": {
+                "PhysicalAddress": "DB1.DBX118.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 118,
+                "BitOffset": 1
+              },
+              "Reserve_I9.2": {
+                "PhysicalAddress": "DB1.DBX118.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 118,
+                "BitOffset": 2
+              },
+              "Reserve_I9.3": {
+                "PhysicalAddress": "DB1.DBX118.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 118,
+                "BitOffset": 3
+              },
+              "Reserve_I9.4": {
+                "PhysicalAddress": "DB1.DBX118.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 118,
+                "BitOffset": 4
+              },
+              "Reserve_I9.5": {
+                "PhysicalAddress": "DB1.DBX118.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 118,
+                "BitOffset": 5
+              },
+              "Reserve_I9.6": {
+                "PhysicalAddress": "DB1.DBX118.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 118,
+                "BitOffset": 6
+              },
+              "Reserve_I9.7": {
+                "PhysicalAddress": "DB1.DBX118.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 118,
+                "BitOffset": 7
+              }
+            }
+          },
+          "Output": {
+            "Type": "Struct",
+            "Comment": "",
+            "ByteOffset": 120,
+            "BitOffset": 0,
+            "Fields": {
+              "Reserve_0.0": {
+                "PhysicalAddress": "DB1.DBX120.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 120,
+                "BitOffset": 0
+              },
+              "Reserve_0.1": {
+                "PhysicalAddress": "DB1.DBX120.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 120,
+                "BitOffset": 1
+              },
+              "CameraTrigger": {
+                "PhysicalAddress": "DB1.DBX120.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Kamera tetik",
+                "ByteOffset": 120,
+                "BitOffset": 2
+              },
+              "Emg_Relay": {
+                "PhysicalAddress": "DB1.DBX120.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Acil Stop rölesi kur",
+                "ByteOffset": 120,
+                "BitOffset": 3
+              },
+              "RejectBw": {
+                "PhysicalAddress": "DB1.DBX120.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma pistonu geride",
+                "ByteOffset": 120,
+                "BitOffset": 4
+              },
+              "RejectFw": {
+                "PhysicalAddress": "DB1.DBX120.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Atma pistonu ileride",
+                "ByteOffset": 120,
+                "BitOffset": 5
+              },
+              "Reserve_0.6": {
+                "PhysicalAddress": "DB1.DBX120.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Işık kulesi yeşil lamba",
+                "ByteOffset": 120,
+                "BitOffset": 6
+              },
+              "Reserve_0.7": {
+                "PhysicalAddress": "DB1.DBX120.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Işık kulesi kırmızı lamba",
+                "ByteOffset": 120,
+                "BitOffset": 7
+              },
+              "Lt_Green": {
+                "PhysicalAddress": "DB1.DBX121.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Işık kulesi sarı lamba",
+                "ByteOffset": 121,
+                "BitOffset": 0
+              },
+              "Lt_Red": {
+                "PhysicalAddress": "DB1.DBX121.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Işık kulesi sesli ikaz",
+                "ByteOffset": 121,
+                "BitOffset": 1
+              },
+              "Lt_Yellow": {
+                "PhysicalAddress": "DB1.DBX121.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sol aplikatör başlat sinyali",
+                "ByteOffset": 121,
+                "BitOffset": 2
+              },
+              "Lt_Buzzer": {
+                "PhysicalAddress": "DB1.DBX121.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sol aplikatör reset sinyali",
+                "ByteOffset": 121,
+                "BitOffset": 3
+              },
+              "ApplicatorStart_L": {
+                "PhysicalAddress": "DB1.DBX121.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sağ aplikatör başlat sinyali",
+                "ByteOffset": 121,
+                "BitOffset": 4
+              },
+              "ApplicatorReset_L": {
+                "PhysicalAddress": "DB1.DBX121.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "Sağ aplikatör reset sinyal",
+                "ByteOffset": 121,
+                "BitOffset": 5
+              },
+              "ApplicatorStart_R": {
+                "PhysicalAddress": "DB1.DBX121.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 121,
+                "BitOffset": 6
+              },
+              "ApplicatorReset_R": {
+                "PhysicalAddress": "DB1.DBX121.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 121,
+                "BitOffset": 7
+              },
+              "Reserve_9.0": {
+                "PhysicalAddress": "DB1.DBX122.0",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 122,
+                "BitOffset": 0
+              },
+              "Reserve_9.1": {
+                "PhysicalAddress": "DB1.DBX122.1",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 122,
+                "BitOffset": 1
+              },
+              "Reserve_9.2": {
+                "PhysicalAddress": "DB1.DBX122.2",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 122,
+                "BitOffset": 2
+              },
+              "Reserve_9.3": {
+                "PhysicalAddress": "DB1.DBX122.3",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 122,
+                "BitOffset": 3
+              },
+              "Reserve_9.4": {
+                "PhysicalAddress": "DB1.DBX122.4",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 122,
+                "BitOffset": 4
+              },
+              "Reserve_9.5": {
+                "PhysicalAddress": "DB1.DBX122.5",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 122,
+                "BitOffset": 5
+              },
+              "Reserve_9.6": {
+                "PhysicalAddress": "DB1.DBX122.6",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 122,
+                "BitOffset": 6
+              },
+              "Reserve_9.7": {
+                "PhysicalAddress": "DB1.DBX122.7",
+                "DataType": "BOOL",
+                "DefaultValue": "false",
+                "Description": "",
+                "ByteOffset": 122,
+                "BitOffset": 7
+              }
+            }
+          }
+        }
+      },
+      "Velocity": {
+        "Type": "Struct",
+        "Comment": "AC Motor hız değerleri",
+        "ByteOffset": 124,
+        "BitOffset": 0,
+        "Fields": {
+          "Main": {
+            "PhysicalAddress": "DB1.DBW124",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Ana konveyör hız bilgisi (Hz)",
+            "ByteOffset": 124,
+            "BitOffset": 0
+          },
+          "Spacing": {
+            "PhysicalAddress": "DB1.DBW126",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Ara açma hız bilgisi (Hz)",
+            "ByteOffset": 126,
+            "BitOffset": 0
+          },
+          "TopHolding": {
+            "PhysicalAddress": "DB1.DBW128",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Üst baskı hız bilgisi (Hz)",
+            "ByteOffset": 128,
+            "BitOffset": 0
+          },
+          "SideHolding": {
+            "PhysicalAddress": "DB1.DBW130",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Yan baskı hız bilgisi (Hz)",
+            "ByteOffset": 130,
+            "BitOffset": 0
+          },
+          "Idler": {
+            "PhysicalAddress": "DB1.DBW132",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "Boş konveyör hız bilgisi (Hz)",
+            "ByteOffset": 132,
+            "BitOffset": 0
+          },
+          "Reserve_6": {
+            "PhysicalAddress": "DB1.DBW134",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 134,
+            "BitOffset": 0
+          },
+          "Reserve_7": {
+            "PhysicalAddress": "DB1.DBW136",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 136,
+            "BitOffset": 0
+          },
+          "Reserve_8": {
+            "PhysicalAddress": "DB1.DBW138",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 138,
+            "BitOffset": 0
+          }
+        }
+      },
+      "Other": {
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 140,
+        "BitOffset": 0,
+        "Fields": {
+          "Reserve_1": {
+            "PhysicalAddress": "DB1.DBW140",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 140,
+            "BitOffset": 0
+          },
+          "Reserve_2": {
+            "PhysicalAddress": "DB1.DBW142",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 142,
+            "BitOffset": 0
+          },
+          "Reserve_3": {
+            "PhysicalAddress": "DB1.DBW144",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 144,
+            "BitOffset": 0
+          },
+          "Reserve_4": {
+            "PhysicalAddress": "DB1.DBW146",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 146,
+            "BitOffset": 0
+          },
+          "Reserve_5": {
+            "PhysicalAddress": "DB1.DBW148",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 148,
+            "BitOffset": 0
+          },
+          "Reserve_6": {
+            "PhysicalAddress": "DB1.DBW150",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 150,
+            "BitOffset": 0
+          },
+          "Reserve_7": {
+            "PhysicalAddress": "DB1.DBW152",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 152,
+            "BitOffset": 0
+          },
+          "Reserve_8": {
+            "PhysicalAddress": "DB1.DBW154",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 154,
+            "BitOffset": 0
+          },
+          "Reserve_9": {
+            "PhysicalAddress": "DB1.DBW156",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 156,
+            "BitOffset": 0
+          },
+          "Reserve_10": {
+            "PhysicalAddress": "DB1.DBW158",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 158,
+            "BitOffset": 0
+          },
+          "Reserve_11": {
+            "PhysicalAddress": "DB1.DBW160",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 160,
+            "BitOffset": 0
+          },
+          "Reserve_12": {
+            "PhysicalAddress": "DB1.DBW162",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 162,
+            "BitOffset": 0
+          },
+          "Reserve_13": {
+            "PhysicalAddress": "DB1.DBW164",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 164,
+            "BitOffset": 0
+          },
+          "Reserve_14": {
+            "PhysicalAddress": "DB1.DBW166",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 166,
+            "BitOffset": 0
+          },
+          "Reserve_15": {
+            "PhysicalAddress": "DB1.DBW168",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 168,
+            "BitOffset": 0
+          },
+          "Reserve_16": {
+            "PhysicalAddress": "DB1.DBW170",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 170,
+            "BitOffset": 0
+          },
+          "Reserve_17": {
+            "PhysicalAddress": "DB1.DBW172",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 172,
+            "BitOffset": 0
+          },
+          "Reserve_18": {
+            "PhysicalAddress": "DB1.DBW174",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 174,
+            "BitOffset": 0
+          },
+          "Reserve_19": {
+            "PhysicalAddress": "DB1.DBW176",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 176,
+            "BitOffset": 0
+          },
+          "Reserve_20": {
+            "PhysicalAddress": "DB1.DBW178",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 178,
+            "BitOffset": 0
+          },
+          "Reserve_21": {
+            "PhysicalAddress": "DB1.DBW180",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 180,
+            "BitOffset": 0
+          },
+          "Reserve_22": {
+            "PhysicalAddress": "DB1.DBW182",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 182,
+            "BitOffset": 0
+          },
+          "Reserve_23": {
+            "PhysicalAddress": "DB1.DBW184",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 184,
+            "BitOffset": 0
+          },
+          "Reserve_24": {
+            "PhysicalAddress": "DB1.DBW186",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 186,
+            "BitOffset": 0
+          },
+          "Reserve_25": {
+            "PhysicalAddress": "DB1.DBW188",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 188,
+            "BitOffset": 0
+          },
+          "Reserve_26": {
+            "PhysicalAddress": "DB1.DBW190",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 190,
+            "BitOffset": 0
+          },
+          "Reserve_27": {
+            "PhysicalAddress": "DB1.DBW192",
+            "DataType": "WORD",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 192,
+            "BitOffset": 0
+          },
+          "Result Length": {
+            "PhysicalAddress": "DB1.DBW194",
+            "DataType": "UINT",
+            "DefaultValue": "0",
+            "Description": "Kamera okunan veri uzunluğu",
+            "ByteOffset": 194,
+            "BitOffset": 0
+          },
+          "Result": {
+            "PhysicalAddress": "DB1.DBB196",
+            "DataType": "STRING[32]",
+            "DefaultValue": "",
+            "Description": "Kamera okunan veri",
+            "ByteOffset": 196,
+            "BitOffset": 0
+          },
+          "PLC_Serial": {
+            "PhysicalAddress": "DB1.DBB230",
+            "DataType": "STRING[16]",
+            "DefaultValue": "",
+            "Description": "",
+            "ByteOffset": 230,
+            "BitOffset": 0
+          },
+          "Plc_Name": {
+            "PhysicalAddress": "DB1.DBB248",
+            "DataType": "STRING[16]",
+            "DefaultValue": "",
+            "Description": "",
+            "ByteOffset": 248,
+            "BitOffset": 0
+          },
+          "Plc_Time": {
+            "PhysicalAddress": "DB1.DBB266",
+            "DataType": "STRING[32]",
+            "DefaultValue": "",
+            "Description": "PLC'nin aktif lokal tarih saat",
+            "ByteOffset": 266,
+            "BitOffset": 0
+          }
+        }
+      }
+    }
+  },
+  "Local": {
+    "Type": "Struct",
+    "Comment": "",
+    "ByteOffset": 300,
+    "BitOffset": 0,
+    "Fields": {
+      "AcDrive": {
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 300,
+        "BitOffset": 0,
+        "Fields": {
+          "MainAct": {
+            "PhysicalAddress": "DB1.DBX300.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Ana konveyör aktif / pasif",
+            "ByteOffset": 300,
+            "BitOffset": 0
+          },
+          "SpacingAct": {
+            "PhysicalAddress": "DB1.DBX300.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Ara açma aktif / pasif",
+            "ByteOffset": 300,
+            "BitOffset": 1
+          },
+          "TopHoldingAct": {
+            "PhysicalAddress": "DB1.DBX300.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Üst baskı aktif / pasif",
+            "ByteOffset": 300,
+            "BitOffset": 2
+          },
+          "SideHoldingAct": {
+            "PhysicalAddress": "DB1.DBX300.3",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Yan baskı aktif / pasif",
+            "ByteOffset": 300,
+            "BitOffset": 3
+          },
+          "IdlerAct": {
+            "PhysicalAddress": "DB1.DBX300.4",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Boş konveyör aktif / pasif",
+            "ByteOffset": 300,
+            "BitOffset": 4
+          },
+          "Reserve_700.5": {
+            "PhysicalAddress": "DB1.DBX300.5",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 300,
+            "BitOffset": 5
+          },
+          "Reserve_700.6": {
+            "PhysicalAddress": "DB1.DBX300.6",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 300,
+            "BitOffset": 6
+          },
+          "Reserve_700.7": {
+            "PhysicalAddress": "DB1.DBX300.7",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 300,
+            "BitOffset": 7
+          }
+        }
+      },
+      "Control": {
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 302,
+        "BitOffset": 0,
+        "Fields": {
+          "Gate": {
+            "PhysicalAddress": "DB1.DBX302.0",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Kapılar aktif / pasif",
+            "ByteOffset": 302,
+            "BitOffset": 0
+          },
+          "CameraTrig": {
+            "PhysicalAddress": "DB1.DBX302.1",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "Kamera tetiğinin çalışma şekli",
+            "ByteOffset": 302,
+            "BitOffset": 1
+          },
+          "Acknowledge": {
+            "PhysicalAddress": "DB1.DBX302.2",
+            "DataType": "BOOL",
+            "DefaultValue": "false",
+            "Description": "",
+            "ByteOffset": 302,
+            "BitOffset": 2
+          },
+          "Test1": {
+            "PhysicalAddress": "DB1.DBB303",
+            "DataType": "CHAR",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 303,
+            "BitOffset": 0
+          },
+          "Test2": {
+            "PhysicalAddress": "DB1.DBB304",
+            "DataType": "CHAR",
+            "DefaultValue": "0",
+            "Description": "",
+            "ByteOffset": 304,
+            "BitOffset": 0
+          }
+        }
+      }
+    }
+  }
+}

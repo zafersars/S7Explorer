@@ -1,0 +1,3036 @@
+{
+  "DbName": "DB_PC",
+  "Structure": {
+    "Level": 0,
+    "Fields": [
+      {
+        "Name": "Receive",
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 0,
+        "BitOffset": 0,
+        "StringLength": 254,
+        "NestedStructure": {
+          "Level": 1,
+          "Fields": [
+            {
+              "Name": "Control",
+              "Type": "Struct",
+              "Comment": "PC'den Gelen Kontrol Bitleri",
+              "ByteOffset": 0,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Life",
+                    "Type": "Bool",
+                    "Comment": "PC - PLC haberleşme var biti",
+                    "ByteOffset": 0,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Start",
+                    "Type": "Bool",
+                    "Comment": "Otomatik Başlat",
+                    "ByteOffset": 0,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Stop",
+                    "Type": "Bool",
+                    "Comment": "Otomatik Durdur",
+                    "ByteOffset": 0,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reset",
+                    "Type": "Bool",
+                    "Comment": "Program değerlerini sıfırla, PLC 0'a çekecek",
+                    "ByteOffset": 0,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Home",
+                    "Type": "Bool",
+                    "Comment": "Program ve tüm ekipmanları başlangıç konumu al, PLC 0'a çekecek",
+                    "ByteOffset": 0,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Acknowledge",
+                    "Type": "Bool",
+                    "Comment": "Alarmları onaylamak ve Sürücüler alarm reset",
+                    "ByteOffset": 0,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectSide",
+                    "Type": "Bool",
+                    "Comment": "Boşaltma pistonı boşaltma yönü. 0 = Sol, 1 = Sağ",
+                    "ByteOffset": 0,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ApplicatorSide",
+                    "Type": "Bool",
+                    "Comment": "Etiketleme çalışma yönü. 0 = Sol, 1 = Sol/Sağ",
+                    "ByteOffset": 0,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Test",
+                    "Type": "Bool",
+                    "Comment": "Test modda çalışıyor",
+                    "ByteOffset": 1,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Manual",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda çalışma",
+                    "ByteOffset": 1,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManRejFw",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Reject pistonu ileri git",
+                    "ByteOffset": 1,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManRejBw",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Reject pistonu geri git",
+                    "ByteOffset": 1,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManTrigger",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Kamera tetik",
+                    "ByteOffset": 1,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManApplicatorL",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Sol aplikatör tetik",
+                    "ByteOffset": 1,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManApplicatorR",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Sağ aplikatör tetik",
+                    "ByteOffset": 1,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_16",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 1,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManMain",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Ana konveyör kontrol",
+                    "ByteOffset": 2,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManSpacing",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Ara açma kontrol",
+                    "ByteOffset": 2,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManSideHolding",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Yan baskı kontrol",
+                    "ByteOffset": 2,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManTopHolding",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda Üst baskı kontrol",
+                    "ByteOffset": 2,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ManIdler",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda boş konveyör kontrol",
+                    "ByteOffset": 2,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_22",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 2,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_23",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 2,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_24",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 2,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "MainAct",
+                    "Type": "Bool",
+                    "Comment": "Ana konveyör aktif / pasif",
+                    "ByteOffset": 3,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SpacingAct",
+                    "Type": "Bool",
+                    "Comment": "Ara açma aktif / pasif",
+                    "ByteOffset": 3,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "TopHoldingAct",
+                    "Type": "Bool",
+                    "Comment": "Üst baskı aktif / pasif",
+                    "ByteOffset": 3,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SideHoldingAct",
+                    "Type": "Bool",
+                    "Comment": "Yan baskı aktif / pasif",
+                    "ByteOffset": 3,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "IdlerAct",
+                    "Type": "Bool",
+                    "Comment": "Boş konveyör aktif / pasif",
+                    "ByteOffset": 3,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_30",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 3,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_31",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 3,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_32",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 3,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Time",
+              "Type": "Struct",
+              "Comment": "İşlem zamanları (Aksi belirtilmeyen tüm zamanlar milisaniye)",
+              "ByteOffset": 4,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "StartDelay",
+                    "Type": "UInt",
+                    "Comment": "Başlama işleminde ara açmanın gecikme süresi",
+                    "ByteOffset": 4,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "StopDelay",
+                    "Type": "UInt",
+                    "Comment": "Durma işleminde ana  konveyörün gecikme süresi",
+                    "ByteOffset": 6,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "AplicatorDelay",
+                    "Type": "UInt",
+                    "Comment": "Aplikatör poke sensörü gecikme süresi",
+                    "ByteOffset": 8,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "AplicatorTrigger",
+                    "Type": "UInt",
+                    "Comment": "Aplikatör tetik süresi",
+                    "ByteOffset": 10,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "CameraDelay",
+                    "Type": "UInt",
+                    "Comment": "Kamera poke sensörü gecikme süresi",
+                    "ByteOffset": 12,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "CameraTimeout",
+                    "Type": "UInt",
+                    "Comment": "Kamera zaman aşım süresi",
+                    "ByteOffset": 14,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "BoxDelay",
+                    "Type": "UInt",
+                    "Comment": "Kutu adet sayıcı gecikme süresi",
+                    "ByteOffset": 16,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "BoxReset",
+                    "Type": "UInt",
+                    "Comment": "Kutu adet sayıcı piston reset  süresi",
+                    "ByteOffset": 18,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_9",
+                    "Type": "UInt",
+                    "Comment": "",
+                    "ByteOffset": 20,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "BuzzerDischarge",
+                    "Type": "UInt",
+                    "Comment": "Sesli ikaz, bozuk atma için ötme süresi",
+                    "ByteOffset": 22,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "BuzzerPoke",
+                    "Type": "UInt",
+                    "Comment": "Sesli ikaz, poke için ötme süresi",
+                    "ByteOffset": 24,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectPreDelay",
+                    "Type": "UInt",
+                    "Comment": "Reject pistonu ön gecikme",
+                    "ByteOffset": 26,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectDelayS",
+                    "Type": "UInt",
+                    "Comment": "Reject pistonu set gecikme",
+                    "ByteOffset": 28,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectDelayR",
+                    "Type": "UInt",
+                    "Comment": "Reject pistonu reset gecikme",
+                    "ByteOffset": 30,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectAlmS",
+                    "Type": "UInt",
+                    "Comment": "Reject pistonu set alarm",
+                    "ByteOffset": 32,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectAlmR",
+                    "Type": "UInt",
+                    "Comment": "Reject pistonu reset alarm",
+                    "ByteOffset": 34,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Velocity",
+              "Type": "Struct",
+              "Comment": "AC Motor hız değerleri",
+              "ByteOffset": 36,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Main",
+                    "Type": "Word",
+                    "Comment": "Ana konveyör hız bilgisi (Hz)",
+                    "ByteOffset": 36,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Spacing",
+                    "Type": "Word",
+                    "Comment": "Ara açma hız bilgisi (Hz)",
+                    "ByteOffset": 38,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "TopHolding",
+                    "Type": "Word",
+                    "Comment": "Üst baskı hız bilgisi (Hz)",
+                    "ByteOffset": 40,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SideHolding",
+                    "Type": "Word",
+                    "Comment": "Yan baskı hız bilgisi (Hz)",
+                    "ByteOffset": 42,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Idler",
+                    "Type": "Word",
+                    "Comment": "Boş konveyör hız bilgisi (Hz)",
+                    "ByteOffset": 44,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_6",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 46,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_7",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 48,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_8",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 50,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Other",
+              "Type": "Struct",
+              "Comment": "Diğer parametreler",
+              "ByteOffset": 52,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "ACDriveCount",
+                    "Type": "UInt",
+                    "Comment": "Modbus ile kontrol edilecek AC sürücü sayısı",
+                    "ByteOffset": 52,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "DischargeCount",
+                    "Type": "UInt",
+                    "Comment": "Peşpeşe okunamayan QR kod sayısı",
+                    "ByteOffset": 54,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "BoxCount",
+                    "Type": "UInt",
+                    "Comment": "Kutu içi adet",
+                    "ByteOffset": 56,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ModbusRtuDelay",
+                    "Type": "UInt",
+                    "Comment": "",
+                    "ByteOffset": 58,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "LoadFreqDelay",
+                    "Type": "UInt",
+                    "Comment": "",
+                    "ByteOffset": 60,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_6",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 62,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_7",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 64,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_8",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 66,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_9",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 68,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_10",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 70,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_11",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 72,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_12",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 74,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_13",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 76,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_14",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 78,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_15",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 80,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_16",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 82,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_17",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 84,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_18",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 86,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_19",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 88,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_20",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 90,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_21",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 92,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_22",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 94,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_23",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 96,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_24",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 98,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Name": "Send",
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 100,
+        "BitOffset": 0,
+        "StringLength": 254,
+        "NestedStructure": {
+          "Level": 1,
+          "Fields": [
+            {
+              "Name": "Control",
+              "Type": "Struct",
+              "Comment": "PC'ye Gönderilen kontrol bitleri",
+              "ByteOffset": 100,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Life",
+                    "Type": "Bool",
+                    "Comment": "PC - PLC haberleşme var biti",
+                    "ByteOffset": 100,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_2",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 100,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_3",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 100,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_4",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 100,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_5",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 100,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_6",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 100,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_7",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 100,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_8",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 100,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_9",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 101,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_10",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 101,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_11",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 101,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_12",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 101,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_13",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 101,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_14",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 101,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_15",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 101,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_16",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 101,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_17",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 102,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_18",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 102,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_19",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 102,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_20",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 102,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_21",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 102,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_22",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 102,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_23",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 102,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_24",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 102,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_25",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 103,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_26",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 103,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_27",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 103,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_28",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 103,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_29",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 103,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_30",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 103,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_31",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 103,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_32",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 103,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "State",
+              "Type": "Struct",
+              "Comment": "PC'ye Gönderilen durum bitleri",
+              "ByteOffset": 104,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Stop",
+                    "Type": "Bool",
+                    "Comment": "Makine Stop modda",
+                    "ByteOffset": 104,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Run",
+                    "Type": "Bool",
+                    "Comment": "Otomatik modda çalışyor",
+                    "ByteOffset": 104,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Manual",
+                    "Type": "Bool",
+                    "Comment": "Manuel modda çalışıyor",
+                    "ByteOffset": 104,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Bypass",
+                    "Type": "Bool",
+                    "Comment": "Bypass modda çalışıyor",
+                    "ByteOffset": 104,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Test",
+                    "Type": "Bool",
+                    "Comment": "Test modda çalışıyor",
+                    "ByteOffset": 104,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reset_DO",
+                    "Type": "Bool",
+                    "Comment": "Reset yapılıyor",
+                    "ByteOffset": 104,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reset_OK",
+                    "Type": "Bool",
+                    "Comment": "Reset yapıldı",
+                    "ByteOffset": 104,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Home_DO",
+                    "Type": "Bool",
+                    "Comment": "Home yapılıyor",
+                    "ByteOffset": 104,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Home_OK",
+                    "Type": "Bool",
+                    "Comment": "Home yapıldı",
+                    "ByteOffset": 105,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Pos_DO",
+                    "Type": "Bool",
+                    "Comment": "Pozisyona gidiliyor",
+                    "ByteOffset": 105,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Pos_OK",
+                    "Type": "Bool",
+                    "Comment": "Pozisyona gidildi",
+                    "ByteOffset": 105,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Ready",
+                    "Type": "Bool",
+                    "Comment": "Çalışmaya hazır",
+                    "ByteOffset": 105,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Message",
+                    "Type": "Bool",
+                    "Comment": "Mesaj var (Alarm bitleri kontrol edilecek)",
+                    "ByteOffset": 105,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Warning",
+                    "Type": "Bool",
+                    "Comment": "Uyarı var (Alarm bitleri kontrol edilecek)",
+                    "ByteOffset": 105,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Error",
+                    "Type": "Bool",
+                    "Comment": "Hata var (Alarm bitleri kontrol edilecek)",
+                    "ByteOffset": 105,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_16",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 105,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_17",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 106,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_18",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 106,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_19",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 106,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_20",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 106,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_21",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 106,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_22",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 106,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_23",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 106,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_24",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 106,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_25",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 107,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_26",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 107,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_27",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 107,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_28",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 107,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_29",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 107,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_30",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 107,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_31",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 107,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_32",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 107,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Alarm",
+              "Type": "Struct",
+              "Comment": "PC'ye Gönderilen alarm bilgileri",
+              "ByteOffset": 108,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Emergency",
+                    "Type": "Bool",
+                    "Comment": "Acil stop basılı (Acil stop bırakılıp reset yapılana kadar gönderilir.)",
+                    "ByteOffset": 108,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Gate",
+                    "Type": "Bool",
+                    "Comment": "Kapı açık",
+                    "ByteOffset": 108,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "NotStart",
+                    "Type": "Bool",
+                    "Comment": "Makine çalıştırılamadı",
+                    "ByteOffset": 108,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "NotStop",
+                    "Type": "Bool",
+                    "Comment": "Makine durdurulamadı",
+                    "ByteOffset": 108,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "ScrapRepeat",
+                    "Type": "Bool",
+                    "Comment": "Peşpeşe hatalı ürün",
+                    "ByteOffset": 108,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectFull",
+                    "Type": "Bool",
+                    "Comment": "Reject haznesi dolu",
+                    "ByteOffset": 108,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "AcFault",
+                    "Type": "Bool",
+                    "Comment": "AC Sürücüler hatadan çıkartılamadı",
+                    "ByteOffset": 108,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_8",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 108,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Main",
+                    "Type": "Bool",
+                    "Comment": "Ana konveyör alarm",
+                    "ByteOffset": 109,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Spacing",
+                    "Type": "Bool",
+                    "Comment": "Ara açma konveyör alarm",
+                    "ByteOffset": 109,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SideHolding",
+                    "Type": "Bool",
+                    "Comment": "Yan baskı konveyör alarm",
+                    "ByteOffset": 109,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "TopHolding",
+                    "Type": "Bool",
+                    "Comment": "Üst baskı konveyör alarm",
+                    "ByteOffset": 109,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Idler",
+                    "Type": "Bool",
+                    "Comment": "Boş konveyör alarm",
+                    "ByteOffset": 109,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_14",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 109,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_15",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 109,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectAlmS",
+                    "Type": "Bool",
+                    "Comment": "Reject pistonu ileri gidemedi",
+                    "ByteOffset": 109,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "RejectAlmR",
+                    "Type": "Bool",
+                    "Comment": "Reject pistonu geri gidemedi",
+                    "ByteOffset": 110,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_18",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 110,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_19",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 110,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_20",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 110,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_21",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 110,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_22",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 110,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_23",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 110,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_24",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 110,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_25",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 111,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_26",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 111,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_27",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 111,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_28",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 111,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_29",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 111,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_30",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 111,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_31",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 111,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_32",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 111,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_33",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 112,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_34",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 112,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_35",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 112,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_36",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 112,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_37",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 112,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_38",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 112,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_39",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 112,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_40",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 112,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_41",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 113,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_42",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 113,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_43",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 113,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_44",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 113,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_45",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 113,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_46",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 113,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_47",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 113,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_48",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 113,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_49",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 114,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_50",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 114,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_51",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 114,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_52",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 114,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_53",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 114,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_54",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 114,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_55",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 114,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_56",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 114,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_57",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 115,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_58",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 115,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_59",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 115,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_60",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 115,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_61",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 115,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_62",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 115,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_63",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 115,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_64",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 115,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "IO",
+              "Type": "Struct",
+              "Comment": "PLC IO bitleri, ekranda gösterilmesi için",
+              "ByteOffset": 116,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Input",
+                    "Type": "Struct",
+                    "Comment": "",
+                    "ByteOffset": 116,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": {
+                      "Level": 3,
+                      "Fields": [
+                        {
+                          "Name": "Start",
+                          "Type": "Bool",
+                          "Comment": "Start butonu",
+                          "ByteOffset": 116,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Stop",
+                          "Type": "Bool",
+                          "Comment": "Stop butonu",
+                          "ByteOffset": 116,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reset",
+                          "Type": "Bool",
+                          "Comment": "Reset butonu",
+                          "ByteOffset": 116,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Emergency",
+                          "Type": "Bool",
+                          "Comment": "Acil Stop röle hazır",
+                          "ByteOffset": 116,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Gate",
+                          "Type": "Bool",
+                          "Comment": "Kapı açık",
+                          "ByteOffset": 116,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectBw",
+                          "Type": "Bool",
+                          "Comment": "Atma pistonu geride",
+                          "ByteOffset": 116,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectFw",
+                          "Type": "Bool",
+                          "Comment": "Atma pistonu ileride",
+                          "ByteOffset": 116,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectPoke",
+                          "Type": "Bool",
+                          "Comment": "Atma ürün varlık sensörü",
+                          "ByteOffset": 116,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "CameraPoke",
+                          "Type": "Bool",
+                          "Comment": "Kamere ürün varlık sensörü",
+                          "ByteOffset": 117,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReady_L",
+                          "Type": "Bool",
+                          "Comment": "Sol aplikatör hazır sinyali",
+                          "ByteOffset": 117,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReserve_L",
+                          "Type": "Bool",
+                          "Comment": "Sol aplikatör rezerv sinyal",
+                          "ByteOffset": 117,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReady_R",
+                          "Type": "Bool",
+                          "Comment": "Sağ aplikatör hazır sinyali",
+                          "ByteOffset": 117,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReserve_R",
+                          "Type": "Bool",
+                          "Comment": "Sağ aplikatör rezerv sinyal",
+                          "ByteOffset": 117,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorPoke",
+                          "Type": "Bool",
+                          "Comment": "Apilkatör ürün varlık sensörü",
+                          "ByteOffset": 117,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ResultsOK",
+                          "Type": "Bool",
+                          "Comment": "Kamera okuma başarılı",
+                          "ByteOffset": 117,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ResultsNG",
+                          "Type": "Bool",
+                          "Comment": "Kamera okuma başarısız",
+                          "ByteOffset": 117,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.0",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 118,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.1",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 118,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.2",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 118,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.3",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 118,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.4",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 118,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.5",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 118,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.6",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 118,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_I9.7",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 118,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "Name": "Output",
+                    "Type": "Struct",
+                    "Comment": "",
+                    "ByteOffset": 120,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": {
+                      "Level": 3,
+                      "Fields": [
+                        {
+                          "Name": "Reserve_0.0",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 120,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_0.1",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 120,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "CameraTrigger",
+                          "Type": "Bool",
+                          "Comment": "Kamera tetik",
+                          "ByteOffset": 120,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Emg_Relay",
+                          "Type": "Bool",
+                          "Comment": "Acil Stop rölesi kur",
+                          "ByteOffset": 120,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectBw",
+                          "Type": "Bool",
+                          "Comment": "Atma pistonu geride",
+                          "ByteOffset": 120,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "RejectFw",
+                          "Type": "Bool",
+                          "Comment": "Atma pistonu ileride",
+                          "ByteOffset": 120,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_0.6",
+                          "Type": "Bool",
+                          "Comment": "Işık kulesi yeşil lamba",
+                          "ByteOffset": 120,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_0.7",
+                          "Type": "Bool",
+                          "Comment": "Işık kulesi kırmızı lamba",
+                          "ByteOffset": 120,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Lt_Green",
+                          "Type": "Bool",
+                          "Comment": "Işık kulesi sarı lamba",
+                          "ByteOffset": 121,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Lt_Red",
+                          "Type": "Bool",
+                          "Comment": "Işık kulesi sesli ikaz",
+                          "ByteOffset": 121,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Lt_Yellow",
+                          "Type": "Bool",
+                          "Comment": "Sol aplikatör başlat sinyali",
+                          "ByteOffset": 121,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Lt_Buzzer",
+                          "Type": "Bool",
+                          "Comment": "Sol aplikatör reset sinyali",
+                          "ByteOffset": 121,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorStart_L",
+                          "Type": "Bool",
+                          "Comment": "Sağ aplikatör başlat sinyali",
+                          "ByteOffset": 121,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReset_L",
+                          "Type": "Bool",
+                          "Comment": "Sağ aplikatör reset sinyal",
+                          "ByteOffset": 121,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorStart_R",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 121,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "ApplicatorReset_R",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 121,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.0",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 122,
+                          "BitOffset": 0,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.1",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 122,
+                          "BitOffset": 1,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.2",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 122,
+                          "BitOffset": 2,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.3",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 122,
+                          "BitOffset": 3,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.4",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 122,
+                          "BitOffset": 4,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.5",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 122,
+                          "BitOffset": 5,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.6",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 122,
+                          "BitOffset": 6,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        },
+                        {
+                          "Name": "Reserve_9.7",
+                          "Type": "Bool",
+                          "Comment": "",
+                          "ByteOffset": 122,
+                          "BitOffset": 7,
+                          "StringLength": 254,
+                          "NestedStructure": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Velocity",
+              "Type": "Struct",
+              "Comment": "AC Motor hız değerleri",
+              "ByteOffset": 124,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Main",
+                    "Type": "Word",
+                    "Comment": "Ana konveyör hız bilgisi (Hz)",
+                    "ByteOffset": 124,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Spacing",
+                    "Type": "Word",
+                    "Comment": "Ara açma hız bilgisi (Hz)",
+                    "ByteOffset": 126,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "TopHolding",
+                    "Type": "Word",
+                    "Comment": "Üst baskı hız bilgisi (Hz)",
+                    "ByteOffset": 128,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SideHolding",
+                    "Type": "Word",
+                    "Comment": "Yan baskı hız bilgisi (Hz)",
+                    "ByteOffset": 130,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Idler",
+                    "Type": "Word",
+                    "Comment": "Boş konveyör hız bilgisi (Hz)",
+                    "ByteOffset": 132,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_6",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 134,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_7",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 136,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_8",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 138,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Other",
+              "Type": "Struct",
+              "Comment": "",
+              "ByteOffset": 140,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Reserve_1",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 140,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_2",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 142,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_3",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 144,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_4",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 146,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_5",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 148,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_6",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 150,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_7",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 152,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_8",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 154,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_9",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 156,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_10",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 158,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_11",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 160,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_12",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 162,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_13",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 164,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_14",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 166,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_15",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 168,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_16",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 170,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_17",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 172,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_18",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 174,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_19",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 176,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_20",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 178,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_21",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 180,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_22",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 182,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_23",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 184,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_24",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 186,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_25",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 188,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_26",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 190,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_27",
+                    "Type": "Word",
+                    "Comment": "",
+                    "ByteOffset": 192,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Result Length",
+                    "Type": "UInt",
+                    "Comment": "Kamera okunan veri uzunluğu",
+                    "ByteOffset": 194,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Result",
+                    "Type": "String",
+                    "Comment": "Kamera okunan veri",
+                    "ByteOffset": 196,
+                    "BitOffset": 0,
+                    "StringLength": 32,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "PLC_Serial",
+                    "Type": "String",
+                    "Comment": "",
+                    "ByteOffset": 230,
+                    "BitOffset": 0,
+                    "StringLength": 16,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Plc_Name",
+                    "Type": "String",
+                    "Comment": "",
+                    "ByteOffset": 248,
+                    "BitOffset": 0,
+                    "StringLength": 16,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Plc_Time",
+                    "Type": "String",
+                    "Comment": "PLC'nin aktif lokal tarih saat",
+                    "ByteOffset": 266,
+                    "BitOffset": 0,
+                    "StringLength": 32,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Name": "Local",
+        "Type": "Struct",
+        "Comment": "",
+        "ByteOffset": 300,
+        "BitOffset": 0,
+        "StringLength": 254,
+        "NestedStructure": {
+          "Level": 1,
+          "Fields": [
+            {
+              "Name": "AcDrive",
+              "Type": "Struct",
+              "Comment": "",
+              "ByteOffset": 300,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "MainAct",
+                    "Type": "Bool",
+                    "Comment": "Ana konveyör aktif / pasif",
+                    "ByteOffset": 300,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SpacingAct",
+                    "Type": "Bool",
+                    "Comment": "Ara açma aktif / pasif",
+                    "ByteOffset": 300,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "TopHoldingAct",
+                    "Type": "Bool",
+                    "Comment": "Üst baskı aktif / pasif",
+                    "ByteOffset": 300,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "SideHoldingAct",
+                    "Type": "Bool",
+                    "Comment": "Yan baskı aktif / pasif",
+                    "ByteOffset": 300,
+                    "BitOffset": 3,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "IdlerAct",
+                    "Type": "Bool",
+                    "Comment": "Boş konveyör aktif / pasif",
+                    "ByteOffset": 300,
+                    "BitOffset": 4,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_700.5",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 300,
+                    "BitOffset": 5,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_700.6",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 300,
+                    "BitOffset": 6,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Reserve_700.7",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 300,
+                    "BitOffset": 7,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Control",
+              "Type": "Struct",
+              "Comment": "",
+              "ByteOffset": 302,
+              "BitOffset": 0,
+              "StringLength": 254,
+              "NestedStructure": {
+                "Level": 2,
+                "Fields": [
+                  {
+                    "Name": "Gate",
+                    "Type": "Bool",
+                    "Comment": "Kapılar aktif / pasif",
+                    "ByteOffset": 302,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "CameraTrig",
+                    "Type": "Bool",
+                    "Comment": "Kamera tetiğinin çalışma şekli",
+                    "ByteOffset": 302,
+                    "BitOffset": 1,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Acknowledge",
+                    "Type": "Bool",
+                    "Comment": "",
+                    "ByteOffset": 302,
+                    "BitOffset": 2,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Test1",
+                    "Type": "Char",
+                    "Comment": "",
+                    "ByteOffset": 303,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  },
+                  {
+                    "Name": "Test2",
+                    "Type": "Char",
+                    "Comment": "",
+                    "ByteOffset": 304,
+                    "BitOffset": 0,
+                    "StringLength": 254,
+                    "NestedStructure": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "DefaultValues": {
+    "Receive.Control.Stop": "true",
+    "Receive.Control.Test": "true",
+    "Receive.Control.MainAct": "true",
+    "Receive.Control.SpacingAct": "true",
+    "Receive.Velocity.Main": "200",
+    "Receive.Velocity.Spacing": "200",
+    "Receive.Velocity.TopHolding": "200",
+    "Receive.Velocity.SideHolding": "200",
+    "Receive.Velocity.Idler": "200",
+    "Receive.Other.ACDriveCount": "5",
+    "Receive.Other.DischargeCount": "4",
+    "Receive.Other.BoxCount": "20",
+    "Receive.Other.ModbusRtuDelay": "100",
+    "Receive.Other.LoadFreqDelay": "5000",
+    "Send.Velocity.Main": "200",
+    "Send.Velocity.Spacing": "200",
+    "Send.Velocity.TopHolding": "200",
+    "Send.Velocity.SideHolding": "200",
+    "Send.Velocity.Idler": "200",
+    "Local.AcDrive.MainAct": "true",
+    "Local.AcDrive.SpacingAct": "true",
+    "Local.Control.CameraTrig": "true",
+    "Local.Control.Test1": "a",
+    "Local.Control.Test2": "b"
+  }
+}

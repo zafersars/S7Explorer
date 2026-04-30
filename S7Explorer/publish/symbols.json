@@ -1,0 +1,1856 @@
+{
+  "DB_PC.Receive.Control.Life": {
+    "PhysicalAddress": "DB1.DBX0.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "PC - PLC haberleşme var biti"
+  },
+  "DB_PC.Receive.Control.Start": {
+    "PhysicalAddress": "DB1.DBX0.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Otomatik Başlat"
+  },
+  "DB_PC.Receive.Control.Stop": {
+    "PhysicalAddress": "DB1.DBX0.2",
+    "DataType": "BOOL",
+    "DefaultValue": "true",
+    "Description": "Otomatik Durdur"
+  },
+  "DB_PC.Receive.Control.Reset": {
+    "PhysicalAddress": "DB1.DBX0.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Program değerlerini sıfırla, PLC 0'a çekecek"
+  },
+  "DB_PC.Receive.Control.Home": {
+    "PhysicalAddress": "DB1.DBX0.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Program ve tüm ekipmanları başlangıç konumu al, PLC 0'a çekecek"
+  },
+  "DB_PC.Receive.Control.Acknowledge": {
+    "PhysicalAddress": "DB1.DBX0.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Alarmları onaylamak ve Sürücüler alarm reset"
+  },
+  "DB_PC.Receive.Control.RejectSide": {
+    "PhysicalAddress": "DB1.DBX0.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Boşaltma pistonı boşaltma yönü. 0 = Sol, 1 = Sağ"
+  },
+  "DB_PC.Receive.Control.ApplicatorSide": {
+    "PhysicalAddress": "DB1.DBX0.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Etiketleme çalışma yönü. 0 = Sol, 1 = Sol/Sağ"
+  },
+  "DB_PC.Receive.Control.Test": {
+    "PhysicalAddress": "DB1.DBX1.0",
+    "DataType": "BOOL",
+    "DefaultValue": "true",
+    "Description": "Test modda çalışıyor"
+  },
+  "DB_PC.Receive.Control.Manual": {
+    "PhysicalAddress": "DB1.DBX1.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda çalışma"
+  },
+  "DB_PC.Receive.Control.ManRejFw": {
+    "PhysicalAddress": "DB1.DBX1.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Reject pistonu ileri git"
+  },
+  "DB_PC.Receive.Control.ManRejBw": {
+    "PhysicalAddress": "DB1.DBX1.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Reject pistonu geri git"
+  },
+  "DB_PC.Receive.Control.ManTrigger": {
+    "PhysicalAddress": "DB1.DBX1.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Kamera tetik"
+  },
+  "DB_PC.Receive.Control.ManApplicatorL": {
+    "PhysicalAddress": "DB1.DBX1.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Sol aplikatör tetik"
+  },
+  "DB_PC.Receive.Control.ManApplicatorR": {
+    "PhysicalAddress": "DB1.DBX1.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Sağ aplikatör tetik"
+  },
+  "DB_PC.Receive.Control.Reserve_16": {
+    "PhysicalAddress": "DB1.DBX1.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Receive.Control.ManMain": {
+    "PhysicalAddress": "DB1.DBX2.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Ana konveyör kontrol"
+  },
+  "DB_PC.Receive.Control.ManSpacing": {
+    "PhysicalAddress": "DB1.DBX2.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Ara açma kontrol"
+  },
+  "DB_PC.Receive.Control.ManSideHolding": {
+    "PhysicalAddress": "DB1.DBX2.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Yan baskı kontrol"
+  },
+  "DB_PC.Receive.Control.ManTopHolding": {
+    "PhysicalAddress": "DB1.DBX2.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda Üst baskı kontrol"
+  },
+  "DB_PC.Receive.Control.ManIdler": {
+    "PhysicalAddress": "DB1.DBX2.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda boş konveyör kontrol"
+  },
+  "DB_PC.Receive.Control.Reserve_22": {
+    "PhysicalAddress": "DB1.DBX2.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Receive.Control.Reserve_23": {
+    "PhysicalAddress": "DB1.DBX2.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Receive.Control.Reserve_24": {
+    "PhysicalAddress": "DB1.DBX2.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Receive.Control.MainAct": {
+    "PhysicalAddress": "DB1.DBX3.0",
+    "DataType": "BOOL",
+    "DefaultValue": "true",
+    "Description": "Ana konveyör aktif / pasif"
+  },
+  "DB_PC.Receive.Control.SpacingAct": {
+    "PhysicalAddress": "DB1.DBX3.1",
+    "DataType": "BOOL",
+    "DefaultValue": "true",
+    "Description": "Ara açma aktif / pasif"
+  },
+  "DB_PC.Receive.Control.TopHoldingAct": {
+    "PhysicalAddress": "DB1.DBX3.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Üst baskı aktif / pasif"
+  },
+  "DB_PC.Receive.Control.SideHoldingAct": {
+    "PhysicalAddress": "DB1.DBX3.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Yan baskı aktif / pasif"
+  },
+  "DB_PC.Receive.Control.IdlerAct": {
+    "PhysicalAddress": "DB1.DBX3.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Boş konveyör aktif / pasif"
+  },
+  "DB_PC.Receive.Control.Reserve_30": {
+    "PhysicalAddress": "DB1.DBX3.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Receive.Control.Reserve_31": {
+    "PhysicalAddress": "DB1.DBX3.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Receive.Control.Reserve_32": {
+    "PhysicalAddress": "DB1.DBX3.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Receive.Time.StartDelay": {
+    "PhysicalAddress": "DB1.DBW4",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Başlama işleminde ara açmanın gecikme süresi"
+  },
+  "DB_PC.Receive.Time.StopDelay": {
+    "PhysicalAddress": "DB1.DBW6",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Durma işleminde ana  konveyörün gecikme süresi"
+  },
+  "DB_PC.Receive.Time.AplicatorDelay": {
+    "PhysicalAddress": "DB1.DBW8",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Aplikatör poke sensörü gecikme süresi"
+  },
+  "DB_PC.Receive.Time.AplicatorTrigger": {
+    "PhysicalAddress": "DB1.DBW10",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Aplikatör tetik süresi"
+  },
+  "DB_PC.Receive.Time.CameraDelay": {
+    "PhysicalAddress": "DB1.DBW12",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Kamera poke sensörü gecikme süresi"
+  },
+  "DB_PC.Receive.Time.CameraTimeout": {
+    "PhysicalAddress": "DB1.DBW14",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Kamera zaman aşım süresi"
+  },
+  "DB_PC.Receive.Time.BoxDelay": {
+    "PhysicalAddress": "DB1.DBW16",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Kutu adet sayıcı gecikme süresi"
+  },
+  "DB_PC.Receive.Time.BoxReset": {
+    "PhysicalAddress": "DB1.DBW18",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Kutu adet sayıcı piston reset  süresi"
+  },
+  "DB_PC.Receive.Time.Reserve_9": {
+    "PhysicalAddress": "DB1.DBW20",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Time.BuzzerDischarge": {
+    "PhysicalAddress": "DB1.DBW22",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Sesli ikaz, bozuk atma için ötme süresi"
+  },
+  "DB_PC.Receive.Time.BuzzerPoke": {
+    "PhysicalAddress": "DB1.DBW24",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Sesli ikaz, poke için ötme süresi"
+  },
+  "DB_PC.Receive.Time.RejectPreDelay": {
+    "PhysicalAddress": "DB1.DBW26",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Reject pistonu ön gecikme"
+  },
+  "DB_PC.Receive.Time.RejectDelayS": {
+    "PhysicalAddress": "DB1.DBW28",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Reject pistonu set gecikme"
+  },
+  "DB_PC.Receive.Time.RejectDelayR": {
+    "PhysicalAddress": "DB1.DBW30",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Reject pistonu reset gecikme"
+  },
+  "DB_PC.Receive.Time.RejectAlmS": {
+    "PhysicalAddress": "DB1.DBW32",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Reject pistonu set alarm"
+  },
+  "DB_PC.Receive.Time.RejectAlmR": {
+    "PhysicalAddress": "DB1.DBW34",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Reject pistonu reset alarm"
+  },
+  "DB_PC.Receive.Velocity.Main": {
+    "PhysicalAddress": "DB1.DBW36",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Ana konveyör hız bilgisi (Hz)"
+  },
+  "DB_PC.Receive.Velocity.Spacing": {
+    "PhysicalAddress": "DB1.DBW38",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Ara açma hız bilgisi (Hz)"
+  },
+  "DB_PC.Receive.Velocity.TopHolding": {
+    "PhysicalAddress": "DB1.DBW40",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Üst baskı hız bilgisi (Hz)"
+  },
+  "DB_PC.Receive.Velocity.SideHolding": {
+    "PhysicalAddress": "DB1.DBW42",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Yan baskı hız bilgisi (Hz)"
+  },
+  "DB_PC.Receive.Velocity.Idler": {
+    "PhysicalAddress": "DB1.DBW44",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Boş konveyör hız bilgisi (Hz)"
+  },
+  "DB_PC.Receive.Velocity.Reserve_6": {
+    "PhysicalAddress": "DB1.DBW46",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Velocity.Reserve_7": {
+    "PhysicalAddress": "DB1.DBW48",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Velocity.Reserve_8": {
+    "PhysicalAddress": "DB1.DBW50",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.ACDriveCount": {
+    "PhysicalAddress": "DB1.DBW52",
+    "DataType": "UINT",
+    "DefaultValue": "5",
+    "Description": "Modbus ile kontrol edilecek AC sürücü sayısı"
+  },
+  "DB_PC.Receive.Other.DischargeCount": {
+    "PhysicalAddress": "DB1.DBW54",
+    "DataType": "UINT",
+    "DefaultValue": "4",
+    "Description": "Peşpeşe okunamayan QR kod sayısı"
+  },
+  "DB_PC.Receive.Other.BoxCount": {
+    "PhysicalAddress": "DB1.DBW56",
+    "DataType": "UINT",
+    "DefaultValue": "20",
+    "Description": "Kutu içi adet"
+  },
+  "DB_PC.Receive.Other.ModbusRtuDelay": {
+    "PhysicalAddress": "DB1.DBW58",
+    "DataType": "UINT",
+    "DefaultValue": "100",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.LoadFreqDelay": {
+    "PhysicalAddress": "DB1.DBW60",
+    "DataType": "UINT",
+    "DefaultValue": "5000",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_6": {
+    "PhysicalAddress": "DB1.DBW62",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_7": {
+    "PhysicalAddress": "DB1.DBW64",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_8": {
+    "PhysicalAddress": "DB1.DBW66",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_9": {
+    "PhysicalAddress": "DB1.DBW68",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_10": {
+    "PhysicalAddress": "DB1.DBW70",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_11": {
+    "PhysicalAddress": "DB1.DBW72",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_12": {
+    "PhysicalAddress": "DB1.DBW74",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_13": {
+    "PhysicalAddress": "DB1.DBW76",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_14": {
+    "PhysicalAddress": "DB1.DBW78",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_15": {
+    "PhysicalAddress": "DB1.DBW80",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_16": {
+    "PhysicalAddress": "DB1.DBW82",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_17": {
+    "PhysicalAddress": "DB1.DBW84",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_18": {
+    "PhysicalAddress": "DB1.DBW86",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_19": {
+    "PhysicalAddress": "DB1.DBW88",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_20": {
+    "PhysicalAddress": "DB1.DBW90",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_21": {
+    "PhysicalAddress": "DB1.DBW92",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_22": {
+    "PhysicalAddress": "DB1.DBW94",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_23": {
+    "PhysicalAddress": "DB1.DBW96",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Receive.Other.Reserve_24": {
+    "PhysicalAddress": "DB1.DBW98",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Life": {
+    "PhysicalAddress": "DB1.DBX100.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "PC - PLC haberleşme var biti"
+  },
+  "DB_PC.Send.Control.Reserve_2": {
+    "PhysicalAddress": "DB1.DBX100.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_3": {
+    "PhysicalAddress": "DB1.DBX100.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_4": {
+    "PhysicalAddress": "DB1.DBX100.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_5": {
+    "PhysicalAddress": "DB1.DBX100.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_6": {
+    "PhysicalAddress": "DB1.DBX100.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_7": {
+    "PhysicalAddress": "DB1.DBX100.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_8": {
+    "PhysicalAddress": "DB1.DBX100.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_9": {
+    "PhysicalAddress": "DB1.DBX101.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_10": {
+    "PhysicalAddress": "DB1.DBX101.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_11": {
+    "PhysicalAddress": "DB1.DBX101.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_12": {
+    "PhysicalAddress": "DB1.DBX101.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_13": {
+    "PhysicalAddress": "DB1.DBX101.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_14": {
+    "PhysicalAddress": "DB1.DBX101.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_15": {
+    "PhysicalAddress": "DB1.DBX101.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_16": {
+    "PhysicalAddress": "DB1.DBX101.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_17": {
+    "PhysicalAddress": "DB1.DBX102.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_18": {
+    "PhysicalAddress": "DB1.DBX102.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_19": {
+    "PhysicalAddress": "DB1.DBX102.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_20": {
+    "PhysicalAddress": "DB1.DBX102.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_21": {
+    "PhysicalAddress": "DB1.DBX102.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_22": {
+    "PhysicalAddress": "DB1.DBX102.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_23": {
+    "PhysicalAddress": "DB1.DBX102.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_24": {
+    "PhysicalAddress": "DB1.DBX102.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_25": {
+    "PhysicalAddress": "DB1.DBX103.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_26": {
+    "PhysicalAddress": "DB1.DBX103.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_27": {
+    "PhysicalAddress": "DB1.DBX103.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_28": {
+    "PhysicalAddress": "DB1.DBX103.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_29": {
+    "PhysicalAddress": "DB1.DBX103.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_30": {
+    "PhysicalAddress": "DB1.DBX103.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_31": {
+    "PhysicalAddress": "DB1.DBX103.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Control.Reserve_32": {
+    "PhysicalAddress": "DB1.DBX103.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Stop": {
+    "PhysicalAddress": "DB1.DBX104.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Makine Stop modda"
+  },
+  "DB_PC.Send.State.Run": {
+    "PhysicalAddress": "DB1.DBX104.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Otomatik modda çalışyor"
+  },
+  "DB_PC.Send.State.Manual": {
+    "PhysicalAddress": "DB1.DBX104.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Manuel modda çalışıyor"
+  },
+  "DB_PC.Send.State.Bypass": {
+    "PhysicalAddress": "DB1.DBX104.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Bypass modda çalışıyor"
+  },
+  "DB_PC.Send.State.Test": {
+    "PhysicalAddress": "DB1.DBX104.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Test modda çalışıyor"
+  },
+  "DB_PC.Send.State.Reset_DO": {
+    "PhysicalAddress": "DB1.DBX104.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reset yapılıyor"
+  },
+  "DB_PC.Send.State.Reset_OK": {
+    "PhysicalAddress": "DB1.DBX104.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reset yapıldı"
+  },
+  "DB_PC.Send.State.Home_DO": {
+    "PhysicalAddress": "DB1.DBX104.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Home yapılıyor"
+  },
+  "DB_PC.Send.State.Home_OK": {
+    "PhysicalAddress": "DB1.DBX105.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Home yapıldı"
+  },
+  "DB_PC.Send.State.Pos_DO": {
+    "PhysicalAddress": "DB1.DBX105.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Pozisyona gidiliyor"
+  },
+  "DB_PC.Send.State.Pos_OK": {
+    "PhysicalAddress": "DB1.DBX105.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Pozisyona gidildi"
+  },
+  "DB_PC.Send.State.Ready": {
+    "PhysicalAddress": "DB1.DBX105.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Çalışmaya hazır"
+  },
+  "DB_PC.Send.State.Message": {
+    "PhysicalAddress": "DB1.DBX105.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Mesaj var (Alarm bitleri kontrol edilecek)"
+  },
+  "DB_PC.Send.State.Warning": {
+    "PhysicalAddress": "DB1.DBX105.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Uyarı var (Alarm bitleri kontrol edilecek)"
+  },
+  "DB_PC.Send.State.Error": {
+    "PhysicalAddress": "DB1.DBX105.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Hata var (Alarm bitleri kontrol edilecek)"
+  },
+  "DB_PC.Send.State.Reserve_16": {
+    "PhysicalAddress": "DB1.DBX105.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_17": {
+    "PhysicalAddress": "DB1.DBX106.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_18": {
+    "PhysicalAddress": "DB1.DBX106.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_19": {
+    "PhysicalAddress": "DB1.DBX106.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_20": {
+    "PhysicalAddress": "DB1.DBX106.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_21": {
+    "PhysicalAddress": "DB1.DBX106.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_22": {
+    "PhysicalAddress": "DB1.DBX106.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_23": {
+    "PhysicalAddress": "DB1.DBX106.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_24": {
+    "PhysicalAddress": "DB1.DBX106.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_25": {
+    "PhysicalAddress": "DB1.DBX107.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_26": {
+    "PhysicalAddress": "DB1.DBX107.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_27": {
+    "PhysicalAddress": "DB1.DBX107.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_28": {
+    "PhysicalAddress": "DB1.DBX107.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_29": {
+    "PhysicalAddress": "DB1.DBX107.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_30": {
+    "PhysicalAddress": "DB1.DBX107.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_31": {
+    "PhysicalAddress": "DB1.DBX107.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.State.Reserve_32": {
+    "PhysicalAddress": "DB1.DBX107.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Emergency": {
+    "PhysicalAddress": "DB1.DBX108.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Acil stop basılı (Acil stop bırakılıp reset yapılana kadar gönderilir.)"
+  },
+  "DB_PC.Send.Alarm.Gate": {
+    "PhysicalAddress": "DB1.DBX108.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kapı açık"
+  },
+  "DB_PC.Send.Alarm.NotStart": {
+    "PhysicalAddress": "DB1.DBX108.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Makine çalıştırılamadı"
+  },
+  "DB_PC.Send.Alarm.NotStop": {
+    "PhysicalAddress": "DB1.DBX108.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Makine durdurulamadı"
+  },
+  "DB_PC.Send.Alarm.ScrapRepeat": {
+    "PhysicalAddress": "DB1.DBX108.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Peşpeşe hatalı ürün"
+  },
+  "DB_PC.Send.Alarm.RejectFull": {
+    "PhysicalAddress": "DB1.DBX108.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reject haznesi dolu"
+  },
+  "DB_PC.Send.Alarm.AcFault": {
+    "PhysicalAddress": "DB1.DBX108.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "AC Sürücüler hatadan çıkartılamadı"
+  },
+  "DB_PC.Send.Alarm.Reserve_8": {
+    "PhysicalAddress": "DB1.DBX108.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Main": {
+    "PhysicalAddress": "DB1.DBX109.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Ana konveyör alarm"
+  },
+  "DB_PC.Send.Alarm.Spacing": {
+    "PhysicalAddress": "DB1.DBX109.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Ara açma konveyör alarm"
+  },
+  "DB_PC.Send.Alarm.SideHolding": {
+    "PhysicalAddress": "DB1.DBX109.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Yan baskı konveyör alarm"
+  },
+  "DB_PC.Send.Alarm.TopHolding": {
+    "PhysicalAddress": "DB1.DBX109.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Üst baskı konveyör alarm"
+  },
+  "DB_PC.Send.Alarm.Idler": {
+    "PhysicalAddress": "DB1.DBX109.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Boş konveyör alarm"
+  },
+  "DB_PC.Send.Alarm.Reserve_14": {
+    "PhysicalAddress": "DB1.DBX109.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_15": {
+    "PhysicalAddress": "DB1.DBX109.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.RejectAlmS": {
+    "PhysicalAddress": "DB1.DBX109.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reject pistonu ileri gidemedi"
+  },
+  "DB_PC.Send.Alarm.RejectAlmR": {
+    "PhysicalAddress": "DB1.DBX110.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reject pistonu geri gidemedi"
+  },
+  "DB_PC.Send.Alarm.Reserve_18": {
+    "PhysicalAddress": "DB1.DBX110.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_19": {
+    "PhysicalAddress": "DB1.DBX110.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_20": {
+    "PhysicalAddress": "DB1.DBX110.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_21": {
+    "PhysicalAddress": "DB1.DBX110.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_22": {
+    "PhysicalAddress": "DB1.DBX110.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_23": {
+    "PhysicalAddress": "DB1.DBX110.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_24": {
+    "PhysicalAddress": "DB1.DBX110.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_25": {
+    "PhysicalAddress": "DB1.DBX111.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_26": {
+    "PhysicalAddress": "DB1.DBX111.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_27": {
+    "PhysicalAddress": "DB1.DBX111.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_28": {
+    "PhysicalAddress": "DB1.DBX111.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_29": {
+    "PhysicalAddress": "DB1.DBX111.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_30": {
+    "PhysicalAddress": "DB1.DBX111.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_31": {
+    "PhysicalAddress": "DB1.DBX111.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_32": {
+    "PhysicalAddress": "DB1.DBX111.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_33": {
+    "PhysicalAddress": "DB1.DBX112.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_34": {
+    "PhysicalAddress": "DB1.DBX112.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_35": {
+    "PhysicalAddress": "DB1.DBX112.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_36": {
+    "PhysicalAddress": "DB1.DBX112.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_37": {
+    "PhysicalAddress": "DB1.DBX112.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_38": {
+    "PhysicalAddress": "DB1.DBX112.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_39": {
+    "PhysicalAddress": "DB1.DBX112.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_40": {
+    "PhysicalAddress": "DB1.DBX112.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_41": {
+    "PhysicalAddress": "DB1.DBX113.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_42": {
+    "PhysicalAddress": "DB1.DBX113.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_43": {
+    "PhysicalAddress": "DB1.DBX113.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_44": {
+    "PhysicalAddress": "DB1.DBX113.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_45": {
+    "PhysicalAddress": "DB1.DBX113.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_46": {
+    "PhysicalAddress": "DB1.DBX113.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_47": {
+    "PhysicalAddress": "DB1.DBX113.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_48": {
+    "PhysicalAddress": "DB1.DBX113.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_49": {
+    "PhysicalAddress": "DB1.DBX114.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_50": {
+    "PhysicalAddress": "DB1.DBX114.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_51": {
+    "PhysicalAddress": "DB1.DBX114.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_52": {
+    "PhysicalAddress": "DB1.DBX114.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_53": {
+    "PhysicalAddress": "DB1.DBX114.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_54": {
+    "PhysicalAddress": "DB1.DBX114.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_55": {
+    "PhysicalAddress": "DB1.DBX114.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_56": {
+    "PhysicalAddress": "DB1.DBX114.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_57": {
+    "PhysicalAddress": "DB1.DBX115.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_58": {
+    "PhysicalAddress": "DB1.DBX115.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_59": {
+    "PhysicalAddress": "DB1.DBX115.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_60": {
+    "PhysicalAddress": "DB1.DBX115.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_61": {
+    "PhysicalAddress": "DB1.DBX115.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_62": {
+    "PhysicalAddress": "DB1.DBX115.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_63": {
+    "PhysicalAddress": "DB1.DBX115.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Alarm.Reserve_64": {
+    "PhysicalAddress": "DB1.DBX115.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Input.Start": {
+    "PhysicalAddress": "DB1.DBX116.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Start butonu"
+  },
+  "DB_PC.Send.IO.Input.Stop": {
+    "PhysicalAddress": "DB1.DBX116.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Stop butonu"
+  },
+  "DB_PC.Send.IO.Input.Reset": {
+    "PhysicalAddress": "DB1.DBX116.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Reset butonu"
+  },
+  "DB_PC.Send.IO.Input.Emergency": {
+    "PhysicalAddress": "DB1.DBX116.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Acil Stop röle hazır"
+  },
+  "DB_PC.Send.IO.Input.Gate": {
+    "PhysicalAddress": "DB1.DBX116.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kapı açık"
+  },
+  "DB_PC.Send.IO.Input.RejectBw": {
+    "PhysicalAddress": "DB1.DBX116.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma pistonu geride"
+  },
+  "DB_PC.Send.IO.Input.RejectFw": {
+    "PhysicalAddress": "DB1.DBX116.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma pistonu ileride"
+  },
+  "DB_PC.Send.IO.Input.RejectPoke": {
+    "PhysicalAddress": "DB1.DBX116.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma ürün varlık sensörü"
+  },
+  "DB_PC.Send.IO.Input.CameraPoke": {
+    "PhysicalAddress": "DB1.DBX117.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kamere ürün varlık sensörü"
+  },
+  "DB_PC.Send.IO.Input.ApplicatorReady_L": {
+    "PhysicalAddress": "DB1.DBX117.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sol aplikatör hazır sinyali"
+  },
+  "DB_PC.Send.IO.Input.ApplicatorReserve_L": {
+    "PhysicalAddress": "DB1.DBX117.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sol aplikatör rezerv sinyal"
+  },
+  "DB_PC.Send.IO.Input.ApplicatorReady_R": {
+    "PhysicalAddress": "DB1.DBX117.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sağ aplikatör hazır sinyali"
+  },
+  "DB_PC.Send.IO.Input.ApplicatorReserve_R": {
+    "PhysicalAddress": "DB1.DBX117.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sağ aplikatör rezerv sinyal"
+  },
+  "DB_PC.Send.IO.Input.ApplicatorPoke": {
+    "PhysicalAddress": "DB1.DBX117.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Apilkatör ürün varlık sensörü"
+  },
+  "DB_PC.Send.IO.Input.ResultsOK": {
+    "PhysicalAddress": "DB1.DBX117.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kamera okuma başarılı"
+  },
+  "DB_PC.Send.IO.Input.ResultsNG": {
+    "PhysicalAddress": "DB1.DBX117.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kamera okuma başarısız"
+  },
+  "DB_PC.Send.IO.Input.Reserve_I9.0": {
+    "PhysicalAddress": "DB1.DBX118.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Input.Reserve_I9.1": {
+    "PhysicalAddress": "DB1.DBX118.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Input.Reserve_I9.2": {
+    "PhysicalAddress": "DB1.DBX118.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Input.Reserve_I9.3": {
+    "PhysicalAddress": "DB1.DBX118.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Input.Reserve_I9.4": {
+    "PhysicalAddress": "DB1.DBX118.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Input.Reserve_I9.5": {
+    "PhysicalAddress": "DB1.DBX118.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Input.Reserve_I9.6": {
+    "PhysicalAddress": "DB1.DBX118.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Input.Reserve_I9.7": {
+    "PhysicalAddress": "DB1.DBX118.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_0.0": {
+    "PhysicalAddress": "DB1.DBX120.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_0.1": {
+    "PhysicalAddress": "DB1.DBX120.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.CameraTrigger": {
+    "PhysicalAddress": "DB1.DBX120.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kamera tetik"
+  },
+  "DB_PC.Send.IO.Output.Emg_Relay": {
+    "PhysicalAddress": "DB1.DBX120.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Acil Stop rölesi kur"
+  },
+  "DB_PC.Send.IO.Output.RejectBw": {
+    "PhysicalAddress": "DB1.DBX120.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma pistonu geride"
+  },
+  "DB_PC.Send.IO.Output.RejectFw": {
+    "PhysicalAddress": "DB1.DBX120.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Atma pistonu ileride"
+  },
+  "DB_PC.Send.IO.Output.Reserve_0.6": {
+    "PhysicalAddress": "DB1.DBX120.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Işık kulesi yeşil lamba"
+  },
+  "DB_PC.Send.IO.Output.Reserve_0.7": {
+    "PhysicalAddress": "DB1.DBX120.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Işık kulesi kırmızı lamba"
+  },
+  "DB_PC.Send.IO.Output.Lt_Green": {
+    "PhysicalAddress": "DB1.DBX121.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Işık kulesi sarı lamba"
+  },
+  "DB_PC.Send.IO.Output.Lt_Red": {
+    "PhysicalAddress": "DB1.DBX121.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Işık kulesi sesli ikaz"
+  },
+  "DB_PC.Send.IO.Output.Lt_Yellow": {
+    "PhysicalAddress": "DB1.DBX121.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sol aplikatör başlat sinyali"
+  },
+  "DB_PC.Send.IO.Output.Lt_Buzzer": {
+    "PhysicalAddress": "DB1.DBX121.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sol aplikatör reset sinyali"
+  },
+  "DB_PC.Send.IO.Output.ApplicatorStart_L": {
+    "PhysicalAddress": "DB1.DBX121.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sağ aplikatör başlat sinyali"
+  },
+  "DB_PC.Send.IO.Output.ApplicatorReset_L": {
+    "PhysicalAddress": "DB1.DBX121.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Sağ aplikatör reset sinyal"
+  },
+  "DB_PC.Send.IO.Output.ApplicatorStart_R": {
+    "PhysicalAddress": "DB1.DBX121.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.ApplicatorReset_R": {
+    "PhysicalAddress": "DB1.DBX121.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_9.0": {
+    "PhysicalAddress": "DB1.DBX122.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_9.1": {
+    "PhysicalAddress": "DB1.DBX122.1",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_9.2": {
+    "PhysicalAddress": "DB1.DBX122.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_9.3": {
+    "PhysicalAddress": "DB1.DBX122.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_9.4": {
+    "PhysicalAddress": "DB1.DBX122.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_9.5": {
+    "PhysicalAddress": "DB1.DBX122.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_9.6": {
+    "PhysicalAddress": "DB1.DBX122.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.IO.Output.Reserve_9.7": {
+    "PhysicalAddress": "DB1.DBX122.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Send.Velocity.Main": {
+    "PhysicalAddress": "DB1.DBW124",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Ana konveyör hız bilgisi (Hz)"
+  },
+  "DB_PC.Send.Velocity.Spacing": {
+    "PhysicalAddress": "DB1.DBW126",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Ara açma hız bilgisi (Hz)"
+  },
+  "DB_PC.Send.Velocity.TopHolding": {
+    "PhysicalAddress": "DB1.DBW128",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Üst baskı hız bilgisi (Hz)"
+  },
+  "DB_PC.Send.Velocity.SideHolding": {
+    "PhysicalAddress": "DB1.DBW130",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Yan baskı hız bilgisi (Hz)"
+  },
+  "DB_PC.Send.Velocity.Idler": {
+    "PhysicalAddress": "DB1.DBW132",
+    "DataType": "WORD",
+    "DefaultValue": "200",
+    "Description": "Boş konveyör hız bilgisi (Hz)"
+  },
+  "DB_PC.Send.Velocity.Reserve_6": {
+    "PhysicalAddress": "DB1.DBW134",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Velocity.Reserve_7": {
+    "PhysicalAddress": "DB1.DBW136",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Velocity.Reserve_8": {
+    "PhysicalAddress": "DB1.DBW138",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_1": {
+    "PhysicalAddress": "DB1.DBW140",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_2": {
+    "PhysicalAddress": "DB1.DBW142",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_3": {
+    "PhysicalAddress": "DB1.DBW144",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_4": {
+    "PhysicalAddress": "DB1.DBW146",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_5": {
+    "PhysicalAddress": "DB1.DBW148",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_6": {
+    "PhysicalAddress": "DB1.DBW150",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_7": {
+    "PhysicalAddress": "DB1.DBW152",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_8": {
+    "PhysicalAddress": "DB1.DBW154",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_9": {
+    "PhysicalAddress": "DB1.DBW156",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_10": {
+    "PhysicalAddress": "DB1.DBW158",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_11": {
+    "PhysicalAddress": "DB1.DBW160",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_12": {
+    "PhysicalAddress": "DB1.DBW162",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_13": {
+    "PhysicalAddress": "DB1.DBW164",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_14": {
+    "PhysicalAddress": "DB1.DBW166",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_15": {
+    "PhysicalAddress": "DB1.DBW168",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_16": {
+    "PhysicalAddress": "DB1.DBW170",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_17": {
+    "PhysicalAddress": "DB1.DBW172",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_18": {
+    "PhysicalAddress": "DB1.DBW174",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_19": {
+    "PhysicalAddress": "DB1.DBW176",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_20": {
+    "PhysicalAddress": "DB1.DBW178",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_21": {
+    "PhysicalAddress": "DB1.DBW180",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_22": {
+    "PhysicalAddress": "DB1.DBW182",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_23": {
+    "PhysicalAddress": "DB1.DBW184",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_24": {
+    "PhysicalAddress": "DB1.DBW186",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_25": {
+    "PhysicalAddress": "DB1.DBW188",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_26": {
+    "PhysicalAddress": "DB1.DBW190",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Reserve_27": {
+    "PhysicalAddress": "DB1.DBW192",
+    "DataType": "WORD",
+    "DefaultValue": "0",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Result Length": {
+    "PhysicalAddress": "DB1.DBW194",
+    "DataType": "UINT",
+    "DefaultValue": "0",
+    "Description": "Kamera okunan veri uzunluğu"
+  },
+  "DB_PC.Send.Other.Result": {
+    "PhysicalAddress": "DB1.DBB196",
+    "DataType": "STRING[32]",
+    "DefaultValue": "",
+    "Description": "Kamera okunan veri"
+  },
+  "DB_PC.Send.Other.PLC_Serial": {
+    "PhysicalAddress": "DB1.DBB230",
+    "DataType": "STRING[16]",
+    "DefaultValue": "",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Plc_Name": {
+    "PhysicalAddress": "DB1.DBB248",
+    "DataType": "STRING[16]",
+    "DefaultValue": "",
+    "Description": ""
+  },
+  "DB_PC.Send.Other.Plc_Time": {
+    "PhysicalAddress": "DB1.DBB266",
+    "DataType": "STRING[32]",
+    "DefaultValue": "",
+    "Description": "PLC'nin aktif lokal tarih saat"
+  },
+  "DB_PC.Local.AcDrive.MainAct": {
+    "PhysicalAddress": "DB1.DBX300.0",
+    "DataType": "BOOL",
+    "DefaultValue": "true",
+    "Description": "Ana konveyör aktif / pasif"
+  },
+  "DB_PC.Local.AcDrive.SpacingAct": {
+    "PhysicalAddress": "DB1.DBX300.1",
+    "DataType": "BOOL",
+    "DefaultValue": "true",
+    "Description": "Ara açma aktif / pasif"
+  },
+  "DB_PC.Local.AcDrive.TopHoldingAct": {
+    "PhysicalAddress": "DB1.DBX300.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Üst baskı aktif / pasif"
+  },
+  "DB_PC.Local.AcDrive.SideHoldingAct": {
+    "PhysicalAddress": "DB1.DBX300.3",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Yan baskı aktif / pasif"
+  },
+  "DB_PC.Local.AcDrive.IdlerAct": {
+    "PhysicalAddress": "DB1.DBX300.4",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Boş konveyör aktif / pasif"
+  },
+  "DB_PC.Local.AcDrive.Reserve_700.5": {
+    "PhysicalAddress": "DB1.DBX300.5",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Local.AcDrive.Reserve_700.6": {
+    "PhysicalAddress": "DB1.DBX300.6",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Local.AcDrive.Reserve_700.7": {
+    "PhysicalAddress": "DB1.DBX300.7",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Local.Control.Gate": {
+    "PhysicalAddress": "DB1.DBX302.0",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": "Kapılar aktif / pasif"
+  },
+  "DB_PC.Local.Control.CameraTrig": {
+    "PhysicalAddress": "DB1.DBX302.1",
+    "DataType": "BOOL",
+    "DefaultValue": "true",
+    "Description": "Kamera tetiğinin çalışma şekli"
+  },
+  "DB_PC.Local.Control.Acknowledge": {
+    "PhysicalAddress": "DB1.DBX302.2",
+    "DataType": "BOOL",
+    "DefaultValue": "false",
+    "Description": ""
+  },
+  "DB_PC.Local.Control.Test1": {
+    "PhysicalAddress": "DB1.DBB303",
+    "DataType": "CHAR",
+    "DefaultValue": "a",
+    "Description": ""
+  },
+  "DB_PC.Local.Control.Test2": {
+    "PhysicalAddress": "DB1.DBB304",
+    "DataType": "CHAR",
+    "DefaultValue": "b",
+    "Description": ""
+  }
+}
