@@ -77,7 +77,7 @@ S7Explorer/
 
 ### Connection Settings
 
-Connection settings are automatically saved to `connection_settings.json` in the application output directory and restored on next launch.
+Connection settings and other settings are automatically saved to `settings.json` in the application output directory and restored on next launch.
 
 ---
 
@@ -154,7 +154,7 @@ S7Explorer/
 
 ### Bağlantı Ayarları
 
-Bağlantı ayarları uygulama çıktı dizinindeki `connection_settings.json` dosyasına otomatik olarak kaydedilir ve bir sonraki açılışta geri yüklenir.
+Bağlantı ayarları ve diğer ayarlar uygulama çıktı dizinindeki `settings.json` dosyasına otomatik olarak kaydedilir ve bir sonraki açılışta geri yüklenir.
 
 ---
 
