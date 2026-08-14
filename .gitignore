@@ -4,25 +4,52 @@
 *.suo
 *.userosscache
 *.sln.docstates
+*.rsuser
+*.vsp
+*.vspx
+*.psess
 
 # Build outputs
-**/bin/
-**/obj/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+publish/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
 
 # NuGet
 *.nupkg
 *.snupkg
+packages/
+project.lock.json
+project.assets.json
 
 # Logs
 *.log
 
 # OS
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 .DS_Store
 
-# Local settings artifacts (optional)
-#*.local.settings.json
+# Uygulama tarafından çalışma anında üretilen yerel durum dosyaları
+# (bağlantı ayarları ve sembol tablosu kullanıcıya özeldir, sürümlenmez)
+settings.json
+symbols.json
+
+# DbParser çıktıları (.db/.scl dosyasından üretilir)
+*._symbols.json
+*._hierarchical.json
 
 # Azure Functions Core Tools
 .azurefunctions/
-
