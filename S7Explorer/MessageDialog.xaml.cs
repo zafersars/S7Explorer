@@ -65,8 +65,8 @@ namespace S7Explorer
             ApplyButtons(buttons);
         }
 
-        private static string T(string key, string fallback)
-            => LocalizationManager.Instance.T(key, fallback);
+        private static string TOr(string key, string fallback)
+            => LocalizationManager.Instance.TOr(key, fallback);
 
         // ── İkon ─────────────────────────────────────────────────────────────
 
@@ -104,27 +104,27 @@ namespace S7Explorer
             switch (buttons)
             {
                 case MessageBoxButton.OK:
-                    BtnYes.Content = T("Btn_Ok", "OK");
+                    BtnYes.Content = TOr("Btn_Ok", "OK");
                     BtnNo.Visibility = Visibility.Collapsed;
                     BtnCancel.Visibility = Visibility.Collapsed;
                     break;
 
                 case MessageBoxButton.OKCancel:
-                    BtnYes.Content = T("Btn_Ok", "OK");
+                    BtnYes.Content = TOr("Btn_Ok", "OK");
                     BtnNo.Visibility = Visibility.Collapsed;
-                    BtnCancel.Content = T("Btn_Cancel", "Cancel");
+                    BtnCancel.Content = TOr("Btn_Cancel", "Cancel");
                     break;
 
                 case MessageBoxButton.YesNo:
-                    BtnYes.Content = T("Btn_Yes", "Yes");
-                    BtnNo.Content = T("Btn_No", "No");
+                    BtnYes.Content = TOr("Btn_Yes", "Yes");
+                    BtnNo.Content = TOr("Btn_No", "No");
                     BtnCancel.Visibility = Visibility.Collapsed;
                     break;
 
                 case MessageBoxButton.YesNoCancel:
-                    BtnYes.Content = T("Btn_Yes", "Yes");
-                    BtnNo.Content = T("Btn_No", "No");
-                    BtnCancel.Content = T("Btn_Cancel", "Cancel");
+                    BtnYes.Content = TOr("Btn_Yes", "Yes");
+                    BtnNo.Content = TOr("Btn_No", "No");
+                    BtnCancel.Content = TOr("Btn_Cancel", "Cancel");
                     break;
             }
         }
@@ -137,7 +137,7 @@ namespace S7Explorer
         /// </summary>
         private void BtnYes_Click(object sender, RoutedEventArgs e)
         {
-            Result = BtnYes.Content?.ToString() == T("Btn_Ok", "OK")
+            Result = BtnYes.Content?.ToString() == TOr("Btn_Ok", "OK")
                 ? MessageBoxResult.OK
                 : MessageBoxResult.Yes;
             Close();

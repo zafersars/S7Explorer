@@ -22,6 +22,84 @@
                 <Setter Property="ui:ControlHelper.CornerRadius" Value="0,4,4,0"/>
                 <Setter Property="MinWidth" Value="34"/>
             </Style>
+
+            <!--
+                EN: Button skin for the manual test panel. It has its own template because the panel
+                    paints Background and BorderBrush directly from code to signal machine state, and
+                    the stock template would override those in its own visual states.
+                TR: Manuel test paneli için buton görünümü. Kendi şablonu var; çünkü panel, makine
+                    durumunu bildirmek için Background ve BorderBrush'ı doğrudan koddan boyuyor ve
+                    hazır şablon bunları kendi görsel durumlarında eziyor.
+            -->
+            <Style x:Key="HmiButtonStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border x:Name="Bd"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="8"
+                                        SnapsToDevicePixels="True">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Margin="{TemplateBinding Padding}"/>
+                                </Border>
+
+                                <!--
+                                    EN: Press feedback is a bright overlay rather than a colour swap,
+                                        because the panel paints each button's colour from machine
+                                        state. An overlay stays unmistakable on any of those colours.
+                                    TR: Basma geri bildirimi renk değişimi değil, parlak bir katman;
+                                        çünkü panel her butonun rengini makine durumundan boyuyor.
+                                        Katman, o renklerin hepsinin üzerinde açıkça görünür.
+                                -->
+                                <Border x:Name="Flash" CornerRadius="8" Background="White"
+                                        Opacity="0" IsHitTestVisible="False"/>
+                                <Border x:Name="Ring" CornerRadius="8" BorderBrush="White"
+                                        BorderThickness="0" IsHitTestVisible="False"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Flash" Property="Opacity" Value="0.14"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="Flash" Property="Opacity" Value="0.55"/>
+                                    <Setter TargetName="Ring" Property="BorderThickness" Value="3"/>
+                                    <Setter TargetName="Bd" Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="0.96" ScaleY="0.92"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter TargetName="Bd" Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="Bd" Property="Opacity" Value="0.45"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- EN: Matching dark, rounded entry field. TR: Uyumlu koyu, yuvarlak giriş alanı. -->
+            <Style x:Key="HmiTextBoxStyle" TargetType="TextBox">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="6"
+                                    SnapsToDevicePixels="True">
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="2,0"
+                                              VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

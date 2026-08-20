@@ -17,6 +17,24 @@ public class PlcService
     private readonly SymbolMapper _symbolMapper;
 
     /// <summary>
+    /// EN: Serializes all PLC operations. S7.Net exchanges request/response (PDU) over a single
+    ///     socket and is not safe for concurrent use: overlapping calls interleave the responses.
+    ///     Every connect / disconnect / read / write passes through this gate, so a cyclic monitor
+    ///     poll and an operator write can never be in flight at the same time.
+    /// TR: Tüm PLC işlemlerini sıraya sokar. S7.Net tek soket üzerinden istek/yanıt (PDU) alışverişi
+    ///     yapar ve eşzamanlı kullanıma uygun değildir: iç içe giren çağrılarda yanıtlar karışır.
+    ///     Her bağlanma / kesme / okuma / yazma bu kapıdan geçer, böylece döngüsel izleme turu ile
+    ///     operatörün yazma komutu asla aynı anda soketde bulunamaz.
+    /// </summary>
+    private readonly SemaphoreSlim _gate = new(1, 1);
+
+    /// <summary>
+    /// EN: Maximum time DisconnectAsync waits for an in-flight operation before closing anyway.
+    /// TR: DisconnectAsync'in, devam eden bir işlemi beklerken aşmayacağı süre; sonrasında yine de kapatır.
+    /// </summary>
+    private const int DisconnectGateTimeoutMs = 2000;
+
+    /// <summary>
     /// EN: Returns true if the PLC is currently connected.
     /// TR: PLC bağlı ise true döndürür.
     /// </summary>
@@ -78,6 +96,23 @@ public class PlcService
     /// <param name="cancellationToken">EN: Token to cancel the operation. TR: İşlemi iptal etmek için token.</param>
     /// <returns>EN: True if connected successfully. TR: Başarılı bağlanıldı ise true.</returns>
     public async Task<bool> ConnectAsync(CpuType cpu, string ipAddress, short rack = 0, short slot = 1, CancellationToken cancellationToken = default)
+    {
+        await _gate.WaitAsync(cancellationToken);
+        try
+        {
+            return await ConnectCoreAsync(cpu, ipAddress, rack, slot, cancellationToken);
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
+    /// <summary>
+    /// EN: Connection logic itself. Always called with the gate held; never call directly.
+    /// TR: Bağlantı mantığının kendisi. Daima kapı tutulurken çağrılır; doğrudan çağrılmamalıdır.
+    /// </summary>
+    private async Task<bool> ConnectCoreAsync(CpuType cpu, string ipAddress, short rack, short slot, CancellationToken cancellationToken)
     {
         try
         {
@@ -163,19 +198,29 @@ public class PlcService
     /// </summary>
     public async Task DisconnectAsync()
     {
-        if (_plc != null)
+        // Devam eden bir okuma/yazma varsa sırasını beklemek doğru davranış; ancak yanıt vermeyen
+        // bir PLC yüzünden kapatma işleminin süresiz asılı kalmaması için bekleme sınırlı tutulur.
+        // Süre aşılırsa yine de kapatılır: uçan istek zaten hata alacaktır, bağlantıyı zaten bırakıyoruz.
+        var acquired = await _gate.WaitAsync(DisconnectGateTimeoutMs);
+        try
         {
-            _plc.Close();
+            if (_plc != null)
+            {
+                _plc.Close();
 
-            // Bağlantı bilgilerini temizle
-            ConnectedCpuType = null;
-            ConnectedIpAddress = null;
-            ConnectedRack = 0;
-            ConnectedSlot = 0;
+                // Bağlantı bilgilerini temizle
+                ConnectedCpuType = null;
+                ConnectedIpAddress = null;
+                ConnectedRack = 0;
+                ConnectedSlot = 0;
 
-            StatusChanged?.Invoke(this, LocalizationManager.Instance.T("Plc_Disconnected"));
+                StatusChanged?.Invoke(this, LocalizationManager.Instance.T("Plc_Disconnected"));
+            }
         }
-        await Task.CompletedTask;
+        finally
+        {
+            if (acquired) _gate.Release();
+        }
     }
 
     /// <summary>
@@ -187,6 +232,25 @@ public class PlcService
     /// <param name="variable">EN: Symbolic or physical address to read. TR: Okunacak sembolik veya fiziksel adres.</param>
     /// <returns>EN: The read and converted value. TR: Okunan ve dönüştürülen değer.</returns>
     public async Task<object?> ReadAsync(string variable)
+    {
+        await _gate.WaitAsync();
+        try
+        {
+            return await ReadCoreAsync(variable);
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
+    /// <summary>
+    /// EN: Read logic itself. Always called with the gate held, so multi-step reads
+    ///     (WSTRING header + payload) stay atomic against other operations.
+    /// TR: Okuma mantığının kendisi. Daima kapı tutulurken çağrılır; böylece çok adımlı okumalar
+    ///     (WSTRING header + gövde) diğer işlemlere karşı bölünmez kalır.
+    /// </summary>
+    private async Task<object?> ReadCoreAsync(string variable)
     {
         if (_plc == null || !IsConnected)
             throw new InvalidOperationException(LocalizationManager.Instance.T("Ex_PlcNotConnected"));
@@ -236,6 +300,25 @@ public class PlcService
     /// <param name="variable">EN: Symbolic or physical address to write. TR: Yazılacak sembolik veya fiziksel adres.</param>
     /// <param name="value">EN: Value to write. TR: Yazılacak değer.</param>
     public async Task WriteAsync(string variable, object value)
+    {
+        await _gate.WaitAsync();
+        try
+        {
+            await WriteCoreAsync(variable, value);
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
+    /// <summary>
+    /// EN: Write logic itself. Always called with the gate held, so multi-step writes
+    ///     (WSTRING header read + payload write) stay atomic against other operations.
+    /// TR: Yazma mantığının kendisi. Daima kapı tutulurken çağrılır; böylece çok adımlı yazmalar
+    ///     (WSTRING header okuma + gövde yazma) diğer işlemlere karşı bölünmez kalır.
+    /// </summary>
+    private async Task WriteCoreAsync(string variable, object value)
     {
         if (_plc == null || !IsConnected)
             throw new InvalidOperationException(LocalizationManager.Instance.T("Ex_PlcNotConnected"));
@@ -297,6 +380,343 @@ public class PlcService
             StatusChanged?.Invoke(this, LocalizationManager.Instance.T("Plc_WriteError", ex.Message));
             throw;
         }
+    }
+
+    /// <summary>
+    /// EN: Result of a batched read: values that came back, and per-symbol error text for those
+    ///     that did not. A failing symbol never fails the whole batch.
+    /// TR: Toplu okumanın sonucu: dönen değerler ve dönmeyenler için sembol başına hata metni.
+    ///     Hata veren bir sembol tüm partiyi düşürmez.
+    /// </summary>
+    public class MultiReadResult
+    {
+        /// <summary>EN: Value per symbol. TR: Sembol başına değer.</summary>
+        public Dictionary<string, object?> Values { get; } = new(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>EN: Error text per symbol that could not be read. TR: Okunamayan semboller için hata metni.</summary>
+        public Dictionary<string, string> Errors { get; } = new(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>EN: How many PLC round trips the batch actually cost. TR: Partinin gerçekte kaç PLC gidiş-dönüşüne mal olduğu.</summary>
+        public int RoundTrips { get; internal set; }
+    }
+
+    /// <summary>
+    /// EN: Largest byte count requested in a single block read. Kept below the smallest S7 PDU
+    ///     payload (S7-300 negotiates ~222 usable bytes) so one plan works on every CPU family.
+    /// TR: Tek blok okumada istenecek en büyük byte sayısı. En küçük S7 PDU gövdesinin altında
+    ///     tutulur (S7-300 ~222 kullanılabilir byte anlaşır); böylece tek plan her CPU ailesinde çalışır.
+    /// </summary>
+    private const int MaxBlockBytes = 200;
+
+    /// <summary>
+    /// EN: Reads many symbols in as few PLC round trips as possible.
+    ///
+    ///     Reading symbol by symbol costs one request/response per symbol, and on a real line that
+    ///     measured ~95 ms each — 23 symbols took 2180 ms, far past a 500 ms refresh. Comm DBs keep
+    ///     their fields contiguous, so instead of N requests this fetches whole byte ranges and
+    ///     decodes the individual fields locally. Reading a few unused bytes is vastly cheaper than
+    ///     another round trip, so nearby ranges are merged aggressively.
+    ///
+    ///     Symbols this cannot decode from a block — STRING/WSTRING/DTL, 8-byte types, and anything
+    ///     that is not a plain data block address — fall back to a normal single read, so callers
+    ///     never need to care which path a symbol took.
+    /// TR: Çok sayıda sembolü mümkün olan en az PLC gidiş-dönüşüyle okur.
+    ///
+    ///     Sembol sembol okumak her sembol için bir istek/yanıt demek ve gerçek bir hatta bu ~95 ms
+    ///     ölçüldü — 23 sembol 2180 ms sürdü, 500 ms yenilemenin çok ötesi. Haberleşme DB'leri
+    ///     alanlarını bitişik tutar; bu yüzden N istek yerine bütün byte aralıkları çekilir ve
+    ///     alanlar yerelde çözülür. Birkaç kullanılmayan byte okumak, bir gidiş-dönüşten kat kat
+    ///     ucuz olduğu için yakın aralıklar cömertçe birleştirilir.
+    ///
+    ///     Bloktan çözülemeyen semboller — STRING/WSTRING/DTL, 8-byte tipler ve düz veri bloğu
+    ///     adresi olmayan her şey — normal tek okumaya düşer; çağıran hangi yolun kullanıldığını
+    ///     bilmek zorunda kalmaz.
+    /// </summary>
+    /// <param name="variables">EN: Symbolic or physical addresses to read. TR: Okunacak sembolik veya fiziksel adresler.</param>
+    public async Task<MultiReadResult> ReadManyAsync(IEnumerable<string> variables)
+    {
+        await _gate.WaitAsync();
+        try
+        {
+            return await ReadManyCoreAsync(variables);
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
+    /// <summary>
+    /// EN: Batched read logic. Always called with the gate held.
+    /// TR: Toplu okuma mantığı. Daima kapı tutulurken çağrılır.
+    /// </summary>
+    private async Task<MultiReadResult> ReadManyCoreAsync(IEnumerable<string> variables)
+    {
+        if (_plc == null || !IsConnected)
+            throw new InvalidOperationException(LocalizationManager.Instance.T("Ex_PlcNotConnected"));
+
+        var result = new MultiReadResult();
+        Classify(_symbolMapper, variables, out var blockable, out var fallback);
+
+        // Bloklu okuma: DB başına, bitişik aralıkları birleştirerek
+        foreach (var group in blockable.GroupBy(f => f.Db))
+        {
+            foreach (var plan in PlanBlocks(group))
+            {
+                try
+                {
+                    var buffer = await _plc.ReadBytesAsync(DataType.DataBlock, group.Key, plan.Start, plan.Length);
+                    result.RoundTrips++;
+
+                    foreach (var field in plan.Fields)
+                    {
+                        try
+                        {
+                            var raw = DecodeFromBlock(buffer, plan.Start, field);
+                            result.Values[field.Symbol] = ConvertReadValue(field.DataType, raw);
+                        }
+                        catch (Exception ex)
+                        {
+                            result.Errors[field.Symbol] = ex.Message;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Blok okunamadıysa yalnızca o bloğun alanları etkilenir.
+                    foreach (var field in plan.Fields)
+                        result.Errors[field.Symbol] = ex.Message;
+                }
+            }
+        }
+
+        // Bloktan çözülemeyenler tek tek
+        foreach (var variable in fallback)
+        {
+            try
+            {
+                result.Values[variable] = await ReadCoreAsync(variable);
+                result.RoundTrips++;
+            }
+            catch (Exception ex)
+            {
+                result.Errors[variable] = ex.Message;
+            }
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// EN: One PLC request in a planned batched read.
+    /// TR: Planlanmış toplu okumadaki tek bir PLC isteği.
+    /// </summary>
+    /// <param name="Db">EN: Data block number, 0 for a fallback single read. TR: Veri bloğu numarası, tek okuma yedeğinde 0.</param>
+    /// <param name="Start">EN: First byte read. TR: Okunan ilk byte.</param>
+    /// <param name="Length">EN: Byte count read. TR: Okunan byte sayısı.</param>
+    /// <param name="FieldCount">EN: Symbols this request satisfies. TR: Bu isteğin karşıladığı sembol sayısı.</param>
+    /// <param name="IsBlock">EN: False when the symbol had to be read on its own. TR: Sembol tek başına okunmak zorunda kaldıysa false.</param>
+    public record ReadPlanStep(int Db, int Start, int Length, int FieldCount, bool IsBlock);
+
+    /// <summary>
+    /// EN: Works out how many PLC requests reading these symbols would take, without connecting.
+    ///     Useful before a cyclic page goes live: if the step count approaches the symbol count,
+    ///     the fields are too scattered to batch and the cycle will be slow.
+    /// TR: Bu sembolleri okumanın kaç PLC isteği tutacağını, bağlanmadan hesaplar.
+    ///     Döngüsel bir sayfa devreye girmeden önce işe yarar: adım sayısı sembol sayısına
+    ///     yaklaşıyorsa alanlar toplu okumaya fazla dağınık demektir ve tur yavaş olacaktır.
+    /// </summary>
+    /// <param name="symbols">EN: Symbol table for address lookup. TR: Adres çözümlemesi için sembol tablosu.</param>
+    /// <param name="variables">EN: Symbols that would be read. TR: Okunacak semboller.</param>
+    public static List<ReadPlanStep> PlanRead(SymbolMapper symbols, IEnumerable<string> variables)
+    {
+        Classify(symbols, variables, out var blockable, out var fallback);
+
+        var steps = blockable
+            .GroupBy(f => f.Db)
+            .SelectMany(g => PlanBlocks(g).Select(p => new ReadPlanStep(g.Key, p.Start, p.Length, p.Fields.Count, true)))
+            .ToList();
+
+        steps.AddRange(fallback.Select(_ => new ReadPlanStep(0, 0, 0, 1, false)));
+        return steps;
+    }
+
+    /// <summary>
+    /// EN: Splits the requested symbols into those decodable from a block read and those needing
+    ///     their own request. Shared by planning and reading so the two can never disagree.
+    /// TR: İstenen sembolleri, blok okumadan çözülebilenler ile kendi isteğini gerektirenler
+    ///     olarak ayırır. Planlama ve okuma bunu paylaşır; böylece ikisi asla ayrışamaz.
+    /// </summary>
+    private static void Classify(SymbolMapper symbols, IEnumerable<string> variables,
+        out List<BlockField> blockable, out List<string> fallback)
+    {
+        blockable = new List<BlockField>();
+        fallback = new List<string>();
+
+        foreach (var variable in variables.Distinct(StringComparer.OrdinalIgnoreCase))
+        {
+            var info = symbols.GetSymbolInfo(variable);
+            var address = info?.PhysicalAddress ?? symbols.Resolve(variable);
+            var dataType = info?.DataType ?? string.Empty;
+
+            if (IsBlockDecodable(dataType) &&
+                TryParseDbAddress(address, out var db, out var byteOffset, out var bitOffset, out var size))
+            {
+                blockable.Add(new BlockField(variable, dataType, db, byteOffset, bitOffset, size));
+            }
+            else
+            {
+                fallback.Add(variable);
+            }
+        }
+    }
+
+    /// <summary>
+    /// EN: One field to be extracted from a block read.
+    /// TR: Blok okumadan çıkarılacak tek bir alan.
+    /// </summary>
+    /// <param name="Symbol">EN: Symbol name as requested. TR: İstendiği haliyle sembol adı.</param>
+    /// <param name="DataType">EN: PLC data type. TR: PLC veri tipi.</param>
+    /// <param name="Db">EN: Data block number. TR: Veri bloğu numarası.</param>
+    /// <param name="ByteOffset">EN: Byte offset within the DB. TR: DB içindeki byte offseti.</param>
+    /// <param name="BitOffset">EN: Bit index for bit fields, -1 otherwise. TR: Bit alanları için bit indeksi, değilse -1.</param>
+    /// <param name="Size">EN: Field width in bytes (1, 2 or 4). TR: Alan genişliği (byte: 1, 2 veya 4).</param>
+    private record BlockField(string Symbol, string DataType, int Db, int ByteOffset, int BitOffset, int Size);
+
+    /// <summary>
+    /// EN: A planned block read and the fields it satisfies.
+    /// TR: Planlanmış bir blok okuma ve karşıladığı alanlar.
+    /// </summary>
+    private record BlockPlan(int Start, int Length, List<BlockField> Fields);
+
+    /// <summary>
+    /// EN: Groups fields into the fewest block reads. Fields are sorted by offset and merged into
+    ///     the current block as long as it stays within <see cref="MaxBlockBytes"/> — gaps are read
+    ///     rather than split, because an extra round trip costs far more than extra bytes.
+    /// TR: Alanları en az sayıda blok okumaya gruplar. Alanlar offsete göre sıralanır ve blok
+    ///     <see cref="MaxBlockBytes"/> sınırında kaldığı sürece aynı bloğa katılır — boşluklar
+    ///     bölünmek yerine okunur, çünkü fazladan bir gidiş-dönüş fazladan byte'tan çok daha pahalı.
+    /// </summary>
+    private static List<BlockPlan> PlanBlocks(IEnumerable<BlockField> fields)
+    {
+        var plans = new List<BlockPlan>();
+        var ordered = fields.OrderBy(f => f.ByteOffset).ToList();
+        if (ordered.Count == 0) return plans;
+
+        var start = ordered[0].ByteOffset;
+        var end = start + ordered[0].Size;      // dışlayıcı üst sınır
+        var current = new List<BlockField> { ordered[0] };
+
+        foreach (var field in ordered.Skip(1))
+        {
+            var candidateEnd = Math.Max(end, field.ByteOffset + field.Size);
+            if (candidateEnd - start <= MaxBlockBytes)
+            {
+                end = candidateEnd;
+                current.Add(field);
+            }
+            else
+            {
+                plans.Add(new BlockPlan(start, end - start, current));
+                start = field.ByteOffset;
+                end = field.ByteOffset + field.Size;
+                current = new List<BlockField> { field };
+            }
+        }
+
+        plans.Add(new BlockPlan(start, end - start, current));
+        return plans;
+    }
+
+    /// <summary>
+    /// EN: True for the fixed-width data block types this can pull straight out of a byte buffer.
+    ///     Types needing their own protocol handling (strings, DTL, 8-byte values) are excluded.
+    /// TR: Byte tamponundan doğrudan çekilebilen sabit genişlikli veri bloğu tipleri için true.
+    ///     Kendi protokol işleyişi gereken tipler (string'ler, DTL, 8-byte değerler) dışlanır.
+    /// </summary>
+    private static bool IsBlockDecodable(string dataType) =>
+        dataType.ToUpperInvariant() switch
+        {
+            "BOOL" or "BYTE" or "USINT" or "SINT" or "CHAR" or
+            "WORD" or "UINT" or "INT" or "WCHAR" or "S5TIME" or "DATE" or "COUNTER" or
+            "DWORD" or "UDINT" or "DINT" or "REAL" or "TIME" or "TIME_OF_DAY" or "TOD" => true,
+            _ => false
+        };
+
+    /// <summary>
+    /// EN: Parses "DB{n}.DB{X|B|W|D}{offset}[.{bit}]" into its parts and the field width.
+    ///     Returns false for anything that is not a plain data block address.
+    /// TR: "DB{n}.DB{X|B|W|D}{offset}[.{bit}]" adresini parçalarına ve alan genişliğine ayırır.
+    ///     Düz veri bloğu adresi olmayan her şey için false döner.
+    /// </summary>
+    private static bool TryParseDbAddress(string address, out int db, out int byteOffset, out int bitOffset, out int size)
+    {
+        db = byteOffset = size = 0;
+        bitOffset = -1;
+
+        var upper = address.ToUpperInvariant().Trim();
+        if (!upper.StartsWith("DB")) return false;
+
+        var dot = upper.IndexOf('.');
+        if (dot < 3 || !int.TryParse(upper[2..dot], out db)) return false;
+
+        var rest = upper[(dot + 1)..];
+        if (!rest.StartsWith("DB") || rest.Length < 4) return false;
+
+        size = rest[2] switch
+        {
+            'X' => 1,   // bit — bir byte okunur, bit maskelenir
+            'B' => 1,
+            'W' => 2,
+            'D' => 4,
+            _   => 0
+        };
+        if (size == 0) return false;
+
+        var numeric = rest[3..];
+        var bitDot = numeric.IndexOf('.');
+        if (bitDot >= 0)
+        {
+            if (!int.TryParse(numeric[(bitDot + 1)..], out bitOffset) || bitOffset is < 0 or > 7)
+                return false;
+            numeric = numeric[..bitDot];
+        }
+        else if (rest[2] == 'X')
+        {
+            return false;   // bit adresi bit indeksi olmadan anlamsız
+        }
+
+        return int.TryParse(numeric, out byteOffset) && byteOffset >= 0;
+    }
+
+    /// <summary>
+    /// EN: Extracts one field from a block buffer, producing the same raw type that a single
+    ///     S7.Net read would return so <see cref="ConvertReadValue"/> applies unchanged:
+    ///     bit to bool, byte to byte, word to ushort, dword to uint (big-endian).
+    /// TR: Blok tamponundan tek bir alanı çıkarır ve tek tek S7.Net okumasının döndüreceği ham
+    ///     tipin aynısını üretir; böylece <see cref="ConvertReadValue"/> değişmeden uygulanır:
+    ///     bit için bool, byte için byte, word için ushort, dword için uint (big-endian).
+    /// </summary>
+    private static object DecodeFromBlock(byte[] buffer, int blockStart, BlockField field)
+    {
+        var i = field.ByteOffset - blockStart;
+        if (i < 0 || i + field.Size > buffer.Length)
+            throw new IndexOutOfRangeException($"Blok tamponu alanı kapsamıyor: {field.Symbol}");
+
+        if (field.BitOffset >= 0)
+            return (buffer[i] & (1 << field.BitOffset)) != 0;
+
+        // Her kol ayrı ayrı object'e çevrilir. Aksi halde switch ifadesinin ortak tipi
+        // byte/ushort/uint birleşimi olarak uint hesaplanır ve her değer uint olarak kutulanır;
+        // o zaman ConvertReadValue'daki "value is ushort" gibi kontroller tutmaz ve örneğin
+        // INT değeri -1 yerine 65535 görünür.
+        return field.Size switch
+        {
+            1 => (object)buffer[i],
+            2 => (ushort)((buffer[i] << 8) | buffer[i + 1]),
+            4 => (uint)((buffer[i] << 24) | (buffer[i + 1] << 16) | (buffer[i + 2] << 8) | buffer[i + 3]),
+            _ => throw new NotSupportedException($"Beklenmeyen alan genişliği: {field.Size}")
+        };
     }
 
     /// <summary>

@@ -148,11 +148,39 @@ public sealed class LocalizationManager
     /// EN: Returns the translated string for the given key, falls back to English, then to the key itself.
     /// TR: Verilen anahtar için çevrilmiş metni döndürür; önce İngilizce'ye, sonra anahtarın kendisine düşer.
     /// </summary>
-    public string T(string key, string? fallback = null)
+    public string T(string key)
     {
         if (_strings.TryGetValue(key, out var val)) return val;
         if (_fallback.TryGetValue(key, out var eng)) return eng;
-        return fallback ?? key;
+        return key;
+    }
+
+    /// <summary>
+    /// EN: Returns the translated string, or the given text when the key is missing from every
+    ///     language file.
+    ///
+    ///     This is deliberately not an overload of <see cref="T(string)"/>. It used to be
+    ///     'T(string key, string? fallback = null)', which sat next to the params overload below —
+    ///     and C# prefers a method applicable in normal form over one needing params expansion.
+    ///     So every 'T("Key", someString)' call silently bound to the fallback overload and
+    ///     returned the template unformatted, leaving '{0}' on screen wherever a single string was
+    ///     being substituted. Separate names make that mistake impossible to write.
+    /// TR: Çevrilmiş metni döndürür; anahtar hiçbir dil dosyasında yoksa verilen metni döndürür.
+    ///
+    ///     Bu bilinçli olarak <see cref="T(string)"/> ile aynı adı taşımıyor. Eskiden
+    ///     'T(string key, string? fallback = null)' idi ve aşağıdaki params aşırı yüklemesiyle
+    ///     yan yana duruyordu — C# ise normal biçimde uygulanabilen metodu, params açılımı
+    ///     gerektirene tercih eder. Dolayısıyla her 'T("Key", birString)' çağrısı sessizce fallback
+    ///     aşırı yüklemesine bağlanıyor ve şablonu biçimlendirmeden döndürüyordu; tek bir string
+    ///     yerleştirilen her yerde ekranda '{0}' kalıyordu. Ayrı adlar bu hatayı yazılamaz kılıyor.
+    /// </summary>
+    /// <param name="key">EN: Translation key. TR: Çeviri anahtarı.</param>
+    /// <param name="fallback">EN: Text to use when the key is missing. TR: Anahtar yoksa kullanılacak metin.</param>
+    public string TOr(string key, string fallback)
+    {
+        if (_strings.TryGetValue(key, out var val)) return val;
+        if (_fallback.TryGetValue(key, out var eng)) return eng;
+        return fallback;
     }
 
     /// <summary>

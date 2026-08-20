@@ -20,6 +20,11 @@
 		<Content Include="lang\*.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+		<!-- Manuel test sayfası tanımları. qr-hatti.json makineye özeldir; kalıcı yeri
+		     (depoda örnek mi, saha başına dosya mı) henüz kararlaştırılmadı. -->
+		<Content Include="pages\*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="ModernWpfUI" Version="0.9.6" />
