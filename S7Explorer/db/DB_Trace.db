@@ -1,0 +1,71 @@
+﻿DATA_BLOCK "DB_Trace"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 1.0
+NON_RETAIN
+// ============================================================================
+//  DB : DB_Trace  --  başlık + halka tampon
+// ============================================================================
+//  KAPASİTE : Array[0..255] = 256 kayıt x 24 bayt = 6144 bayt (6 KB)
+//
+//  NEDEN 256:
+//  CPU 1212C'nin ÇALIŞMA BELLEĞİ 76800 bayt ve program ile bütün DB'ler
+//  bunu paylaşıyor. Sahada ölçüldü (2026-08-24, TIA Program info):
+//      kullanılan 52631 bayt, BOŞ 24169 bayt
+//  1024 kayıt 24576 bayt eder - boş belleğin TAMAMINDAN büyük, sığmaz.
+//  256 kayıt 6144 bayt ile bol bir pay bırakıyor.
+//
+//  Kapasitenin küçük olması bu tasarımda sorun DEĞİL: "tetiklemede
+//  dondurma" açıkken olay anının çevresi korunuyor, tamponun eski
+//  kayıtları ezmesi önemsizleşiyor. Bir açılış + reset + start çevrimi
+//  ~25 kayıt tutuyor; 256 kayıt kabaca on çevrimlik geçmiş demek.
+//
+//  BÜYÜTMEK/KÜÇÜLTMEK İÇİN: ÜÇ yer BİRLİKTE değiştirilmeli -
+//      1) aşağıdaki dizi sınırı (255)
+//      2) uiCapacity başlangıç değeri
+//      3) dosya 24'teki sınır sabitleri (bCmdClear döngüsü, taşma
+//         kontrolü, sarma testi) - hepsi 255
+//      256 kayıt ->  Array[0..255],  uiCapacity := 256,   6144 bayt
+//      512 kayıt ->  Array[0..511],  uiCapacity := 512,  12288 bayt
+//
+//  Kapasite zaten kritik değil: "tetiklemede dondurma" açıkken olay anının
+//  çevresi korunuyor, tamponun eski kayıtları ezmesi önemsizleşiyor.
+//
+//  NON_RETAIN: log elektrik kesintisinde KAYBOLUR. Bu bilinçli - retain
+//  bütçesi 10240 baytın tamamı ve onu DB_Cfg gibi gerçek makine
+//  sabitlerine ayırmak gerekiyor. Kesinti bilgisi yine de kaybolmuyor:
+//  PLC RUN'a geçer geçmez olay 210 yazılıyor, yani log 210 ile
+//  BAŞLIYORSA duruşun sebebi PLC'nin yeniden başlamasıdır.
+// ----------------------------------------------------------------------------
+   STRUCT 
+      uiFormat : UInt;   //  0  Log biçim sürümü. PC bunu kontrol etmeli.
+      uiCapacity : UInt;   //  2  Kayıt kapasitesi (dizi boyu)
+      uiEntrySize : UInt;   //  4  Bir kaydın bayt boyu (24)
+      uiWrIndex : UInt;   //  6  BİR SONRAKİ yazılacak index
+      uiLastIndex : UInt;   //  8  EN SON yazılan index  <-- PC buradan başlar
+      udWrCount : UDInt;   // 10  Açılıştan beri TOPLAM kayıt (sıfırlanmaz)
+      uiPostTrig : UInt;   // 14  Dondurmaya kaç kayıt kaldı (0 = tetik yok) ---- AYAR : PC yazar ----
+      uiPostCount : UInt;   // 16  Tetikten sonra alınacak kayıt sayısı ---- BAYRAKLAR ve KOMUTLAR ----  Komut bitlerini PC set eder, PLC işleyip KENDİSİ sıfırlar -  DB_PC'deki komut bitleriyle aynı sözleşme.
+      bFrozen : Bool;   // 18.0  Log donduruldu            (PLC yazar)
+      bWrapped : Bool;   // 18.1  Tampon en az bir tur döndü (PLC yazar)
+      bEnable : Bool;   // 18.2  FALSE = hiç kayıt alma     (PC yazar)
+      bFreezeOnStop : Bool;   // 18.3  Beklenmedik duruşta dondur (PC yazar)
+      bCmdClear : Bool;   // 18.4  LOGU TAMAMEN SİL (PC set eder, PLC siler)       Bütün kayıtların BÜTÜN alanları sıfırlanır;       uiWrIndex / uiLastIndex / udWrCount ve       dondurma durumu da sıfırlanır. Silme       sonrası blok, hiç olay yaşanmamış gibi       görünür - sıra numaraları da 0'dan başlar.
+      bCmdResume : Bool;   // 18.5  Dondurmayı çöz  (PC set eder, PLC siler)
+      bCmdFreeze : Bool;   // 18.6  Elle dondur     (PC set eder, PLC siler)
+      bReserve_18_7 : Bool;   // 18.7
+      uiReserve1 : UInt;   // 20  Başlığı tam 24 bayta tamamlar ki kayıtlar
+      uiReserve2 : UInt;   // 22  bayt 24'te başlasın (PC'de adres = 24+i*24) ---- KAYITLAR : bayt 24'ten itibaren, her biri 24 bayt ----
+      Entry : Array[0..255] of "udtTraceEntry";
+   END_STRUCT;
+
+
+BEGIN
+   uiFormat := 1;
+   uiCapacity := 256;
+   uiEntrySize := 24;
+   uiPostCount := 32;
+   bEnable := TRUE;
+   bFreezeOnStop := TRUE;
+
+END_DATA_BLOCK
+

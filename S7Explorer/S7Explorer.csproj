@@ -29,6 +29,11 @@
 		<Content Include="pages\*.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+		<!-- Siemens SCL kaynakları (DbParser girdisi). qr-hatti.json gibi DB_PC de
+		     QR etiketleme hattına özeldir; DB_Trace halka tampon izleme bloğudur. -->
+		<Content Include="db\*.db">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="ModernWpfUI" Version="0.9.6" />

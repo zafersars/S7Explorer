@@ -157,6 +157,9 @@ S7Explorer/
 │   └── HmiStyle.cs                 # Fixed panel palette (theme-independent)
 ├── pages/
 │   └── qr-hatti.json               # Example page definition (machine-specific)
+├── db/
+│   ├── DB_PC.db                    # PC communication DB source (machine-specific)
+│   └── DB_Trace.db                 # Trace ring buffer DB source
 ├── lang/
 │   ├── en-US.json                  # English strings
 │   ├── tr-TR.json                  # Turkish strings
@@ -347,6 +350,9 @@ S7Explorer/
 │   └── HmiStyle.cs                 # Sabit pano paleti (temadan bağımsız)
 ├── pages/
 │   └── qr-hatti.json               # Örnek sayfa tanımı (makineye özel)
+├── db/
+│   ├── DB_PC.db                    # PC haberleşme DB kaynağı (makineye özel)
+│   └── DB_Trace.db                 # İzleme halka tamponu DB kaynağı
 ├── lang/
 │   ├── en-US.json                  # İngilizce metinler
 │   ├── tr-TR.json                  # Türkçe metinler
