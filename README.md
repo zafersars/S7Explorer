@@ -2,6 +2,8 @@
 
 A WPF desktop application for communicating with **Siemens S7 series PLCs** (S7-200, S7-300, S7-400, S7-1200, S7-1500) over TCP/IP using the [S7.Net](https://github.com/S7NetPlus/s7netplus) library. Built with **.NET 8** and **WPF**.
 
+[**⬇ Download the latest release**](https://github.com/zafersars/S7Explorer/releases/latest) — single-file `S7Explorer.exe`, no .NET installation required.
+
 ---
 
 ## 🇬🇧 English
@@ -167,10 +169,14 @@ S7Explorer/
     └── DB_TypeTest.symbols.json    # Parsed symbol output sample
 ```
 
+### Download
+
+Grab `S7Explorer.exe` from the [latest release](https://github.com/zafersars/S7Explorer/releases/latest). It is a self-contained single file — no .NET installation is needed. Put it in a writable folder (**not** under `Program Files`): `settings.json`, `symbols.json` and `pages/*.json` are kept next to the executable.
+
 ### Requirements
 
 - Windows 10/11
-- .NET 8 Runtime (or SDK for development)
+- .NET 8 SDK — only for building from source; the released EXE is self-contained
 - Network access to the Siemens PLC
 - Siemens S7-200 Smart / S7-300 / S7-400 / S7-1200 / S7-1500 PLC
 
@@ -353,10 +359,14 @@ S7Explorer/
     └── DB_TypeTest.symbols.json    # Ayrıştırılmış sembol çıktısı örneği
 ```
 
+### İndirme
+
+`S7Explorer.exe` dosyasını [son sürümden](https://github.com/zafersars/S7Explorer/releases/latest) indirin. Kendi kendine yeten tek dosyadır — .NET kurulumu gerekmez. Yazılabilir bir klasöre koyun (`Program Files` altına **değil**): `settings.json`, `symbols.json` ve `pages/*.json` EXE'nin yanında tutulur.
+
 ### Gereksinimler
 
 - Windows 10/11
-- .NET 8 Runtime (geliştirme için SDK)
+- .NET 8 SDK — yalnızca kaynaktan derlemek için; yayınlanan EXE kendi kendine yeter
 - Siemens PLC'ye ağ erişimi
 - Siemens S7-200 Smart / S7-300 / S7-400 / S7-1200 / S7-1500 PLC
 
