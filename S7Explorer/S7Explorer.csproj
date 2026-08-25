@@ -12,6 +12,10 @@
 		<Platforms>AnyCPU;x64</Platforms>
 		<!-- Boyut küçültme: SelfContained EXE ~150MB → ~100-110MB -->
 		<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+		<!-- WPF native DLL'leri (wpfgfx_cor3, PresentationNative_cor3, vcruntime140_cor3...)
+		     varsayılan olarak tek dosyanın dışında kalır; EXE tek başına indirilince
+		     pencere oluşurken DllNotFoundException ile çöker. -->
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 	</PropertyGroup>
 	<ItemGroup>
 		<Resource Include="Resources\app_icon.ico" />
