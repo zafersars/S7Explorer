@@ -18,6 +18,14 @@ public class ConnectionSettings
     public string Theme { get; set; } = "Light";
     public string Language { get; set; } = "en-US";
 
+    /// <summary>
+    /// EN: Panel size the manual page is laid out for ("7" or "10"). Remembered because it belongs
+    ///     to the machine the engineer is working on, not to the session.
+    /// TR: Manuel sayfanın hangi pano boyutuna göre yerleştirileceği ("7" veya "10"). Hatırlanır,
+    ///     çünkü bu bilgi oturuma değil, mühendisin üzerinde çalıştığı makineye aittir.
+    /// </summary>
+    public string PanelSize { get; set; } = "10";
+
     private const string SettingsFileName = "settings.json";
     private static readonly string SettingsFilePath = 
         Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SettingsFileName);

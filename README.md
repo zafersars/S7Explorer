@@ -107,6 +107,19 @@ Disarming, stopping monitoring, or closing the window clears the command bits fi
 
 > ⚠️ **Watchdog.** `machine.lifeOut` is a handshake: the app writes 1, the PLC program pulls it back to 0. Reading a 0 proves the PLC is scanning. If the PLC program does **not** implement this handshake, nothing on the PLC side can drop a command bit that stayed set after a network drop or an application crash. Confirm this with the PLC program before arming writing on a machine that can move.
 
+#### Panel size, language and theme
+
+The page header carries the same language and theme selectors as the main window, plus a **panel selector**:
+
+| Profile | Resolution | Class |
+|---|---|---|
+| 7" | 800 × 480 | KTP700 / TP700 / MTP700 |
+| 10" | 1280 × 800 | MTP1000 Unified |
+
+The choice is not cosmetic. Cards, buttons, lamps, steppers and fonts are all sized from the selected profile (`PanelProfile`), the controls are rebuilt, and the panel area is drawn at exactly the target resolution inside a bezel. If the page is taller than the panel, a warning states by how many pixels — an operator at the machine cannot scroll a membrane screen the way a mouse scrolls a window, so anything past the bottom edge is simply unreachable. The selection is remembered in `settings.json` (`panelSize`).
+
+The theme dresses the window around the panel. The panel itself keeps the fixed `HmiStyle` palette in every theme, because on a machine screen red means fault regardless of what the rest of the application looks like.
+
 #### Alarm strip
 
 Every symbol under `alarmGroup.prefix` becomes an alarm, labelled from its description in `symbols.json`. Only *transitions* are recorded, so a standing alarm produces one timestamped line rather than one per cycle. When the condition goes away the line is not deleted — it is marked: the icon greys, the text is struck through and the time it cleared is added. Recent history is what tells an operator what happened while they were looking at the machine instead of the screen.
@@ -138,6 +151,7 @@ S7Explorer/
 │   ├── ManualPageValidator.cs      # Enforces write permission, types, ranges
 │   ├── ManualPageRunner.cs         # Cyclic read, life bit, command writing
 │   ├── ManualControlFactory.cs     # Builds the WPF control per JSON type
+│   ├── PanelProfile.cs             # 7" / 10" panel dimensions
 │   └── HmiStyle.cs                 # Fixed panel palette (theme-independent)
 ├── pages/
 │   └── qr-hatti.json               # Example page definition (machine-specific)
@@ -279,6 +293,19 @@ Yazmayı kapatmak, izlemeyi durdurmak veya pencereyi kapatmak önce komut bitler
 
 > ⚠️ **Watchdog.** `machine.lifeOut` bir el sıkışmadır: uygulama 1 yazar, PLC programı 0'a çeker. 0 okumak PLC'nin tarama yaptığının kanıtıdır. PLC programı bu el sıkışmayı uygulamıyorsa, ağ koptuğunda ya da uygulama çöktüğünde set kalmış bir komut bitini PLC tarafında düşürecek hiçbir şey yoktur. Hareket edebilen bir makinede yazmayı etkinleştirmeden önce bunu PLC programından teyit edin.
 
+#### Pano boyutu, dil ve tema
+
+Sayfa başlığı, ana penceredeki dil ve tema seçicilerinin aynısını taşır; yanına bir de **pano seçici** eklenir:
+
+| Profil | Çözünürlük | Sınıf |
+|---|---|---|
+| 7" | 800 × 480 | KTP700 / TP700 / MTP700 |
+| 10" | 1280 × 800 | MTP1000 Unified |
+
+Seçim görsel bir tercih değildir. Kartlar, butonlar, lambalar, set değeri kutuları ve yazı boyutları seçilen profilden (`PanelProfile`) türetilir, kontroller yeniden kurulur ve pano alanı tam hedef çözünürlükte bir çerçeve içinde çizilir. Sayfa panodan uzunsa kaç piksel taştığı uyarı olarak yazılır — makinenin başındaki operatör, membran ekranı bir pencereyi fareyle kaydırdığı gibi kaydıramaz; alt kenarın altında kalan her şey ona erişilemezdir. Seçim `settings.json` içinde (`panelSize`) hatırlanır.
+
+Tema, panonun çevresindeki pencereyi giydirir. Panonun kendisi her temada sabit `HmiStyle` paletini korur; çünkü makine ekranında kırmızı, uygulamanın geri kalanı nasıl görünürse görünsün arıza demektir.
+
 #### Alarm şeridi
 
 `alarmGroup.prefix` altındaki her sembol bir alarm olur; etiketi `symbols.json` içindeki açıklamasından gelir. Yalnızca *geçişler* kaydedilir, böylece duran bir alarm turda bir değil, tek bir zaman damgalı satır üretir. Şart ortadan kalktığında satır silinmez, işaretlenir: simge grileşir, yazının üstü çizilir ve düştüğü saat eklenir. Yakın geçmiş, operatöre ekrana değil makineye bakarken ne olduğunu söyleyen şeydir.
@@ -310,6 +337,7 @@ S7Explorer/
 │   ├── ManualPageValidator.cs      # Yazma izni, tip ve aralık denetimi
 │   ├── ManualPageRunner.cs         # Döngüsel okuma, canlılık biti, komut yazma
 │   ├── ManualControlFactory.cs     # JSON tipine göre WPF kontrolünü üretir
+│   ├── PanelProfile.cs             # 7" / 10" pano ölçüleri
 │   └── HmiStyle.cs                 # Sabit pano paleti (temadan bağımsız)
 ├── pages/
 │   └── qr-hatti.json               # Örnek sayfa tanımı (makineye özel)

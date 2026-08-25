@@ -136,12 +136,6 @@ public partial class ManualPageWindow : Window
     private readonly ObservableCollection<ValidationRow> _validationRows = new();
     private readonly Dictionary<string, ManualValueRow> _rowsBySymbol = new(StringComparer.OrdinalIgnoreCase);
 
-    /// <summary>EN: Standard equipment card width; four fit across the screen. TR: Standart ekipman kartı genişliği; ekrana dördü sığar.</summary>
-    private const double CardWidth = 300;
-
-    /// <summary>EN: Alarm panel width, sized to sit beside the wide equipment card. TR: Alarm paneli genişliği; geniş ekipman kartının yanına sığacak ölçüde.</summary>
-    private const double AlarmCardWidth = 330;
-
     /// <summary>EN: How many alarm events are kept. TR: Kaç alarm olayının saklanacağı.</summary>
     private const int AlarmHistoryLimit = 60;
 
@@ -158,6 +152,9 @@ public partial class ManualPageWindow : Window
 
     private ManualPageRunner? _runner;
     private ManualPageLoadResult? _selected;
+
+    /// <summary>EN: Guards the panel selector while it is being populated. TR: Pano seçicisi doldurulurken olayı bastırır.</summary>
+    private bool _suppressPanelChange;
 
     /// <summary>
     /// EN: Raised for every message that belongs in the main window's log.
@@ -185,10 +182,193 @@ public partial class ManualPageWindow : Window
         clock.Start();
         ShowClock();
 
+        InitializeLanguageMenu();
+        InitializePanelSelector();
+
+        // Sayfa panoya sığmıyorsa bunu tasarım anında söylemek gerekir: makinenin başındaki
+        // operatör, kaydırma çubuğu olmayan bir membran ekranda alta kalan kartı hiç göremez.
+        PanelControls.SizeChanged += (_, _) => UpdatePanelFootnote();
+
         ApplyLanguage();
         L.LanguageChanged += (_, _) => ApplyLanguage();
 
         LoadPages();
+    }
+
+    /// <summary>
+    /// EN: Fills the panel-size selector and restores the last choice from the settings file.
+    /// TR: Pano boyutu seçicisini doldurur ve ayarlardaki son seçimi geri yükler.
+    /// </summary>
+    private void InitializePanelSelector()
+    {
+        foreach (var profile in PanelProfile.All)
+            CmbPanelSize.Items.Add(new ComboBoxItem { Content = profile.DisplayName, Tag = profile });
+
+        var saved = PanelProfile.FromKey(ConnectionSettings.Load().PanelSize);
+        HmiStyle.Metrics = saved;
+
+        // Seçimi kurarken olay tetiklenir; kurulum sırasında ayarı geri yazmanın anlamı yok.
+        _suppressPanelChange = true;
+        CmbPanelSize.SelectedIndex = PanelProfile.All.ToList().FindIndex(p => p.Key == saved.Key);
+        _suppressPanelChange = false;
+
+        ApplyPanelProfile();
+    }
+
+    /// <summary>
+    /// EN: Applies the selected panel's dimensions to the screen area and rebuilds the controls, so
+    ///     every element is sized for the panel the page will run on. The alarm history survives the
+    ///     rebuild — changing a layout preference must not erase what the machine just reported.
+    /// TR: Seçilen panonun ölçülerini ekran alanına uygular ve kontrolleri yeniden kurar; böylece her
+    ///     eleman, sayfanın çalışacağı panoya göre boyutlanır. Alarm geçmişi yeniden kurulumdan sağ
+    ///     çıkar — bir yerleşim tercihini değiştirmek, makinenin az önce bildirdiğini silmemelidir.
+    /// </summary>
+    private void ApplyPanelProfile()
+    {
+        var profile = HmiStyle.Metrics;
+
+        PanelControls.Width = profile.ScreenWidth;
+        PanelControls.MinHeight = profile.ScreenHeight;
+        LblScreenTitle.FontSize = profile.ScreenTitleSize;
+
+        if (_selected is not null && _runner is not null)
+        {
+            var history = _alarmRows.ToList();
+            var previous = new Dictionary<string, bool>(_alarmPrevious, StringComparer.OrdinalIgnoreCase);
+
+            BuildControlPanel(_selected);
+
+            foreach (var row in history) _alarmRows.Add(row);
+            foreach (var (symbol, state) in previous) _alarmPrevious[symbol] = state;
+        }
+
+        UpdatePanelFootnote();
+    }
+
+    /// <summary>
+    /// EN: Reports the selected panel's resolution and whether the page currently overflows it.
+    /// TR: Seçilen panonun çözünürlüğünü ve sayfanın şu an oraya taşıp taşmadığını bildirir.
+    /// </summary>
+    private void UpdatePanelFootnote()
+    {
+        var profile = HmiStyle.Metrics;
+        LblPanelFootnote.Text = L.T("Manual_PanelFootnote", profile.DisplayName);
+
+        var overflow = PanelControls.ActualHeight > profile.ScreenHeight + 1;
+        LblPanelOverflow.Visibility = overflow ? Visibility.Visible : Visibility.Collapsed;
+        if (overflow)
+        {
+            LblPanelOverflow.Text = L.T("Manual_PanelOverflow",
+                (int)Math.Ceiling(PanelControls.ActualHeight - profile.ScreenHeight));
+        }
+    }
+
+    /// <summary>
+    /// EN: Switches the panel the page is laid out for and remembers the choice.
+    /// TR: Sayfanın yerleştirileceği panoyu değiştirir ve seçimi hatırlar.
+    /// </summary>
+    private void CmbPanelSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_suppressPanelChange) return;
+        if (CmbPanelSize.SelectedItem is not ComboBoxItem { Tag: PanelProfile profile }) return;
+
+        HmiStyle.Metrics = profile;
+        ApplyPanelProfile();
+
+        try
+        {
+            var settings = ConnectionSettings.Load();
+            settings.PanelSize = profile.Key;
+            settings.Save();
+        }
+        catch (Exception ex)
+        {
+            // Tercihin kaydedilememesi sayfayı çalıştırmaya engel değil; yalnızca bildirilir.
+            Log(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// EN: Builds the language menu, the same selector the main window carries.
+    /// TR: Dil menüsünü kurar; ana pencerenin taşıdığı seçicinin aynısı.
+    /// </summary>
+    private void InitializeLanguageMenu()
+    {
+        var menu = new ContextMenu();
+        foreach (var lang in L.Available)
+        {
+            var item = new MenuItem
+            {
+                Header = lang.DisplayName,
+                Tag = lang.Code,
+                IsCheckable = true,
+                IsChecked = lang.Code == L.CurrentLanguageCode
+            };
+            item.Click += LanguageMenuItem_Click;
+            menu.Items.Add(item);
+        }
+        BtnToggleLanguage.ContextMenu = menu;
+    }
+
+    /// <summary>EN: Opens the language menu. TR: Dil menüsünü açar.</summary>
+    private void BtnToggleLanguage_Click(object sender, RoutedEventArgs e)
+    {
+        var menu = BtnToggleLanguage.ContextMenu;
+        foreach (MenuItem item in menu.Items)
+            item.IsChecked = item.Tag?.ToString() == L.CurrentLanguageCode;
+        menu.PlacementTarget = BtnToggleLanguage;
+        menu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+        menu.IsOpen = true;
+    }
+
+    /// <summary>EN: Switches the application language. TR: Uygulama dilini değiştirir.</summary>
+    private void LanguageMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not MenuItem { Tag: string code }) return;
+        App.SetLanguage(code);
+    }
+
+    /// <summary>EN: Opens the theme menu. TR: Tema menüsünü açar.</summary>
+    private void BtnToggleTheme_Click(object sender, RoutedEventArgs e)
+    {
+        var menu = BtnToggleTheme.ContextMenu;
+        foreach (MenuItem item in menu.Items)
+            item.IsChecked = item.Tag?.ToString() == App.CurrentThemeName;
+        menu.PlacementTarget = BtnToggleTheme;
+        menu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+        menu.IsOpen = true;
+    }
+
+    /// <summary>
+    /// EN: Switches the application theme. The theme dresses the window around the panel — the panel
+    ///     itself keeps its fixed colours, because on a machine screen red means fault whatever the
+    ///     rest of the application looks like.
+    /// TR: Uygulama temasını değiştirir. Tema, panonun çevresindeki pencereyi giydirir — panonun
+    ///     kendisi sabit renklerini korur, çünkü makine ekranında kırmızı, uygulamanın geri kalanı
+    ///     nasıl görünürse görünsün arıza demektir.
+    /// </summary>
+    private void ThemeMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not MenuItem mi) return;
+        foreach (MenuItem item in BtnToggleTheme.ContextMenu.Items)
+            item.IsChecked = item == mi;
+        App.SetNamedTheme(mi.Tag?.ToString() ?? "Light");
+    }
+
+    /// <summary>EN: Updates the theme menu headers for the active language. TR: Tema menüsü başlıklarını aktif dile göre günceller.</summary>
+    private void UpdateThemeMenuHeaders()
+    {
+        foreach (MenuItem item in BtnToggleTheme.ContextMenu.Items)
+        {
+            item.Header = item.Tag?.ToString() switch
+            {
+                "Light"      => L.T("Theme_Light"),
+                "Dark"       => L.T("Theme_Dark"),
+                "Industrial" => L.T("Theme_Industrial"),
+                "Night"      => L.T("Theme_Night"),
+                _            => item.Header
+            };
+        }
     }
 
     /// <summary>EN: Shows the wall clock, as panels always do. TR: Panolarda daima bulunan duvar saatini gösterir.</summary>
@@ -225,6 +405,13 @@ public partial class ManualPageWindow : Window
         ChkArmWrite.Content      = L.T("Manual_ArmWrite");
         LblManualModeWarning.Text = L.T("Manual_ManualModeWarning");
 
+        LblPanelSelect.Text          = L.T("Manual_PanelSelect");
+        CmbPanelSize.ToolTip         = L.T("Manual_PanelSelectTip");
+        BtnToggleLanguage.ToolTip    = L.T("Tip_SelectLanguage");
+        BtnToggleTheme.ToolTip       = L.T("Tip_SelectTheme");
+
+        UpdateThemeMenuHeaders();
+        UpdatePanelFootnote();
         UpdateArmBanner(_runner?.IsWriteEnabled == true);
         UpdateStartStopCaption();
     }
@@ -498,7 +685,7 @@ public partial class ManualPageWindow : Window
 
         if (group is null || separator < 0)
         {
-            PanelControls.Children.Add(HmiStyle.Card(group, body, CardWidth));
+            PanelControls.Children.Add(HmiStyle.Card(group, body, HmiStyle.Metrics.CardWidth));
             return;
         }
 
@@ -542,16 +729,16 @@ public partial class ManualPageWindow : Window
         var list = new ItemsControl { ItemsSource = _alarmRows, Margin = new Thickness(0, 0, 0, 0) };
         list.ItemTemplate = (DataTemplate)Resources["AlarmRowTemplate"];
 
-        var body = new StackPanel { Width = AlarmCardWidth - 34 };
+        var body = new StackPanel { Width = HmiStyle.Metrics.AlarmCardWidth - 34 };
         body.Children.Add(new ScrollViewer
         {
             VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-            MaxHeight = 300,
+            MaxHeight = HmiStyle.Metrics.AlarmListHeight,
             Content = list
         });
 
-        PanelControls.Children.Add(
-            HmiStyle.AlarmCard(L.T("Manual_ActiveAlarms"), body, AlarmCardWidth, BuildAlarmAckButton()));
+        PanelControls.Children.Add(HmiStyle.AlarmCard(L.T("Manual_ActiveAlarms"), body,
+            HmiStyle.Metrics.AlarmCardWidth, BuildAlarmAckButton()));
     }
 
     /// <summary>

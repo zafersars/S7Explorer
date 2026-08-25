@@ -188,7 +188,7 @@ public class LampControl : ManualControl
     public LampControl(ControlDefinition d, ManualPageRunner r) : base(d, r)
     {
         _color = HmiStyle.ResolveLampColor(d.Color);
-        Element = Stack(d.Label, _lamp, out _state, 92);
+        Element = Stack(d.Label, _lamp, out _state, HmiStyle.Metrics.LampStackWidth);
         StateBlock = _state;
     }
 
@@ -217,12 +217,12 @@ public class BadgeControl : ManualControl
         var row = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
         row.Children.Add(new TextBlock
         {
-            Text = d.Label, FontSize = 11, Foreground = HmiStyle.TextMid,
+            Text = d.Label, FontSize = HmiStyle.Metrics.CaptionFontSize, Foreground = HmiStyle.TextMid,
             VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 8, 0)
         });
         row.Children.Add(_pill);
 
-        Element = Stack(null, row, out _state, 148);
+        Element = Stack(null, row, out _state, HmiStyle.Metrics.ControlWidth);
         StateBlock = _state;
     }
 
@@ -248,7 +248,7 @@ public class NumericControl : ManualControl
     public NumericControl(ControlDefinition d, ManualPageRunner r) : base(d, r)
     {
         var caption = string.IsNullOrWhiteSpace(d.Unit) ? d.Label : $"{d.Label} ({d.Unit})";
-        Element = Stack(caption, _value, out _state, 148);
+        Element = Stack(caption, _value, out _state, HmiStyle.Metrics.ControlWidth);
         StateBlock = _state;
     }
 
@@ -295,7 +295,8 @@ public class ToggleControl : ManualControl
     public ToggleControl(ControlDefinition d, ManualPageRunner r) : base(d, r)
     {
         _color = HmiStyle.ResolveLampColor(d.Color);
-        _button = HmiStyle.SolidButton(d.Icon, d.Label, 148, 44, 16);
+        _button = HmiStyle.SolidButton(d.Icon, d.Label, HmiStyle.Metrics.ButtonWidth,
+            HmiStyle.Metrics.ButtonHeight, HmiStyle.Metrics.ButtonGlyph);
         _button.Click += OnClick;
         Element = Stack(null, _button, out _state, 148);
         StateBlock = _state;
@@ -345,12 +346,13 @@ public class HoldToRunControl : ManualControl
     public HoldToRunControl(ControlDefinition d, ManualPageRunner r) : base(d, r)
     {
         _color = HmiStyle.ResolveLampColor(d.Color);
-        _button = HmiStyle.SolidButton(d.Icon, string.IsNullOrWhiteSpace(d.Icon) ? d.Label : null, 100, 86, 34);
+        _button = HmiStyle.SolidButton(d.Icon, string.IsNullOrWhiteSpace(d.Icon) ? d.Label : null,
+            HmiStyle.Metrics.PressButtonWidth, HmiStyle.Metrics.PressButtonHeight, HmiStyle.Metrics.PressGlyph);
         _button.PreviewMouseLeftButtonDown += async (_, _) => await PressAsync();
         _button.PreviewMouseLeftButtonUp   += async (_, _) => await ReleaseAsync();
         _button.LostMouseCapture           += async (_, _) => await ReleaseAsync();
         _button.MouseLeave                 += async (_, _) => await ReleaseAsync();
-        Element = Stack(d.Label, _button, out _state, 108);
+        Element = Stack(d.Label, _button, out _state, HmiStyle.Metrics.PressStackWidth);
         StateBlock = _state;
     }
 
@@ -391,9 +393,10 @@ public class MomentaryControl : ManualControl
     public MomentaryControl(ControlDefinition d, ManualPageRunner r) : base(d, r)
     {
         _color = HmiStyle.ResolveLampColor(d.Color ?? "blue");
-        _button = HmiStyle.SolidButton(d.Icon, string.IsNullOrWhiteSpace(d.Icon) ? d.Label : null, 100, 86, 34);
+        _button = HmiStyle.SolidButton(d.Icon, string.IsNullOrWhiteSpace(d.Icon) ? d.Label : null,
+            HmiStyle.Metrics.PressButtonWidth, HmiStyle.Metrics.PressButtonHeight, HmiStyle.Metrics.PressGlyph);
         _button.Click += OnClick;
-        Element = Stack(d.Label, _button, out _state, 108);
+        Element = Stack(d.Label, _button, out _state, HmiStyle.Metrics.PressStackWidth);
         StateBlock = _state;
     }
 
@@ -442,7 +445,8 @@ public class HandshakeControl : ManualControl
     public HandshakeControl(ControlDefinition d, ManualPageRunner r) : base(d, r)
     {
         _color = HmiStyle.ResolveLampColor(d.Color ?? "yellow");
-        _button = HmiStyle.SolidButton(d.Icon, d.Label, 148, 44, 16);
+        _button = HmiStyle.SolidButton(d.Icon, d.Label, HmiStyle.Metrics.ButtonWidth,
+            HmiStyle.Metrics.ButtonHeight, HmiStyle.Metrics.ButtonGlyph);
         _button.Click += OnClick;
         Element = Stack(null, _button, out _state, 148);
         StateBlock = _state;
@@ -498,14 +502,14 @@ public class SetpointControl : ManualControl
     {
         _dataType = symbols.GetSymbolInfo(d.Symbol)?.DataType ?? string.Empty;
 
-        var stepper = HmiStyle.Stepper(out _minus, out _plus, out _input, 148);
+        var stepper = HmiStyle.Stepper(out _minus, out _plus, out _input, HmiStyle.Metrics.ControlWidth);
         _minus.Click += (_, _) => Nudge(-Definition.Step);
         _plus.Click  += (_, _) => Nudge(+Definition.Step);
         _input.KeyDown += (_, e) => { if (e.Key == System.Windows.Input.Key.Enter) Send(); };
         _input.LostFocus += (_, _) => Send();
 
         var caption = string.IsNullOrWhiteSpace(d.Unit) ? d.Label : $"{d.Label} ({d.Unit})";
-        Element = Stack(caption, stepper, out _state, 148);
+        Element = Stack(caption, stepper, out _state, HmiStyle.Metrics.ControlWidth);
         StateBlock = _state;
     }
 

@@ -1,8 +1,9 @@
 <Window x:Class="S7Explorer.ManualPageWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
         Title="Manual Test Page"
-        Width="1320" Height="880" MinWidth="1060" MinHeight="720"
+        Width="1380" Height="900" MinWidth="1060" MinHeight="720"
         WindowStartupLocation="CenterOwner"
         Icon="Resources/app_icon.ico"
         Background="#FFECEFF2"
@@ -51,11 +52,42 @@
                            HorizontalAlignment="Center" VerticalAlignment="Center"
                            TextTrimming="CharacterEllipsis"/>
 
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <TextBlock x:Name="LblDate" Text="--.--.----" FontSize="13" Foreground="#FF556170"
-                               HorizontalAlignment="Right"/>
-                    <TextBlock x:Name="LblClock" Text="--:--:--" FontSize="13" Foreground="#FF556170"
-                               HorizontalAlignment="Right"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+
+                    <!-- Pano boyutu: sayfa hangi fiziksel ekran için tasarlanıyorsa o seçilir -->
+                    <TextBlock x:Name="LblPanelSelect" Text="PANO" FontWeight="Bold" FontSize="10"
+                               Foreground="#FF8A95A1" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <ComboBox x:Name="CmbPanelSize" Width="132" Height="30" VerticalContentAlignment="Center"
+                              SelectionChanged="CmbPanelSize_SelectionChanged" Margin="0,0,14,0"/>
+
+                    <!-- Dil seçimi -->
+                    <Button x:Name="BtnToggleLanguage" Width="36" Height="32" Padding="0"
+                            Background="Transparent" BorderThickness="0"
+                            Click="BtnToggleLanguage_Click" ToolTip="Select language">
+                        <ui:FontIcon Glyph="&#xE909;" FontSize="16"/>
+                    </Button>
+
+                    <!-- Tema seçimi -->
+                    <Button x:Name="BtnToggleTheme" Width="36" Height="32" Padding="0" Margin="0,0,14,0"
+                            Background="Transparent" BorderThickness="0"
+                            Click="BtnToggleTheme_Click" ToolTip="Select theme">
+                        <Button.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="☀  Light"       Tag="Light"      IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                                <MenuItem Header="🌙  Dark"        Tag="Dark"       IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                                <MenuItem Header="🔧  Industrial"  Tag="Industrial" IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                                <MenuItem Header="🌌  Night"       Tag="Night"      IsCheckable="True" Click="ThemeMenuItem_Click"/>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                        <ui:FontIcon Glyph="&#xE771;" FontSize="16"/>
+                    </Button>
+
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock x:Name="LblDate" Text="--.--.----" FontSize="13" Foreground="#FF556170"
+                                   HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="LblClock" Text="--:--:--" FontSize="13" Foreground="#FF556170"
+                                   HorizontalAlignment="Right"/>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Border>
@@ -147,7 +179,8 @@
         <TabControl Grid.Row="3" x:Name="TabsMain" Background="Transparent" BorderThickness="0"
                     Margin="18,10,6,0" Padding="0">
             <TabItem x:Name="TabControls" Header="Kumanda">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                <!-- Pano alanı sabit genişliktedir; pencere ondan darsa yatay kaydırma gerekir -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
                               Margin="0,10,0,0">
                     <StackPanel>
                         <Border x:Name="ManualModeWarning" Visibility="Collapsed"
@@ -158,8 +191,22 @@
                                        Text="Makine manuel modda değil — komutlar pasif."/>
                         </Border>
 
-                        <!-- Ekipman kartları ve alarm paneli çalışma anında üretilir -->
-                        <WrapPanel x:Name="PanelControls"/>
+                        <!-- Seçilen panonun ekranı kadar alan: sayfanın gerçekte sığıp sığmadığı
+                             ancak o alanın içinde çizilerek görülebilir. -->
+                        <Border x:Name="PanelBezel" HorizontalAlignment="Left" Margin="0,0,12,4"
+                                Background="#FFE3E7EB" BorderBrush="#FFB8C0C8" BorderThickness="2"
+                                CornerRadius="7" Padding="9">
+                            <!-- Ekipman kartları ve alarm paneli çalışma anında üretilir -->
+                            <WrapPanel x:Name="PanelControls"/>
+                        </Border>
+
+                        <StackPanel Orientation="Horizontal" Margin="2,0,0,14">
+                            <TextBlock x:Name="LblPanelFootnote" FontSize="10.5" Foreground="#FF8A95A1"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock x:Name="LblPanelOverflow" FontSize="10.5" FontWeight="Bold"
+                                       Foreground="#FFB3241F" Visibility="Collapsed"
+                                       VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

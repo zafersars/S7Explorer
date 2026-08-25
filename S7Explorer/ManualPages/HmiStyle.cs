@@ -22,6 +22,16 @@ namespace S7Explorer.ManualPages;
 /// </summary>
 public static class HmiStyle
 {
+    /// <summary>
+    /// EN: Panel the controls are currently sized for. Static because every element on the screen
+    ///     belongs to the same physical panel — there is no case where two profiles are on screen
+    ///     at once. Changing it only affects controls built afterwards, so the page rebuilds.
+    /// TR: Kontrollerin şu an hangi panoya göre boyutlandığı. Statik, çünkü ekrandaki her eleman
+    ///     aynı fiziksel panoya aittir — aynı anda iki profilin ekranda olduğu bir durum yoktur.
+    ///     Değiştirmek yalnızca sonradan üretilen kontrolleri etkiler; bu yüzden sayfa yeniden kurulur.
+    /// </summary>
+    public static PanelProfile Metrics { get; set; } = PanelProfile.Panel10;
+
     // ── Zemin ve yüzeyler ────────────────────────────────────────────────────
     public static readonly Brush Field       = Frozen(0xEC, 0xEF, 0xF2);
     public static readonly Brush Surface     = Frozen(0xFF, 0xFF, 0xFF);
@@ -80,7 +90,7 @@ public static class HmiStyle
             stack.Children.Add(new TextBlock
             {
                 Text = title.ToUpperInvariant(),
-                FontSize = tightTitle ? 12 : 15,
+                FontSize = tightTitle ? Metrics.CardTitleSize - 3 : Metrics.CardTitleSize,
                 FontWeight = FontWeights.Bold,
                 Foreground = TextHigh,
                 HorizontalAlignment = tightTitle ? HorizontalAlignment.Left : HorizontalAlignment.Center,
@@ -253,7 +263,9 @@ public static class HmiStyle
     // ── Göstergeler ──────────────────────────────────────────────────────────
 
     /// <summary>EN: A pilot lamp with a glass highlight. TR: Cam parlaması olan sinyal lambası.</summary>
-    public static Ellipse Lamp(double size = 30) => new()
+    public static Ellipse Lamp(double? size = null) => Lamp(size ?? Metrics.LampSize);
+
+    private static Ellipse Lamp(double size) => new()
     {
         Width = size,
         Height = size,
@@ -326,17 +338,17 @@ public static class HmiStyle
     public static TextBlock BigValue() => new()
     {
         Text = "––",
-        FontSize = 26,
+        FontSize = Metrics.ValueFontSize,
         FontWeight = FontWeights.Bold,
         Foreground = ValueGreen,
         HorizontalAlignment = HorizontalAlignment.Center
     };
 
     /// <summary>EN: A small caption above a value or control. TR: Bir değerin veya kontrolün üstündeki küçük başlık.</summary>
-    public static TextBlock Caption(string text, double size = 11) => new()
+    public static TextBlock Caption(string text, double? size = null) => new()
     {
         Text = text,
-        FontSize = size,
+        FontSize = size ?? Metrics.CaptionFontSize,
         Foreground = TextMid,
         HorizontalAlignment = HorizontalAlignment.Center,
         TextAlignment = TextAlignment.Center,
@@ -348,7 +360,7 @@ public static class HmiStyle
     ///     without a keyboard.
     /// TR: Eksi / değer / artı üçlüsü; panonun operatöre klavyesiz set değeri değiştirtme biçimi.
     /// </summary>
-    public static Grid Stepper(out Button minus, out Button plus, out TextBox value, double width = 148)
+    public static Grid Stepper(out Button minus, out Button plus, out TextBox value, double width)
     {
         minus = StepButton("");   // Remove
         plus  = StepButton("");   // Add

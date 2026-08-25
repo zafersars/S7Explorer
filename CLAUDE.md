@@ -56,12 +56,16 @@ pages/*.json → ManualPageLoader → ManualPageValidator → ManualPageRunner �
    sıfırlar (`ShutdownAsync` / `ResetAllCommandsAsync`). Sayısal setpoint'lere dokunulmaz.
 5. **Sıra mantığı ve kilitlemeler PLC'de kalır.** Uygulama komut biti yazar, çıkışa yazmaz,
    emniyet mantığını taklit etmez.
-6. **`HmiStyle` paleti temadan bağımsızdır.** Panoda kırmızı arızadır; kullanıcı temasıyla kaymaz.
+6. **Ölçüler `HmiStyle.Metrics`'ten (`PanelProfile`) gelir.** Manuel panelde yeni bir kontrol
+   çizerken piksel sabiti yazmayın — kart, buton, lamba ve yazı boyutları seçilen panodan
+   (7" 800×480 / 10" 1280×800) türetilir. Profil değişince sayfa yeniden kurulur; kurulum
+   alarm geçmişini korumak zorundadır.
+7. **`HmiStyle` paleti temadan bağımsızdır.** Panoda kırmızı arızadır; kullanıcı temasıyla kaymaz.
    Manuel panel renklerini `App.xaml` tema kaynaklarına bağlamayın.
-7. **Tur birikmez.** `OnTick` süren bir turun üstüne binmez; atlar ve `Notice` ile bildirir.
+8. **Tur birikmez.** `OnTick` süren bir turun üstüne binmez; atlar ve `Notice` ile bildirir.
    Blok okuma yerine sembol sembol okumaya dönmeyin — sahada ölçülen ~95 ms/istek,
    500 ms periyodu imkânsız kılar.
-8. **Şema sürümü tektir.** `ManualPageDefinition.SupportedSchemaVersion` yalnızca bir göç
+9. **Şema sürümü tektir.** `ManualPageDefinition.SupportedSchemaVersion` yalnızca bir göç
    yoluyla birlikte artırılır; eski sayfalar sessizce yanlış yorumlanmamalıdır.
 
 ## Yazım kuralları
