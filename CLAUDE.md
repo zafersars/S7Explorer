@@ -79,6 +79,34 @@ pages/*.json → ManualPageLoader → ManualPageValidator → ManualPageRunner �
   bağlamayı tazelemez — alarm satırları bu yüzden düştükten sonra kırmızı kalıyordu.
 - Doğrulama mesajları mühendise hitap eder: neyin yanlış olduğunu ve neden önemli olduğunu söyler.
 
+## Yayınlama
+
+```powershell
+dotnet publish S7Explorer/S7Explorer.csproj -c Release -o publish
+Compress-Archive -Path publish\S7Explorer.exe,publish\lang,publish\pages,publish\db `
+                 -DestinationPath publish\S7Explorer-vX.Y.Z-win-x64.zip -CompressionLevel Optimal
+gh release create vX.Y.Z publish\S7Explorer-vX.Y.Z-win-x64.zip --title "S7Explorer vX.Y.Z" --notes "..."
+```
+
+**Release asset'i zip'tir, çıplak EXE değildir.** İki sebep, ikisi de sahada acıtır:
+
+1. `IncludeNativeLibrariesForSelfExtract` olmadan WPF'in native DLL'leri (`wpfgfx_cor3`,
+   `PresentationNative_cor3`, `vcruntime140_cor3`) tek dosyanın dışında kalır. Bu ayar
+   `csproj`'da açıktır — kapatmayın. Kapalıyken uygulama başlar, ilk pencereyi oluştururken
+   `DllNotFoundException` ile çöker; pencere hiç görünmediği için hata sessiz görünür.
+   v1.0.0 bu yüzden çalışmıyordu.
+2. `lang/`, `pages/` ve `db/` EXE'nin yanında olmak zorundadır. `lang/` yoksa uygulama
+   açılır ama arayüz ham çeviri anahtarları gösterir (`Win_Main` gibi) — çökmediği için
+   fark edilmesi zordur.
+
+Doğrulama, publish klasöründe çalıştırmak değildir: zip'i **boş bir klasöre açıp** oradan
+çalıştırın ve görünür pencere başlığının "Siemens PLC Control" olduğunu (ham anahtar değil)
+görün. Publish klasöründe kalan dosyalar hatayı gizler.
+
+`db/` altındaki `DB_PC.db` makineye özeldir; `pages/qr-hatti.json` ile aynı açık soruya tabidir
+(depoda mı kalacak, saha başına mı dağıtılacak). Genel dağıtımdan çıkarılmasına karar verilirse
+tek değişiklik noktası zip'i oluşturan `-Path` listesidir.
+
 ## Çalışma dosyaları
 
 `settings.json`, `symbols.json` ve `pages/*.json` EXE'nin yanında durur
