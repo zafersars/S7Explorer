@@ -330,6 +330,7 @@
                                   VerticalAlignment="Center"
                                   IsEditable="True"
                                   SelectionChanged="CmbWriteAddress_SelectionChanged"
+                                  TextBoxBase.TextChanged="CmbWriteAddress_TextChanged"
                                   ui:ControlHelper.PlaceholderText="Select symbolic address"/>
                             <Button x:Name="BtnWrite" Content="Write" MinWidth="100" Height="34"
                                 VerticalAlignment="Center" Margin="0,0,8,0"
@@ -338,6 +339,25 @@
                             <TextBox x:Name="TxtWriteValue"
                                  VerticalAlignment="Center" MinWidth="120"
                                  ui:ControlHelper.PlaceholderText="Value to write"/>
+                            <!-- Kalıcı (mandallı) buton: yalnızca BOOL adreslerde görünür -->
+                            <ToggleButton x:Name="BtnWriteBoolToggle"
+                                      MinWidth="110" Height="34" Margin="8,0,0,0"
+                                      VerticalAlignment="Center"
+                                      Visibility="Collapsed" IsEnabled="False"
+                                      Checked="BtnWriteBoolToggle_Toggled"
+                                      Unchecked="BtnWriteBoolToggle_Toggled">
+                                <ToggleButton.Style>
+                                    <Style TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsChecked" Value="True">
+                                                <Setter Property="Background" Value="#2E7D32"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
                         </StackPanel>
                         <!-- Fiziksel adres -->
                         <TextBlock x:Name="TxtWritePhysicalAddress" Grid.Row="2"

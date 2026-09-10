@@ -48,6 +48,9 @@
   "Write_Placeholder": "Sembolik adres seçin",
   "Btn_Write": "Yaz",
   "Write_ValuePlaceholder": "Yazılacak değer",
+  "Write_BoolOn": "TRUE (1)",
+  "Write_BoolOff": "FALSE (0)",
+  "Write_BoolToggleTip": "Kalıcı buton: bıraktığınız konumda kalır. Her tıklamada yeni konumu BOOL adresine yazar.",
 
   "Info_Header": "💡 Bilgi ve Örnek Tanımlamalar",
 
@@ -74,6 +77,7 @@
 
   "Msg_InvalidIp": "Lütfen geçerli bir IP adresi girin!",
   "Msg_EmptyAddress": "Lütfen geçerli bir adres girin!",
+  "Msg_NotConnected": "PLC bağlantısı yok. Önce bağlanın, sonra yazın.",
   "Msg_EmptyAddressValue": "Lütfen adres ve değer girin!",
   "Msg_ClearLogConfirm": "Log geçmişini temizlemek istediğinizden emin misiniz?",
   "Msg_UnexpectedError": "Beklenmeyen hata: {0}",
@@ -96,6 +100,7 @@
   "Log_ReadResult": "{0} = {1}",
   "Log_Writing": "Yazılıyor: {0} = {1}",
   "Log_WriteSuccess": "✓ {0} yazıldı",
+  "Log_BoolToggleSyncFailed": "{0} adresinin güncel durumu okunamadı ({1}); kalıcı buton son konumunda kaldı",
   "Log_LogCleared": "Log geçmişi temizlendi",
   "Log_LogSaved": "Log dosyası kaydedildi: {0}",
   "Log_SymbolsUpdated": "Sembol tanımlamaları güncellendi. Toplam sembol: {0}",

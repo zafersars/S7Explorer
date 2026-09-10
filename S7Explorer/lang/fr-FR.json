@@ -48,6 +48,9 @@
   "Write_Placeholder": "Sélectionnez une adresse symbolique",
   "Btn_Write": "Écrire",
   "Write_ValuePlaceholder": "Valeur à écrire",
+  "Write_BoolOn": "TRUE (1)",
+  "Write_BoolOff": "FALSE (0)",
+  "Write_BoolToggleTip": "Bouton à accrochage : il reste dans la position choisie. Chaque clic écrit le nouvel état à l’adresse BOOL.",
 
   "Info_Header": "💡 Informations et exemples de définitions",
 
@@ -74,6 +77,7 @@
 
   "Msg_InvalidIp": "Veuillez entrer une adresse IP valide !",
   "Msg_EmptyAddress": "Veuillez entrer une adresse valide !",
+  "Msg_NotConnected": "Aucune connexion PLC. Connectez-vous d’abord, puis écrivez.",
   "Msg_EmptyAddressValue": "Veuillez entrer une adresse et une valeur !",
   "Msg_ClearLogConfirm": "Êtes-vous sûr de vouloir effacer l’historique du journal ?",
   "Msg_UnexpectedError": "Erreur inattendue : {0}",
@@ -96,6 +100,7 @@
   "Log_ReadResult": "{0} = {1}",
   "Log_Writing": "Écriture : {0} = {1}",
   "Log_WriteSuccess": "✓ {0} écrit",
+  "Log_BoolToggleSyncFailed": "Impossible de lire l’état actuel de {0} ({1}) ; le bouton à accrochage conserve sa dernière position",
   "Log_LogCleared": "Historique du journal effacé",
   "Log_LogSaved": "Journal enregistré : {0}",
   "Log_SymbolsUpdated": "Symboles mis à jour. Total : {0}",

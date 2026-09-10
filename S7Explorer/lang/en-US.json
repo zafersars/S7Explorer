@@ -48,6 +48,9 @@
   "Write_Placeholder": "Select symbolic address",
   "Btn_Write": "Write",
   "Write_ValuePlaceholder": "Value to write",
+  "Write_BoolOn": "TRUE (1)",
+  "Write_BoolOff": "FALSE (0)",
+  "Write_BoolToggleTip": "Latching button: stays where you leave it. Each click writes the new state to the BOOL address.",
 
   "Info_Header": "💡 Info & Example Definitions",
 
@@ -74,6 +77,7 @@
 
   "Msg_InvalidIp": "Please enter a valid IP address!",
   "Msg_EmptyAddress": "Please enter a valid address!",
+  "Msg_NotConnected": "No PLC connection. Connect first, then write.",
   "Msg_EmptyAddressValue": "Please enter an address and value!",
   "Msg_ClearLogConfirm": "Are you sure you want to clear the log history?",
   "Msg_UnexpectedError": "Unexpected error: {0}",
@@ -96,6 +100,7 @@
   "Log_ReadResult": "{0} = {1}",
   "Log_Writing": "Writing: {0} = {1}",
   "Log_WriteSuccess": "✓ {0} written",
+  "Log_BoolToggleSyncFailed": "Could not read the current state of {0} ({1}); the latching button keeps its last position",
   "Log_LogCleared": "Log history cleared",
   "Log_LogSaved": "Log file saved: {0}",
   "Log_SymbolsUpdated": "Symbol definitions updated. Total symbols: {0}",

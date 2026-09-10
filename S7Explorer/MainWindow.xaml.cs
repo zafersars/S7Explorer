@@ -26,6 +26,14 @@ public partial class MainWindow : Window
     private const double LeftPanelExpandedWidth = 250;
     private const double LeftPanelCollapsedWidth = 36;
 
+    // Mandalı koddan konumlandırırken Checked/Unchecked yazma tetiklemesin.
+    private bool _suppressBoolToggleWrite;
+
+    // Sembol tablosunda olmayan, elle yazılmış bit adresleri: DB1.DBX0.0 / M0.0 / I0.0 / Q0.0
+    private static readonly Regex BoolPhysicalAddressRegex = new(
+        @"^(DB\d+\.DBX\d+\.[0-7]|[IQM]\d+\.[0-7])$",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
     private static LocalizationManager L => LocalizationManager.Instance;
     private EventHandler? _languageChangedHandler;
     private bool _hasReadValue = false;
@@ -109,6 +117,7 @@ public partial class MainWindow : Window
         }
         UpdateThemeMenuHeaders();
         UpdateWriteValuePlaceholder();
+        UpdateBoolToggleCaption();
     }
 
     /// <summary>
@@ -430,6 +439,175 @@ public partial class MainWindow : Window
     {
         UpdatePhysicalAddress(CmbWriteAddress, TxtWritePhysicalAddress);
         UpdateWriteValuePlaceholder();
+        UpdateBoolWriteToggle();
+
+        // Mandal PLC'deki biti temsil etmeli; seçim değişince mevcut değeri okuyup hizala.
+        // (Okumak yazmak değildir; PLC'ye hiçbir şey gönderilmez.)
+        _ = SyncBoolToggleFromPlcAsync();
+    }
+
+    /// <summary>
+    /// EN: Called while the write address ComboBox text is edited; keeps the BOOL toggle in sync.
+    /// TR: Yazma adresi ComboBox metni düzenlenirken çağrılır; BOOL mandalını güncel tutar.
+    /// </summary>
+    private void CmbWriteAddress_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateBoolWriteToggle();
+    }
+
+    /// <summary>
+    /// EN: Shows the latching BOOL button only when the write target is a BOOL, and refreshes its caption.
+    /// TR: Mandallı BOOL butonunu yalnızca yazma hedefi BOOL ise gösterir ve yazısını tazeler.
+    /// </summary>
+    private void UpdateBoolWriteToggle()
+    {
+        // XAML ayrıştırılırken TextChanged, alanlar atanmadan önce tetiklenebiliyor.
+        if (BtnWriteBoolToggle is null || CmbWriteAddress is null)
+            return;
+
+        var isBool = IsBoolWriteTarget(CmbWriteAddress.Text?.Trim() ?? string.Empty);
+        BtnWriteBoolToggle.Visibility = isBool ? Visibility.Visible : Visibility.Collapsed;
+        BtnWriteBoolToggle.IsEnabled = isBool && _plcService.IsConnected;
+
+        if (!isBool)
+            SetBoolToggleState(false);
+        else
+            UpdateBoolToggleCaption();
+    }
+
+    /// <summary>
+    /// EN: Decides whether the given write address refers to a BOOL (symbol table first, then physical bit syntax).
+    /// TR: Verilen yazma adresinin BOOL olup olmadığına karar verir (önce sembol tablosu, sonra fiziksel bit yazımı).
+    /// </summary>
+    private bool IsBoolWriteTarget(string address)
+    {
+        if (string.IsNullOrEmpty(address))
+            return false;
+
+        var symbolInfo = _plcService.SymbolMapper.GetSymbolInfo(address);
+        if (symbolInfo != null && !string.IsNullOrEmpty(symbolInfo.DataType))
+            return symbolInfo.DataType.Trim().ToUpperInvariant() == "BOOL";
+
+        // Sembol tablosunda yoksa elle yazılmış fiziksel bit adresi olabilir: DB1.DBX0.0 / M0.0 / I0.0 / Q0.0
+        return BoolPhysicalAddressRegex.IsMatch(address);
+    }
+
+    /// <summary>
+    /// EN: Sets the toggle state without raising a write.
+    /// TR: Yazma tetiklemeden mandalın konumunu ayarlar.
+    /// </summary>
+    private void SetBoolToggleState(bool isOn)
+    {
+        _suppressBoolToggleWrite = true;
+        try
+        {
+            BtnWriteBoolToggle.IsChecked = isOn;
+        }
+        finally
+        {
+            _suppressBoolToggleWrite = false;
+        }
+        UpdateBoolToggleCaption();
+    }
+
+    /// <summary>
+    /// EN: Refreshes the toggle caption and tooltip from the current language and state.
+    /// TR: Mandalın yazısını ve ipucunu geçerli dile ve konuma göre tazeler.
+    /// </summary>
+    private void UpdateBoolToggleCaption()
+    {
+        if (BtnWriteBoolToggle is null)
+            return;
+
+        BtnWriteBoolToggle.Content = BtnWriteBoolToggle.IsChecked == true
+            ? L.T("Write_BoolOn")
+            : L.T("Write_BoolOff");
+        BtnWriteBoolToggle.ToolTip = L.T("Write_BoolToggleTip");
+    }
+
+    /// <summary>
+    /// EN: Best-effort read of the selected BOOL address to align the latch with the PLC; failures are logged only.
+    /// TR: Mandalı PLC ile hizalamak için seçili BOOL adresini okumayı dener; hata yalnızca loglanır.
+    /// </summary>
+    private async Task SyncBoolToggleFromPlcAsync()
+    {
+        if (BtnWriteBoolToggle is null || BtnWriteBoolToggle.Visibility != Visibility.Visible)
+            return;
+        if (!_plcService.IsConnected)
+            return;
+
+        var address = CmbWriteAddress.Text?.Trim() ?? string.Empty;
+        if (string.IsNullOrEmpty(address))
+            return;
+
+        try
+        {
+            var value = await _plcService.ReadAsync(address);
+            // Adres bu arada değişmiş olabilir; geç gelen cevabı yanlış adrese uygulama.
+            if (!string.Equals(address, CmbWriteAddress.Text?.Trim(), StringComparison.Ordinal))
+                return;
+
+            var isOn = value switch
+            {
+                bool b  => b,
+                byte by => by != 0,
+                int i   => i != 0,
+                _       => false
+            };
+            SetBoolToggleState(isOn);
+        }
+        catch (Exception ex)
+        {
+            AddLog(L.T("Log_BoolToggleSyncFailed", address, ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// EN: Latching BOOL button: each click writes the new latched state (TRUE/FALSE) to the PLC.
+    /// TR: Mandallı BOOL butonu: her tıklama yeni mandal konumunu (TRUE/FALSE) PLC'ye yazar.
+    /// </summary>
+    private async void BtnWriteBoolToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (_suppressBoolToggleWrite)
+            return;
+
+        var desired = BtnWriteBoolToggle.IsChecked == true;
+        UpdateBoolToggleCaption();
+
+        var address = CmbWriteAddress.Text.Trim();
+        if (string.IsNullOrEmpty(address))
+        {
+            SetBoolToggleState(!desired);
+            MessageDialog.Show(L.T("Msg_EmptyAddress"), L.T("MsgTitle_Warning"),
+                MessageBoxButton.OK, MessageBoxImage.Warning, this);
+            return;
+        }
+
+        if (!_plcService.IsConnected)
+        {
+            SetBoolToggleState(!desired);
+            MessageDialog.Show(L.T("Msg_NotConnected"), L.T("MsgTitle_Warning"),
+                MessageBoxButton.OK, MessageBoxImage.Warning, this);
+            return;
+        }
+
+        // Yaz butonu ile mandal aynı değeri göstersin; operatör iki farklı şey görmesin.
+        TxtWriteValue.Text = desired ? "true" : "false";
+
+        try
+        {
+            AddLog(L.T("Log_Writing", address, desired));
+            await _plcService.WriteAsync(address, desired);
+            AddLog(L.T("Log_WriteSuccess", address));
+        }
+        catch (Exception ex)
+        {
+            // Yazma başarısızsa mandal PLC'yi yanlış temsil etmesin: eski konumuna dönsün.
+            SetBoolToggleState(!desired);
+            TxtWriteValue.Text = !desired ? "true" : "false";
+            MessageDialog.Show(L.T("Msg_WriteError", ex.Message), L.T("MsgTitle_Error"),
+                MessageBoxButton.OK, MessageBoxImage.Error, this);
+        }
     }
 
     /// <summary>
@@ -668,6 +846,7 @@ public partial class MainWindow : Window
             BtnConnect.IsEnabled = true;
             BtnRead.IsEnabled = false;
             BtnWrite.IsEnabled = false;
+            BtnWriteBoolToggle.IsEnabled = false;
             CmbCpuType.IsEnabled = true;
             TxtIpAddress.IsEnabled = true;
             TxtPort.IsEnabled = true;
@@ -728,6 +907,7 @@ public partial class MainWindow : Window
                 BtnConnect.IsEnabled = true;
                 BtnRead.IsEnabled = true;
                 BtnWrite.IsEnabled = true;
+                BtnWriteBoolToggle.IsEnabled = BtnWriteBoolToggle.Visibility == Visibility.Visible;
                 CmbCpuType.IsEnabled = false;
                 TxtIpAddress.IsEnabled = false;
                 TxtPort.IsEnabled = false;
