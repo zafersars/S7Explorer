@@ -35,6 +35,12 @@ public static class UpdateChecker
     /// </summary>
     public static string ReleasesPageUrl => $"https://github.com/{Owner}/{Repo}/releases/latest";
 
+    /// <summary>
+    /// EN: Project page, shown in the About box.
+    /// TR: Proje sayfası; hakkında kutusunda gösterilir.
+    /// </summary>
+    public static string RepositoryUrl => $"https://github.com/{Owner}/{Repo}";
+
     // Saha PC'sinde ağ kapalıysa istek asılı kalmasın; açılışta çalışan bir kontrol için 10 sn yeter.
     // Lazy: istemci User-Agent'ında CurrentVersion'ı kullanır, o da bu sınıfın statik kurulumunda
     // atanır. İlk isteğe kadar ertelemek, alan bildirim sırasına bağımlılığı ortadan kaldırır.

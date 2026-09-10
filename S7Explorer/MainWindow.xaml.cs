@@ -78,6 +78,9 @@ public partial class MainWindow : Window
         InitializeLanguageMenu();
         ApplyLanguage();
 
+        // Sürüm, durum çubuğunun sağında durur; güncelleme kontrolünün karşılaştırdığı değerle aynıdır.
+        TxtVersion.Text = UpdateChecker.CurrentVersionText;
+
         // Sürüm kontrolü açılışı bekletmemeli; pencere göründükten sonra çalışır.
         Loaded += MainWindow_Loaded;
     }
@@ -227,6 +230,15 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
+    /// EN: Opens the About box.
+    /// TR: Program hakkında kutusunu açar.
+    /// </summary>
+    private void MnuAbout_Click(object sender, RoutedEventArgs e)
+    {
+        new AboutWindow(this).ShowDialog();
+    }
+
+    /// <summary>
     /// EN: Applies the active language to all UI elements.
     /// TR: Aktif dili t�m aray�z ��elerine uygular.
     /// </summary>
@@ -265,6 +277,7 @@ public partial class MainWindow : Window
         }
         BtnAppSettings.ToolTip = L.T("Menu_AppSettingsTip");
         MnuCheckUpdates.Header = L.T("Menu_CheckUpdatesOnStartup");
+        MnuAbout.Header = L.T("Menu_About");
         UpdateThemeMenuHeaders();
         UpdateWriteValuePlaceholder();
         UpdateBoolToggleCaption();

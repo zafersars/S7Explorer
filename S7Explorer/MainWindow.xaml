@@ -459,15 +459,22 @@
                     BorderThickness="0,1,0,0"
                     BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
                     Padding="12,5">
-                <StackPanel Orientation="Horizontal">
-                    <ui:FontIcon Glyph="&#xE8F2;" FontSize="13"
-                                 Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
-                                 Margin="0,0,8,0" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="TxtStatusBar" Text="Not connected"
-                               FontWeight="SemiBold"
-                               Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
-                               VerticalAlignment="Center"/>
-                </StackPanel>
+                <Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xE8F2;" FontSize="13"
+                                     Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                     Margin="0,0,8,0" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="TxtStatusBar" Text="Not connected"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <!-- Sürüm: güncelleme kontrolünün GitHub ile karşılaştırdığı değerle aynı -->
+                    <TextBlock x:Name="TxtVersion" Text="v0.0.0"
+                               HorizontalAlignment="Right" VerticalAlignment="Center"
+                               FontWeight="SemiBold" Opacity="0.8"
+                               Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
+                </Grid>
             </Border>
         </Grid>
 
@@ -520,6 +527,10 @@
                                   Header="Check for updates at startup"
                                   IsCheckable="True"
                                   Click="MnuCheckUpdates_Click"/>
+                        <Separator/>
+                        <MenuItem x:Name="MnuAbout"
+                                  Header="About S7Explorer"
+                                  Click="MnuAbout_Click"/>
                     </ContextMenu>
                 </Button.ContextMenu>
                 <ui:FontIcon Glyph="&#xE713;" FontSize="16"/>

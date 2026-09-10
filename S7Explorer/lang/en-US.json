@@ -299,6 +299,13 @@
 
   "Update_Title": "Update available",
   "Menu_AppSettingsTip": "Application settings",
+  "Win_About": "About S7Explorer",
+  "Menu_About": "About S7Explorer",
+  "Btn_Close": "Close",
+  "About_Version": "Version {0}",
+  "About_Description": "Connects to Siemens S7 PLCs over TCP/IP: reads and writes data blocks, turns SCL sources into a symbol table, and runs manual control panels defined in JSON.",
+  "About_Safety": "Sequence logic and safety interlocks stay in the PLC. The write path starts disabled and opens only with the operator's explicit confirmation.",
+  "About_License": "MIT License · © 2026 Zafer Savaş Arslan",
   "Menu_CheckUpdatesOnStartup": "Check for updates at startup",
   "Log_UpdateCheckEnabled": "Startup update check turned on.",
   "Log_UpdateCheckDisabled": "Startup update check turned off.",

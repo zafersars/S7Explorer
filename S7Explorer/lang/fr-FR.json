@@ -299,6 +299,13 @@
 
   "Update_Title": "Mise à jour disponible",
   "Menu_AppSettingsTip": "Paramètres de l'application",
+  "Win_About": "À propos de S7Explorer",
+  "Menu_About": "À propos de S7Explorer",
+  "Btn_Close": "Fermer",
+  "About_Version": "Version {0}",
+  "About_Description": "Se connecte aux automates Siemens S7 via TCP/IP : lit et écrit des blocs de données, convertit les sources SCL en table de symboles et exécute des pupitres manuels définis en JSON.",
+  "About_Safety": "La logique de séquence et les verrouillages de sécurité restent dans l'automate. L'écriture est désactivée au démarrage et ne s'ouvre qu'avec la confirmation explicite de l'opérateur.",
+  "About_License": "Licence MIT · © 2026 Zafer Savaş Arslan",
   "Menu_CheckUpdatesOnStartup": "Vérifier les mises à jour au démarrage",
   "Log_UpdateCheckEnabled": "Vérification des mises à jour au démarrage activée.",
   "Log_UpdateCheckDisabled": "Vérification des mises à jour au démarrage désactivée.",

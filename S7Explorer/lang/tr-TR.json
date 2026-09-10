@@ -301,6 +301,13 @@
 
   "Update_Title": "Yeni sürüm var",
   "Menu_AppSettingsTip": "Uygulama ayarları",
+  "Win_About": "Program hakkında",
+  "Menu_About": "Program hakkında",
+  "Btn_Close": "Kapat",
+  "About_Version": "Sürüm {0}",
+  "About_Description": "Siemens S7 PLC'lere TCP/IP üzerinden bağlanır: veri bloğu okur/yazar, SCL kaynaklarını sembol tablosuna çevirir ve JSON ile tanımlanmış manuel kumanda panellerini çalıştırır.",
+  "About_Safety": "Sıra mantığı ve emniyet kilitlemeleri PLC'de kalır. Yazma yolu kapalı başlar ve yalnızca operatörün açık onayıyla açılır.",
+  "About_License": "MIT Lisansı · © 2026 Zafer Savaş Arslan",
   "Menu_CheckUpdatesOnStartup": "Açılışta güncelleme kontrolü",
   "Log_UpdateCheckEnabled": "Açılışta güncelleme kontrolü açıldı.",
   "Log_UpdateCheckDisabled": "Açılışta güncelleme kontrolü kapatıldı.",
