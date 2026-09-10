@@ -473,7 +473,7 @@
 
         <!-- Başlık çubuğu sağ butonlar (Canvas ile sabit konumlandırma) -->
         <Canvas Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
-                Width="80" Height="40" Margin="0,-40,130,0"
+                Width="122" Height="40" Margin="0,-40,130,0"
                 WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="1">
             <!-- Dil seçimi -->
             <Button x:Name="BtnToggleLanguage"
@@ -504,6 +504,25 @@
                     </ContextMenu>
                 </Button.ContextMenu>
                 <ui:FontIcon Glyph="&#xE771;" FontSize="16"/>
+            </Button>
+            <!-- Uygulama ayarları -->
+            <Button x:Name="BtnAppSettings"
+                    Canvas.Left="84" Canvas.Top="4"
+                    Width="36" Height="32"
+                    Click="BtnAppSettings_Click"
+                    ToolTip="Application settings"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Padding="0">
+                <Button.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="MnuCheckUpdates"
+                                  Header="Check for updates at startup"
+                                  IsCheckable="True"
+                                  Click="MnuCheckUpdates_Click"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+                <ui:FontIcon Glyph="&#xE713;" FontSize="16"/>
             </Button>
         </Canvas>
     </Grid>

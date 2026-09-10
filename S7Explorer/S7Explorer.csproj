@@ -10,6 +10,9 @@
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<ApplicationIcon>Resources\app_icon.ico</ApplicationIcon>
 		<Platforms>AnyCPU;x64</Platforms>
+		<!-- Sürüm: UpdateChecker bunu GitHub release etiketiyle (vX.Y.Z) karşılaştırır.
+		     Yeni bir release etiketlemeden önce burayı da yükseltin. -->
+		<Version>1.0.2</Version>
 		<!-- Boyut küçültme: SelfContained EXE ~150MB → ~100-110MB -->
 		<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
 		<!-- WPF native DLL'leri (wpfgfx_cor3, PresentationNative_cor3, vcruntime140_cor3...)

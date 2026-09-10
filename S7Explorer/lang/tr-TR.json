@@ -299,5 +299,22 @@
   "Manual_RoleAlarm": "alarm",
   "Manual_RoleAlarmSummary": "alarm özeti",
 
+  "Update_Title": "Yeni sürüm var",
+  "Menu_AppSettingsTip": "Uygulama ayarları",
+  "Menu_CheckUpdatesOnStartup": "Açılışta güncelleme kontrolü",
+  "Log_UpdateCheckEnabled": "Açılışta güncelleme kontrolü açıldı.",
+  "Log_UpdateCheckDisabled": "Açılışta güncelleme kontrolü kapatıldı.",
+  "Log_UpdateSkipCleared": "Atlanan sürüm kaydı temizlendi; yeni sürüm yeniden bildirilecek.",
+  "Update_Message": "S7Explorer {0} yayınlandı. Yüklü sürüm: {1}.\n\nİndirme sayfası açılsın mı?",
+  "Update_Download": "İndirme sayfasını aç",
+  "Update_Skip": "Bu sürümü atla",
+  "Update_Later": "Sonra",
+  "Log_UpdateAvailable": "Yeni sürüm bulundu: {0} (yüklü: {1}).",
+  "Log_UpdateUpToDate": "Sürüm güncel: {0}.",
+  "Log_UpdateCheckFailed": "Sürüm kontrolü yapılamadı: {0}",
+  "Log_UpdateSkipped": "{0} sürümü atlandı; bir daha sorulmayacak.",
+  "Log_UpdateSkipFailed": "Atlanan sürüm kaydedilemedi: {0}",
+  "Log_UpdateOpenFailed": "Release sayfası açılamadı ({0}): {1}",
+
   "InfoContent": "📍 Adres Kullanımı\n  Sembolik : DB_PC.Receive.Control.Life\n\n  ── Giriş (Input) ──────────────────────────────\n  I0.0          Bit  (Giriş bit 0.0)\n  IB0           Byte (Giriş bayt 0)\n  IW0           Word (Giriş sözcük 0)\n  ID0           DWord(Giriş çift sözcük 0)\n\n  ── Çıkış (Output) ─────────────────────────────\n  Q0.0          Bit\n  QB0           Byte\n  QW0           Word\n  QD0           DWord\n\n  ── Bellek (Merker) ─────────────────────────────\n  M0.0          Bit\n  MB0           Byte\n  MW0           Word\n  MD0           DWord\n\n  ── Veri Bloğu (Data Block) ─────────────────────\n  DB1.DBX0.0    Bit\n  DB1.DBB0      Byte\n  DB1.DBW0      Word\n  DB1.DBD4      DWord\n\n  ── Zamanlayıcı (Timer) — S7-300/400 ────────────\n  T0            Timer 0  (S5TIME değeri okunur)\n  T1 … T255     Timer numarası\n\n  ── Sayıcı (Counter) — S7-300/400 ───────────────\n  C0  / Z0      Counter 0  (BCD sayı değeri)\n  C1 … C255     Counter numarası\n  (S7-1200/1500 IEC zamanlayıcı/sayıcı → DB tabanlı)\n\n  ── Çevresel G/Ç (Peripheral I/O) ───────────────\n  PIB0 / PQB0   Periferik Byte G/Ç\n  PIW0 / PQW0   Periferik Word G/Ç\n  PID0 / PQD0   Periferik DWord G/Ç\n\n🔢 Tamsayı Tipleri\n  BOOL             :  true / false   veya   1 / 0\n  BYTE / USINT     :  0 … 255\n  SINT             :  -128 … 127\n  WORD / UINT      :  0 … 65535\n  INT              :  -32768 … 32767\n  DWORD / UDINT    :  0 … 4294967295\n  DINT             :  -2147483648 … 2147483647\n  LWORD / ULINT    :  0 … 18446744073709551615\n  LINT             :  -9223372036854775808 … 9223372036854775807\n\n📐 Ondalıklı Tipler\n  REAL             :  3.14\n  LREAL            :  3.14159265358979\n\n🔤 Metin Tipleri\n  CHAR / WCHAR     :  A\n  STRING[n]        :  Metin  (maks. n karakter)\n  WSTRING[n]       :  Metin  (maks. n Unicode karakter, S7-1500)\n\n🕐 Zaman Tipleri\n  TIME             :  T#1s_500ms\n  S5TIME           :  S5T#1m_30s\n  DATE             :  2024-01-15\n  TOD              :  12:30:00\n  DT               :  DT#2024-01-15-08:30:00\n  DTL              :  DTL#2024-01-15-08:30:00\n\n📋 Örnek symbols.json Tanımlamaları\n{\n  \"DB.Bool1\"    : { \"PhysicalAddress\": \"DB99.DBX0.0\", \"DataType\": \"BOOL\",       \"DefaultValue\": \"false\" },\n  \"DB.Byte1\"    : { \"PhysicalAddress\": \"DB99.DBB1\",   \"DataType\": \"BYTE\",       \"DefaultValue\": \"0\"    },\n  \"DB.Int1\"     : { \"PhysicalAddress\": \"DB99.DBW6\",   \"DataType\": \"INT\",        \"DefaultValue\": \"0\"    },\n  \"DB.Real1\"    : { \"PhysicalAddress\": \"DB99.DBD30\",  \"DataType\": \"REAL\",       \"DefaultValue\": \"0.0\"  },\n  \"DB.String1\"  : { \"PhysicalAddress\": \"DB99.DBB94\",  \"DataType\": \"STRING[20]\", \"DefaultValue\": \"\"     }\n}"
 }

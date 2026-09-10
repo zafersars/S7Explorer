@@ -297,6 +297,23 @@
   "Manual_RoleAlarm": "alarm",
   "Manual_RoleAlarmSummary": "alarm summary",
 
+  "Update_Title": "Update available",
+  "Menu_AppSettingsTip": "Application settings",
+  "Menu_CheckUpdatesOnStartup": "Check for updates at startup",
+  "Log_UpdateCheckEnabled": "Startup update check turned on.",
+  "Log_UpdateCheckDisabled": "Startup update check turned off.",
+  "Log_UpdateSkipCleared": "The skipped release was cleared; a new version will be offered again.",
+  "Update_Message": "S7Explorer {0} has been released. Installed version: {1}.\n\nOpen the download page?",
+  "Update_Download": "Open download page",
+  "Update_Skip": "Skip this version",
+  "Update_Later": "Later",
+  "Log_UpdateAvailable": "Newer release found: {0} (installed: {1}).",
+  "Log_UpdateUpToDate": "Version is up to date: {0}.",
+  "Log_UpdateCheckFailed": "Update check failed: {0}",
+  "Log_UpdateSkipped": "Version {0} skipped; it will not be offered again.",
+  "Log_UpdateSkipFailed": "Skipped version could not be saved: {0}",
+  "Log_UpdateOpenFailed": "Release page could not be opened ({0}): {1}",
+
   "Ex_DtlConvertFailed": "Value cannot be converted to DateTime for DTL: {0}",
 
   "InfoContent": "📍 Address Usage\n  Symbolic : DB_PC.Receive.Control.Life\n\n  ── Input ──────────────────────────────────────\n  I0.0          Bit  (Input bit 0.0)\n  IB0           Byte (Input byte 0)\n  IW0           Word (Input word 0)\n  ID0           DWord(Input double word 0)\n\n  ── Output ─────────────────────────────────────\n  Q0.0          Bit\n  QB0           Byte\n  QW0           Word\n  QD0           DWord\n\n  ── Memory (Merker) ─────────────────────────────\n  M0.0          Bit\n  MB0           Byte\n  MW0           Word\n  MD0           DWord\n\n  ── Data Block ──────────────────────────────────\n  DB1.DBX0.0    Bit\n  DB1.DBB0      Byte\n  DB1.DBW0      Word\n  DB1.DBD4      DWord\n\n  ── Timer — S7-300/400 ──────────────────────────\n  T0            Timer 0  (reads S5TIME value)\n  T1 … T255     Timer number\n\n  ── Counter — S7-300/400 ────────────────────────\n  C0  / Z0      Counter 0  (BCD value)\n  C1 … C255     Counter number\n  (S7-1200/1500 IEC timer/counter → DB based)\n\n  ── Peripheral I/O ──────────────────────────────\n  PIB0 / PQB0   Peripheral Byte I/O\n  PIW0 / PQW0   Peripheral Word I/O\n  PID0 / PQD0   Peripheral DWord I/O\n\n🔢 Integer Types\n  BOOL             :  true / false   or   1 / 0\n  BYTE / USINT     :  0 … 255\n  SINT             :  -128 … 127\n  WORD / UINT      :  0 … 65535\n  INT              :  -32768 … 32767\n  DWORD / UDINT    :  0 … 4294967295\n  DINT             :  -2147483648 … 2147483647\n  LWORD / ULINT    :  0 … 18446744073709551615\n  LINT             :  -9223372036854775808 … 9223372036854775807\n\n📐 Floating Point Types\n  REAL             :  3.14\n  LREAL            :  3.14159265358979\n\n🔤 String Types\n  CHAR / WCHAR     :  A\n  STRING[n]        :  Text  (max n characters)\n  WSTRING[n]       :  Text  (max n Unicode chars, S7-1500)\n\n🕐 Time Types\n  TIME             :  T#1s_500ms\n  S5TIME           :  S5T#1m_30s\n  DATE             :  2024-01-15\n  TOD              :  12:30:00\n  DT               :  DT#2024-01-15-08:30:00\n  DTL              :  DTL#2024-01-15-08:30:00\n\n📋 Example symbols.json Definitions\n{\n  \"DB.Bool1\"    : { \"PhysicalAddress\": \"DB99.DBX0.0\", \"DataType\": \"BOOL\",       \"DefaultValue\": \"false\" },\n  \"DB.Byte1\"    : { \"PhysicalAddress\": \"DB99.DBB1\",   \"DataType\": \"BYTE\",       \"DefaultValue\": \"0\"    },\n  \"DB.Int1\"     : { \"PhysicalAddress\": \"DB99.DBW6\",   \"DataType\": \"INT\",        \"DefaultValue\": \"0\"    },\n  \"DB.Real1\"    : { \"PhysicalAddress\": \"DB99.DBD30\",  \"DataType\": \"REAL\",       \"DefaultValue\": \"0.0\"  },\n  \"DB.String1\"  : { \"PhysicalAddress\": \"DB99.DBB94\",  \"DataType\": \"STRING[20]\", \"DefaultValue\": \"\"     }\n}"

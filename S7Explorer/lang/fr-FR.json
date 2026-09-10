@@ -297,6 +297,23 @@
   "Manual_RoleAlarm": "alarme",
   "Manual_RoleAlarmSummary": "synthèse alarmes",
 
+  "Update_Title": "Mise à jour disponible",
+  "Menu_AppSettingsTip": "Paramètres de l'application",
+  "Menu_CheckUpdatesOnStartup": "Vérifier les mises à jour au démarrage",
+  "Log_UpdateCheckEnabled": "Vérification des mises à jour au démarrage activée.",
+  "Log_UpdateCheckDisabled": "Vérification des mises à jour au démarrage désactivée.",
+  "Log_UpdateSkipCleared": "La version ignorée a été effacée ; une nouvelle version sera de nouveau proposée.",
+  "Update_Message": "S7Explorer {0} est disponible. Version installée : {1}.\n\nOuvrir la page de téléchargement ?",
+  "Update_Download": "Ouvrir la page de téléchargement",
+  "Update_Skip": "Ignorer cette version",
+  "Update_Later": "Plus tard",
+  "Log_UpdateAvailable": "Nouvelle version trouvée : {0} (installée : {1}).",
+  "Log_UpdateUpToDate": "Version à jour : {0}.",
+  "Log_UpdateCheckFailed": "Échec de la vérification de version : {0}",
+  "Log_UpdateSkipped": "Version {0} ignorée ; elle ne sera plus proposée.",
+  "Log_UpdateSkipFailed": "Impossible d'enregistrer la version ignorée : {0}",
+  "Log_UpdateOpenFailed": "Impossible d'ouvrir la page de la version ({0}) : {1}",
+
   "Ex_DtlConvertFailed": "Valeur impossible à convertir en DateTime pour DTL : {0}",
 
   "InfoContent": "📍 Utilisation des adresses\n  Symbolique : DB_PC.Receive.Control.Life\n\n  ── Entrée (Input) ──────────────────────────────\n  I0.0          Bit  (bit d'entrée 0.0)\n  IB0           Byte (octet d'entrée 0)\n  IW0           Word (mot d'entrée 0)\n  ID0           DWord(double mot d'entrée 0)\n\n  ── Sortie (Output) ─────────────────────────────\n  Q0.0          Bit\n  QB0           Byte\n  QW0           Word\n  QD0           DWord\n\n  ── Mémoire (Merker) ─────────────────────────────\n  M0.0          Bit\n  MB0           Byte\n  MW0           Word\n  MD0           DWord\n\n  ── Bloc de données (Data Block) ─────────────────\n  DB1.DBX0.0    Bit\n  DB1.DBB0      Byte\n  DB1.DBW0      Word\n  DB1.DBD4      DWord\n\n  ── Minuterie (Timer) — S7-300/400 ───────────────\n  T0            Minuterie 0  (valeur S5TIME)\n  T1 … T255     Numéro de minuterie\n\n  ── Compteur (Counter) — S7-300/400 ──────────────\n  C0  / Z0      Compteur 0  (valeur BCD)\n  C1 … C255     Numéro de compteur\n  (S7-1200/1500 minuteurs/compteurs IEC → basés sur DB)\n\n  ── E/S périphériques (Peripheral I/O) ───────────\n  PIB0 / PQB0   Octet E/S périphérique\n  PIW0 / PQW0   Mot E/S périphérique\n  PID0 / PQD0   Double mot E/S périphérique\n\n🔢 Types entiers\n  BOOL             :  true / false   ou   1 / 0\n  BYTE / USINT     :  0 … 255\n  SINT             :  -128 … 127\n  WORD / UINT      :  0 … 65535\n  INT              :  -32768 … 32767\n  DWORD / UDINT    :  0 … 4294967295\n  DINT             :  -2147483648 … 2147483647\n  LWORD / ULINT    :  0 … 18446744073709551615\n  LINT             :  -9223372036854775808 … 9223372036854775807\n\n📐 Types décimaux\n  REAL             :  3.14\n  LREAL            :  3.14159265358979\n\n🔤 Types texte\n  CHAR / WCHAR     :  A\n  STRING[n]        :  Texte  (max. n caractères)\n  WSTRING[n]       :  Texte  (max. n caractères Unicode, S7-1500)\n\n🕐 Types temporels\n  TIME             :  T#1s_500ms\n  S5TIME           :  S5T#1m_30s\n  DATE             :  2024-01-15\n  TOD              :  12:30:00\n  DT               :  DT#2024-01-15-08:30:00\n  DTL              :  DTL#2024-01-15-08:30:00\n\n📋 Exemples de definitions symbols.json\n{\n  \"DB.Bool1\"    : { \"PhysicalAddress\": \"DB99.DBX0.0\", \"DataType\": \"BOOL\",       \"DefaultValue\": \"false\" },\n  \"DB.Byte1\"    : { \"PhysicalAddress\": \"DB99.DBB1\",   \"DataType\": \"BYTE\",       \"DefaultValue\": \"0\"    },\n  \"DB.Int1\"     : { \"PhysicalAddress\": \"DB99.DBW6\",   \"DataType\": \"INT\",        \"DefaultValue\": \"0\"    },\n  \"DB.Real1\"    : { \"PhysicalAddress\": \"DB99.DBD30\",  \"DataType\": \"REAL\",       \"DefaultValue\": \"0.0\"  },\n  \"DB.String1\"  : { \"PhysicalAddress\": \"DB99.DBB94\",  \"DataType\": \"STRING[20]\", \"DefaultValue\": \"\"     }\n}"

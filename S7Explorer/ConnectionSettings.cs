@@ -26,6 +26,20 @@ public class ConnectionSettings
     /// </summary>
     public string PanelSize { get; set; } = "10";
 
+    /// <summary>
+    /// EN: Whether the app asks GitHub for a newer release at startup. Read-only network call;
+    ///     turn it off on machines that must not reach the internet.
+    /// TR: Uygulamanın açılışta GitHub'a yeni sürüm sorup sormayacağı. Salt okunur bir ağ isteğidir;
+    ///     internete çıkmaması gereken makinelerde kapatın.
+    /// </summary>
+    public bool CheckUpdatesOnStartup { get; set; } = true;
+
+    /// <summary>
+    /// EN: Release tag the operator chose to skip ("v1.0.3"); that one version is never offered again.
+    /// TR: Operatörün atlamayı seçtiği release etiketi ("v1.0.3"); yalnızca o sürüm bir daha önerilmez.
+    /// </summary>
+    public string SkippedUpdateVersion { get; set; } = "";
+
     private const string SettingsFileName = "settings.json";
     private static readonly string SettingsFilePath = 
         Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SettingsFileName);

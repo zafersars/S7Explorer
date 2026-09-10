@@ -15,6 +15,9 @@ namespace S7Explorer
         /// </summary>
         public MessageBoxResult Result { get; private set; } = MessageBoxResult.None;
 
+        // Sonuç buton yazısından değil, istenen buton kümesinden türetilir: yazılar dışarıdan değişebilir.
+        private readonly MessageBoxButton _buttons;
+
         // ── Statik yardımcılar ────────────────────────────────────────────────
 
         /// <summary>
@@ -30,16 +33,21 @@ namespace S7Explorer
 
         /// <summary>
         /// EN: Shows a themed dialog with configurable button and icon options.
+        ///     Button captions can be overridden when Yes/No/Cancel would not name the actual actions.
         /// TR: Özelleştirilebilir buton ve ikon seçenekleriyle temalı iletişim penceresi gösterir.
+        ///     Evet/Hayır/İptal yapılacak işi adlandırmıyorsa buton yazıları dışarıdan verilebilir.
         /// </summary>
         public static MessageBoxResult Show(
             string message,
             string title,
             MessageBoxButton buttons,
             MessageBoxImage icon = MessageBoxImage.Information,
-            Window? owner = null)
+            Window? owner = null,
+            string? yesText = null,
+            string? noText = null,
+            string? cancelText = null)
         {
-            var dlg = new MessageDialog(message, title, buttons, icon);
+            var dlg = new MessageDialog(message, title, buttons, icon, yesText, noText, cancelText);
             dlg.Owner = owner ?? Application.Current?.MainWindow;
             dlg.ShowDialog();
             return dlg.Result;
@@ -55,14 +63,18 @@ namespace S7Explorer
             string message,
             string title,
             MessageBoxButton buttons,
-            MessageBoxImage icon)
+            MessageBoxImage icon,
+            string? yesText = null,
+            string? noText = null,
+            string? cancelText = null)
         {
             InitializeComponent();
+            _buttons = buttons;
             Title = title;
             TxtTitle.Text = title;
             TxtMessage.Text = message;
             ApplyIcon(icon);
-            ApplyButtons(buttons);
+            ApplyButtons(buttons, yesText, noText, cancelText);
         }
 
         private static string TOr(string key, string fallback)
@@ -99,7 +111,11 @@ namespace S7Explorer
         /// EN: Configures visible buttons and captions based on MessageBoxButton mode.
         /// TR: MessageBoxButton moduna göre görünen butonları ve başlıklarını ayarlar.
         /// </summary>
-        private void ApplyButtons(MessageBoxButton buttons)
+        private void ApplyButtons(
+            MessageBoxButton buttons,
+            string? yesText = null,
+            string? noText = null,
+            string? cancelText = null)
         {
             switch (buttons)
             {
@@ -127,6 +143,11 @@ namespace S7Explorer
                     BtnCancel.Content = TOr("Btn_Cancel", "Cancel");
                     break;
             }
+
+            // Çağıran kendi yazısını verdiyse üstüne yazar; vermediyse varsayılan başlıklar kalır.
+            if (!string.IsNullOrWhiteSpace(yesText))    BtnYes.Content    = yesText;
+            if (!string.IsNullOrWhiteSpace(noText))     BtnNo.Content     = noText;
+            if (!string.IsNullOrWhiteSpace(cancelText)) BtnCancel.Content = cancelText;
         }
 
         // ── Click handler'ları ────────────────────────────────────────────────
@@ -137,7 +158,7 @@ namespace S7Explorer
         /// </summary>
         private void BtnYes_Click(object sender, RoutedEventArgs e)
         {
-            Result = BtnYes.Content?.ToString() == TOr("Btn_Ok", "OK")
+            Result = _buttons is MessageBoxButton.OK or MessageBoxButton.OKCancel
                 ? MessageBoxResult.OK
                 : MessageBoxResult.Yes;
             Close();

@@ -7,6 +7,7 @@ using System.Windows.Media.Animation;
 using S7.Net;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace S7Explorer;
 
@@ -76,6 +77,153 @@ public partial class MainWindow : Window
         L.LanguageChanged += _languageChangedHandler;
         InitializeLanguageMenu();
         ApplyLanguage();
+
+        // Sürüm kontrolü açılışı bekletmemeli; pencere göründükten sonra çalışır.
+        Loaded += MainWindow_Loaded;
+    }
+
+    /// <summary>
+    /// EN: One-shot startup work that must not delay the window: the GitHub version check.
+    /// TR: Pencereyi geciktirmemesi gereken tek seferlik açılış işi: GitHub sürüm kontrolü.
+    /// </summary>
+    private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        Loaded -= MainWindow_Loaded;
+        await CheckForUpdatesAsync();
+    }
+
+    /// <summary>
+    /// EN: Asks GitHub for the latest release and offers its download page when it is newer than
+    ///     this build. Failures are logged only: on a machine PC having no internet is the normal case.
+    /// TR: GitHub'a en son release'i sorar ve bu yapıdan yeniyse indirme sayfasını önerir.
+    ///     Hatalar yalnızca loglanır: makine PC'sinde internet olmaması olağan durumdur.
+    /// </summary>
+    private async Task CheckForUpdatesAsync()
+    {
+        var settings = ConnectionSettings.Load();
+        if (!settings.CheckUpdatesOnStartup)
+            return;
+
+        UpdateInfo? update;
+        try
+        {
+            update = await UpdateChecker.CheckAsync();
+        }
+        catch (Exception ex)
+        {
+            // Ağ yoksa ya da GitHub cevap vermiyorsa kullanıcıyı rahatsız etme; log yeter.
+            AddLog(L.T("Log_UpdateCheckFailed", ex.Message));
+            return;
+        }
+
+        if (update is null)
+        {
+            AddLog(L.T("Log_UpdateUpToDate", UpdateChecker.CurrentVersionText));
+            return;
+        }
+
+        AddLog(L.T("Log_UpdateAvailable", update.TagName, UpdateChecker.CurrentVersionText));
+
+        // Operatör bu sürümü bir kez atladıysa aynı soru her açılışta sorulmaz.
+        if (string.Equals(update.TagName, settings.SkippedUpdateVersion, StringComparison.OrdinalIgnoreCase))
+            return;
+
+        var answer = MessageDialog.Show(
+            L.T("Update_Message", update.TagName, UpdateChecker.CurrentVersionText),
+            L.T("Update_Title"),
+            MessageBoxButton.YesNoCancel,
+            MessageBoxImage.Information,
+            this,
+            L.T("Update_Download"),
+            L.T("Update_Skip"),
+            L.T("Update_Later"));
+
+        if (answer == MessageBoxResult.Yes)
+            OpenReleasePage(update.ReleaseUrl);
+        else if (answer == MessageBoxResult.No)
+            SkipUpdateVersion(settings, update.TagName);
+    }
+
+    /// <summary>
+    /// EN: Opens the release page in the default browser. The app never downloads or replaces itself.
+    /// TR: Release sayfasını varsayılan tarayıcıda açar. Uygulama kendini indirmez, kendini değiştirmez.
+    /// </summary>
+    private void OpenReleasePage(string url)
+    {
+        try
+        {
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+        }
+        catch (Exception ex)
+        {
+            AddLog(L.T("Log_UpdateOpenFailed", url, ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// EN: Remembers the skipped release tag so this one version is not offered again.
+    /// TR: Atlanan release etiketini hatırlar; yalnızca o sürüm bir daha önerilmez.
+    /// </summary>
+    private void SkipUpdateVersion(ConnectionSettings settings, string tagName)
+    {
+        settings.SkippedUpdateVersion = tagName;
+        try
+        {
+            settings.Save();
+            AddLog(L.T("Log_UpdateSkipped", tagName));
+        }
+        catch (Exception ex)
+        {
+            // Program Files altında settings.json yazılabilir değil; atlama kalıcı olmaz.
+            AddLog(L.T("Log_UpdateSkipFailed", ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// EN: Opens the application settings menu, reading the current state from the settings file.
+    /// TR: Uygulama ayarları menüsünü açar; güncel durumu ayar dosyasından okur.
+    /// </summary>
+    private void BtnAppSettings_Click(object sender, RoutedEventArgs e)
+    {
+        // İşareti her açılışta diskten tazele: settings.json elle de düzenlenmiş olabilir.
+        MnuCheckUpdates.IsChecked = ConnectionSettings.Load().CheckUpdatesOnStartup;
+
+        var menu = BtnAppSettings.ContextMenu;
+        menu.PlacementTarget = BtnAppSettings;
+        menu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+        menu.IsOpen = true;
+    }
+
+    /// <summary>
+    /// EN: Turns the startup update check on or off and persists it. Turning it back on also clears the
+    ///     skipped release, so this menu item is the one place to undo "skip this version".
+    /// TR: Açılıştaki güncelleme kontrolünü açar/kapatır ve kaydeder. Yeniden açmak atlanan sürümü de
+    ///     temizler; böylece "bu sürümü atla" kararını geri almanın tek yeri bu menü öğesidir.
+    /// </summary>
+    private void MnuCheckUpdates_Click(object sender, RoutedEventArgs e)
+    {
+        var enabled = MnuCheckUpdates.IsChecked;
+        try
+        {
+            var settings = ConnectionSettings.Load();
+            settings.CheckUpdatesOnStartup = enabled;
+
+            var hadSkippedVersion = !string.IsNullOrEmpty(settings.SkippedUpdateVersion);
+            if (enabled)
+                settings.SkippedUpdateVersion = string.Empty;
+
+            settings.Save();
+
+            AddLog(enabled ? L.T("Log_UpdateCheckEnabled") : L.T("Log_UpdateCheckDisabled"));
+            if (enabled && hadSkippedVersion)
+                AddLog(L.T("Log_UpdateSkipCleared"));
+        }
+        catch (Exception ex)
+        {
+            // Kaydedilemediyse (ör. Program Files altında) menü diski yanlış temsil etmesin.
+            MnuCheckUpdates.IsChecked = !enabled;
+            AddLog(L.T("Log_SettingsSaveError", ex.Message));
+        }
     }
 
     /// <summary>
@@ -115,6 +263,8 @@ public partial class MainWindow : Window
             TxtStatus.Text = L.T("Status_NotConnected");
             TxtStatusBar.Text = L.T("StatusBar_NotConnected");
         }
+        BtnAppSettings.ToolTip = L.T("Menu_AppSettingsTip");
+        MnuCheckUpdates.Header = L.T("Menu_CheckUpdatesOnStartup");
         UpdateThemeMenuHeaders();
         UpdateWriteValuePlaceholder();
         UpdateBoolToggleCaption();

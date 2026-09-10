@@ -176,6 +176,8 @@ S7Explorer/
 
 Grab `S7Explorer.exe` from the [latest release](https://github.com/zafersars/S7Explorer/releases/latest). It is a self-contained single file — no .NET installation is needed. Put it in a writable folder (**not** under `Program Files`): `settings.json`, `symbols.json` and `pages/*.json` are kept next to the executable.
 
+At startup S7Explorer asks GitHub for the latest release and offers to open the download page when a newer one exists; it never downloads or updates itself. With no internet it gives up silently. Set `"CheckUpdatesOnStartup": false` in `settings.json` to turn the check off.
+
 ### Requirements
 
 - Windows 10/11
@@ -368,6 +370,8 @@ S7Explorer/
 ### İndirme
 
 `S7Explorer.exe` dosyasını [son sürümden](https://github.com/zafersars/S7Explorer/releases/latest) indirin. Kendi kendine yeten tek dosyadır — .NET kurulumu gerekmez. Yazılabilir bir klasöre koyun (`Program Files` altına **değil**): `settings.json`, `symbols.json` ve `pages/*.json` EXE'nin yanında tutulur.
+
+Açılışta S7Explorer, GitHub'daki en son sürümü kontrol eder ve daha yenisi varsa indirme sayfasını açmayı önerir; kendini indirmez, kendini güncellemez. İnternet yoksa sessizce vazgeçer. Kontrolü kapatmak için `settings.json` içine `"CheckUpdatesOnStartup": false` yazın.
 
 ### Gereksinimler
 

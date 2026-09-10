@@ -88,6 +88,18 @@ Compress-Archive -Path publish\S7Explorer.exe,publish\lang,publish\pages,publish
 gh release create vX.Y.Z publish\S7Explorer-vX.Y.Z-win-x64.zip --title "S7Explorer vX.Y.Z" --notes "..."
 ```
 
+**Etiketlemeden önce `<Version>` yükseltilir.** `S7Explorer.csproj` içindeki `<Version>` release
+etiketiyle aynı olmalıdır (`v1.0.3` → `1.0.3`). Uygulama açılışta GitHub'ın
+`releases/latest` ucunu sorar ve dönen etiketi bu değerle karşılaştırır (`UpdateChecker`).
+Eşitlenmezse iki sessiz hata olur: sürüm geride kalırsa güncel kurulumlar da uyarı alır,
+ileride kalırsa yeni sürüm hiç duyurulmaz.
+
+Kontrol salt okunurdur: uygulama kendini indirmez, kendini değiştirmez — yalnızca release
+sayfasını tarayıcıda açar. Ağ yoksa ya da GitHub cevap vermezse (10 sn timeout) sessizce
+vazgeçer, yalnızca log satırı düşer; açılış hiçbir durumda beklemez. Operatör "Bu sürümü atla"
+derse etiket `settings.json` → `SkippedUpdateVersion` alanına yazılır; kontrol tümüyle
+`CheckUpdatesOnStartup: false` ile kapatılır (internete çıkmaması gereken saha PC'leri için).
+
 **Release asset'i zip'tir, çıplak EXE değildir.** İki sebep, ikisi de sahada acıtır:
 
 1. `IncludeNativeLibrariesForSelfExtract` olmadan WPF'in native DLL'leri (`wpfgfx_cor3`,
