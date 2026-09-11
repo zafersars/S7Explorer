@@ -8,13 +8,13 @@ namespace S7Explorer
     {
         /// <summary>
         /// EN: Active theme name (Light / Dark / Industrial / Night)
-        /// TR: Aktif tema adı (Light / Dark / Industrial / Night)
+        /// TR: Aktif tema adÄ± (Light / Dark / Industrial / Night)
         /// </summary>
         public static string CurrentThemeName { get; private set; } = "Light";
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            // ModernWPF 0.9.6 Türkçe kaynak hatası için InvariantCulture kullan
+            // ModernWPF 0.9.6 TÃ¼rkÃ§e kaynak hatasÄ± iÃ§in InvariantCulture kullan
             System.Threading.Thread.CurrentThread.CurrentCulture =
                 System.Globalization.CultureInfo.InvariantCulture;
             System.Threading.Thread.CurrentThread.CurrentUICulture =
@@ -22,22 +22,22 @@ namespace S7Explorer
 
             base.OnStartup(e);
 
-            // Localization: lang klasörünü tara ve kaydedilen dili yükle
+            // Localization: lang klasÃ¶rÃ¼nÃ¼ tara ve kaydedilen dili yÃ¼kle
             LocalizationManager.Instance.Scan();
             var savedLanguage = ConnectionSettings.Load().Language;
             LocalizationManager.Instance.SetLanguage(savedLanguage);
 
-            // Varsayılan tema — LoadConnectionSettings() tarafından üzerine yazılır
+            // VarsayÄ±lan tema â€” LoadConnectionSettings() tarafÄ±ndan Ã¼zerine yazÄ±lÄ±r
             SetNamedTheme("Light");
 
-            // Localization hazır olduktan sonra ana pencereyi aç
+            // Localization hazÄ±r olduktan sonra ana pencereyi aÃ§
             var mainWindow = new MainWindow();
             mainWindow.Show();
         }
 
         /// <summary>
         /// EN: Applies the named theme. Light / Dark / Industrial / Night
-        /// TR: Adlandırılmış temayı uygular. Light / Dark / Industrial / Night
+        /// TR: AdlandÄ±rÄ±lmÄ±ÅŸ temayÄ± uygular. Light / Dark / Industrial / Night
         /// </summary>
         public static void SetNamedTheme(string themeName)
         {
@@ -56,7 +56,7 @@ namespace S7Explorer
 
         /// <summary>
         /// EN: Changes the language and saves it to the settings file.
-        /// TR: Dil değiştirir ve ayarlar dosyasına kaydeder.
+        /// TR: Dil deÄŸiÅŸtirir ve ayarlar dosyasÄ±na kaydeder.
         /// </summary>
         public static void SetLanguage(string code)
         {

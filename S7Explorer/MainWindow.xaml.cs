@@ -14,8 +14,8 @@ namespace S7Explorer;
 /// <summary>
 /// EN: Main application window. Manages PLC connection, read/write operations,
 ///     symbol tree, theme and language selection.
-/// TR: Ana uygulama penceresi. PLC ba�lant�s�, okuma/yazma i�lemleri,
-///     sembol a�ac�, tema ve dil se�imini y�netir.
+/// TR: Ana uygulama penceresi. PLC bağlantısı, okuma/yazma işlemleri,
+///     sembol ağacı, tema ve dil seçimini yönetir.
 /// </summary>
 public partial class MainWindow : Window
 {
@@ -55,7 +55,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Initializes the main window, sets up the PLC service, loads settings, and applies language.
-    /// TR: Ana pencereyi ba�lat�r, PLC servisini kurar, ayarlar� y�kler ve dili uygular.
+    /// TR: Ana pencereyi başlatır, PLC servisini kurar, ayarları yükler ve dili uygular.
     /// </summary>
     public MainWindow()
     {
@@ -66,13 +66,13 @@ public partial class MainWindow : Window
         // CPU tiplerini ComboBox'a ekle
         InitializeCpuTypes();
 
-        // Sembol adreslerini ComboBox'lara y�kle
+        // Sembol adreslerini ComboBox'lara yükle
         LoadSymbolAddresses();
 
-        // Ba�lant� ayarlar�n� y�kle
+        // Bağlantı ayarlarını yükle
         LoadConnectionSettings();
 
-        // Dil deste�i
+        // Dil desteği
         _languageChangedHandler = (_, _) => ApplyLanguage();
         L.LanguageChanged += _languageChangedHandler;
         InitializeLanguageMenu();
@@ -240,7 +240,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Applies the active language to all UI elements.
-    /// TR: Aktif dili t�m aray�z ��elerine uygular.
+    /// TR: Aktif dili tüm arayüz öğelerine uygular.
     /// </summary>
     private void ApplyLanguage()
     {
@@ -285,7 +285,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Updates theme menu item headers with the current language strings.
-    /// TR: Tema men� ��elerinin ba�l�klar�n� ge�erli dil string'leriyle g�nceller.
+    /// TR: Tema menü öğelerinin başlıklarını geçerli dil string'leriyle günceller.
     /// </summary>
     private void UpdateThemeMenuHeaders()
     {
@@ -304,7 +304,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Populates the language selector context menu with available languages.
-    /// TR: Dil se�ici ba�lam men�s�n� mevcut dillerle doldurur.
+    /// TR: Dil seçici bağlam menüsünü mevcut dillerle doldurur.
     /// </summary>
     private void InitializeLanguageMenu()
     {
@@ -326,7 +326,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Opens the language selection context menu.
-    /// TR: Dil se�im ba�lam men�s�n� a�ar.
+    /// TR: Dil seçim bağlam menüsünü açar.
     /// </summary>
     private void BtnToggleLanguage_Click(object sender, RoutedEventArgs e)
     {
@@ -340,7 +340,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Called when a language is selected from the language menu. Switches the active language.
-    /// TR: Dil men�s�nden dil se�ildi�inde �a�r�l�r. Aktif dili de�i�tirir.
+    /// TR: Dil menüsünden dil seçildiğinde çağrılır. Aktif dili değiştirir.
     /// </summary>
     private void LanguageMenuItem_Click(object sender, RoutedEventArgs e)
     {
@@ -354,16 +354,16 @@ public partial class MainWindow : Window
 
     private void InitializeInfoContent()
     {
-        // Content is set via ApplyLanguage() � L.T("InfoContent")
+        // Content is set via ApplyLanguage() › L.T("InfoContent")
     }
 
     /// <summary>
     /// EN: Populates the CPU type ComboBox with all supported Siemens PLC types.
-    /// TR: CPU tipi ComboBox'�n� desteklenen t�m Siemens PLC tipleriyle doldurur.
+    /// TR: CPU tipi ComboBox'ını desteklenen tüm Siemens PLC tipleriyle doldurur.
     /// </summary>
     private void InitializeCpuTypes()
     {
-        // S7.Net k�t�phanesindeki t�m CPU tiplerini ekle
+        // S7.Net kütüphanesindeki tüm CPU tiplerini ekle
         CmbCpuType.Items.Add(new CpuTypeItem("S7-1200", CpuType.S71200));
         CmbCpuType.Items.Add(new CpuTypeItem("S7-1500", CpuType.S71500));
         CmbCpuType.Items.Add(new CpuTypeItem("S7-300", CpuType.S7300));
@@ -371,12 +371,12 @@ public partial class MainWindow : Window
         CmbCpuType.Items.Add(new CpuTypeItem("S7-200", CpuType.S7200));
         CmbCpuType.Items.Add(new CpuTypeItem("S7-200 Smart", CpuType.S7200Smart));
 
-        CmbCpuType.SelectedIndex = 0; // Varsay�lan: S7-1200
+        CmbCpuType.SelectedIndex = 0; // Varsayılan: S7-1200
     }
 
     /// <summary>
     /// EN: Loads the saved connection settings from disk and applies them to the UI.
-    /// TR: Kaydedilmi� ba�lant� ayarlar�n� diskten y�kler ve aray�ze uygular.
+    /// TR: Kaydedilmiş bağlantı ayarlarını diskten yükler ve arayüze uygular.
     /// </summary>
     private void LoadConnectionSettings()
     {
@@ -384,12 +384,12 @@ public partial class MainWindow : Window
         {
             var settings = ConnectionSettings.Load();
 
-            // Kaydedilen temay� uygula
+            // Kaydedilen temayı uygula
             App.SetNamedTheme(settings.Theme);
 
             if (settings.IsValid())
             {
-                // CPU tipini se�
+                // CPU tipini seç
                 for (int i = 0; i < CmbCpuType.Items.Count; i++)
                 {
                     var item = (CpuTypeItem)CmbCpuType.Items[i];
@@ -400,11 +400,11 @@ public partial class MainWindow : Window
                     }
                 }
 
-                // IP adresi ve Port'u y�kle
+                // IP adresi ve Port'u yükle
                 TxtIpAddress.Text = settings.IpAddress;
                 TxtPort.Text = settings.Port.ToString();
 
-                // Rack ve Slot de�erlerini y�kle
+                // Rack ve Slot değerlerini yükle
                 TxtRack.Text = settings.Rack.ToString();
                 TxtSlot.Text = settings.Slot.ToString();
 
@@ -419,7 +419,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Saves the current connection settings from the UI to disk.
-    /// TR: Aray�zdeki ge�erli ba�lant� ayarlar�n� diske kaydeder.
+    /// TR: Arayüzdeki geçerli bağlantı ayarlarını diske kaydeder.
     /// </summary>
     private void SaveConnectionSettings()
     {
@@ -445,11 +445,11 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Reloads symbol addresses into the read/write ComboBoxes and rebuilds the symbol tree.
-    /// TR: Sembol adreslerini okuma/yazma ComboBox'lar�na yeniden y�kler ve sembol a�ac�n� yeniden olu�turur.
+    /// TR: Sembol adreslerini okuma/yazma ComboBox'larına yeniden yükler ve sembol ağacını yeniden oluşturur.
     /// </summary>
     private void LoadSymbolAddresses()
     {
-        // Mevcut sembolleri ComboBox'lara y�kle
+        // Mevcut sembolleri ComboBox'lara yükle
         CmbReadAddress.Items.Clear();
         CmbWriteAddress.Items.Clear();
 
@@ -462,20 +462,20 @@ public partial class MainWindow : Window
             CmbWriteAddress.Items.Add(symbol.Key);
         }
 
-        // E�er sembol varsa, ilk sembol� se�
+        // Eğer sembol varsa, ilk sembolü seç
         if (CmbReadAddress.Items.Count > 0)
         {
             CmbReadAddress.SelectedIndex = 0;
             CmbWriteAddress.SelectedIndex = 0;
         }
 
-        // TreeView a�ac�n� olu�tur
+        // TreeView ağacını oluştur
         BuildSymbolTree();
     }
 
     /// <summary>
     /// EN: Builds the hierarchical symbol tree from the symbol map and binds it to the TreeView.
-    /// TR: Sembol haritas�ndan hiyerar�ik sembol a�ac�n� olu�turur ve TreeView'a ba�lar.
+    /// TR: Sembol haritasından hiyerarşik sembol ağacını oluşturur ve TreeView'a bağlar.
     /// </summary>
     private void BuildSymbolTree()
     {
@@ -525,7 +525,7 @@ public partial class MainWindow : Window
 
                 parentNode = currentLevel[part];
 
-                // Bir sonraki seviye i�in dictionary olu�tur
+                // Bir sonraki seviye için dictionary oluştur
                 var nextLevel = new Dictionary<string, SymbolTreeNode>();
                 foreach (var child in parentNode.Children)
                 {
@@ -540,7 +540,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Called when the selected tree node changes. Filters ComboBoxes by the selected node.
-    /// TR: Se�ili a�a� d���m� de�i�ti�inde �a�r�l�r. ComboBox'lar� se�ili d���me g�re filtreler.
+    /// TR: Seçili ağaç düğümü değiştiğinde çağrılır. ComboBox'ları seçili düğüme göre filtreler.
     /// </summary>
     private void TreeSymbols_SelectedItemChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<object> e)
     {
@@ -553,7 +553,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Toggles the symbol panel expand/collapse state with an animation.
-    /// TR: Sembol panelini animasyonla a��p kapatan butonu y�netir.
+    /// TR: Sembol panelini animasyonla açıp kapatan butonu yönetir.
     /// </summary>
     private void BtnToggleSymbolPanel_Click(object sender, RoutedEventArgs e)
     {
@@ -587,7 +587,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Called when the read address ComboBox selection changes. Updates the physical address label.
-    /// TR: Okuma adresi ComboBox se�imi de�i�ti�inde �a�r�l�r. Fiziksel adres etiketini g�nceller.
+    /// TR: Okuma adresi ComboBox seçimi değiştiğinde çağrılır. Fiziksel adres etiketini günceller.
     /// </summary>
     private void CmbReadAddress_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {
@@ -596,7 +596,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Called when the write address ComboBox selection changes. Updates the physical address label and value placeholder.
-    /// TR: Yazma adresi ComboBox se�imi de�i�ti�inde �a�r�l�r. Fiziksel adres etiketini ve de�er yer tutucu�usunu g�nceller.
+    /// TR: Yazma adresi ComboBox seçimi değiştiğinde çağrılır. Fiziksel adres etiketini ve değer yer tutucuçusunu günceller.
     /// </summary>
     private void CmbWriteAddress_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {
@@ -775,7 +775,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Updates a physical address label based on the selected ComboBox item.
-    /// TR: Se�ili ComboBox ��esine g�re fiziksel adres etiketini g�nceller.
+    /// TR: Seçili ComboBox öğesine göre fiziksel adres etiketini günceller.
     /// </summary>
     private void UpdatePhysicalAddress(System.Windows.Controls.ComboBox comboBox, System.Windows.Controls.TextBlock textBlock)
     {
@@ -783,7 +783,7 @@ public partial class MainWindow : Window
         {
             if (_allSymbols.TryGetValue(selectedAddress, out var symbolInfo))
             {
-                textBlock.Text = $"?? {symbolInfo.PhysicalAddress}  �  {symbolInfo.DataType}";
+                textBlock.Text = $"?? {symbolInfo.PhysicalAddress}  •  {symbolInfo.DataType}";
             }
             else
             {
@@ -798,7 +798,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Updates the write value TextBox placeholder text based on the selected address data type.
-    /// TR: Se�ili adresin veri tipine g�re yazma de�eri TextBox yer tutucu�usunu g�nceller.
+    /// TR: Seçili adresin veri tipine göre yazma değeri TextBox yer tutucuçusunu günceller.
     /// </summary>
     private void UpdateWriteValuePlaceholder()
     {
@@ -815,7 +815,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Returns the appropriate placeholder text for the write value field based on the PLC data type.
-    /// TR: PLC veri tipine g�re yazma de�eri alan� i�in uygun yer tutucu�u metni d�nd�r�r.
+    /// TR: PLC veri tipine göre yazma değeri alanı için uygun yer tutucuçu metni döndürür.
     /// </summary>
     private static string GetWriteValuePlaceholder(string dataType)
     {
@@ -830,15 +830,15 @@ public partial class MainWindow : Window
         return upper switch
         {
             "BOOL"                      => "true / false",
-            "BYTE" or "USINT"           => "0 � 255",
-            "SINT"                      => "-128 � 127",
-            "WORD" or "UINT"            => "0 � 65535",
-            "INT"                       => "-32768 � 32767",
-            "DWORD" or "UDINT"          => "0 � 4294967295",
-            "DINT"                      => "-2147483648 � 2147483647",
+            "BYTE" or "USINT"           => "0 … 255",
+            "SINT"                      => "-128 … 127",
+            "WORD" or "UINT"            => "0 … 65535",
+            "INT"                       => "-32768 … 32767",
+            "DWORD" or "UDINT"          => "0 … 4294967295",
+            "DINT"                      => "-2147483648 … 2147483647",
             "REAL"                      => L.T("Placeholder_Write_Real"),
-            "LWORD" or "ULINT"          => "0 � 18446744073709551615",
-            "LINT"                      => "-9223372036854775808 � 9223372036854775807",
+            "LWORD" or "ULINT"          => "0 … 18446744073709551615",
+            "LINT"                      => "-9223372036854775808 … 9223372036854775807",
             "LREAL"                     => L.T("Placeholder_Write_LReal"),
             "CHAR" or "WCHAR"           => L.T("Placeholder_Write_Char"),
             "TIME"                      => L.T("Placeholder_Write_Time"),
@@ -853,7 +853,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Filters a ComboBox to show only the addresses under the selected tree node.
-    /// TR: Bir ComboBox'� se�ili a�a� d���m� alt�ndaki adresleri g�sterecek �ekilde filtreler.
+    /// TR: Bir ComboBox'ı seçili ağaç düğümü altındaki adresleri gösterecek şekilde filtreler.
     /// </summary>
     private void FilterComboBoxByNode(System.Windows.Controls.ComboBox comboBox, SymbolTreeNode node)
     {
@@ -861,13 +861,13 @@ public partial class MainWindow : Window
 
         if (node.IsLeaf)
         {
-            // E�er leaf ise, sadece o adresi ekle ve se�
+            // Eğer leaf ise, sadece o adresi ekle ve seç
             comboBox.Items.Add(node.FullPath);
             comboBox.SelectedIndex = 0;
         }
         else
         {
-            // E�er parent node ise, alt�ndaki t�m leaf'leri ekle
+            // Eğer parent node ise, altındaki tüm leaf'leri ekle
             var leaves = GetAllLeaves(node);
             foreach (var leaf in leaves.OrderBy(l => l))
             {
@@ -883,7 +883,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Recursively collects all leaf node full paths under a given tree node.
-    /// TR: Verilen a�a� d���m� alt�ndaki t�m yaprak d���m tam yollar�n� �zyineli olarak toplar.
+    /// TR: Verilen ağaç düğümü altındaki tüm yaprak düğüm tam yollarını özyineli olarak toplar.
     /// </summary>
     private List<string> GetAllLeaves(SymbolTreeNode node)
     {
@@ -908,7 +908,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Handles IP address text box input, allowing only digits and dots.
-    /// TR: IP adresi metin kutusu giri�ini y�netir, yaln�zca rakam ve noktaya izin verir.
+    /// TR: IP adresi metin kutusu girişini yönetir, yalnızca rakam ve noktaya izin verir.
     /// </summary>
     private void TxtIpAddress_PreviewTextInput(object sender, TextCompositionEventArgs e)
     {
@@ -919,7 +919,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Validates the IP address when the text box loses focus.
-    /// TR: Metin kutusu odak kaybetti�inde IP adresini do�rular.
+    /// TR: Metin kutusu odak kaybettiğinde IP adresini doğrular.
     /// </summary>
     private void TxtIpAddress_LostFocus(object sender, RoutedEventArgs e)
     {
@@ -928,7 +928,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Validates the IP address field against the IPv4 regex pattern.
-    /// TR: IP adresi alan�n� IPv4 regex kal�b�na g�re do�rular.
+    /// TR: IP adresi alanını IPv4 regex kalıbına göre doğrular.
     /// </summary>
     private bool ValidateIpAddress()
     {
@@ -952,7 +952,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Sets the visual validation state of the IP address TextBox (border color and tooltip).
-    /// TR: IP adresi TextBox'�n g�rsel do�rulama durumunu ayarlar (kenar rengi ve ipucu).
+    /// TR: IP adresi TextBox'ın görsel doğrulama durumunu ayarlar (kenar rengi ve ipucu).
     /// </summary>
     private void SetIpValidationState(bool isValid, string? errorMessage)
     {
@@ -974,24 +974,24 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Handles PLC status change events. Dispatches the message to the UI thread and adds it to the log.
-    /// TR: PLC durum de�i�ikli�i olaylar�n� y�netir. Mesaj� UI thread'e iletir ve loga ekler.
+    /// TR: PLC durum değişikliği olaylarını yönetir. Mesajı UI thread'e iletir ve loga ekler.
     /// </summary>
     private void OnPlcStatusChanged(object? sender, string message)
     {
         Dispatcher.Invoke(() =>
         {
             AddLog(message);
-            // StatusBar sadece ba�lant� durumu i�in kullan�l�yor
+            // StatusBar sadece bağlantı durumu için kullanılıyor
         });
     }
 
     /// <summary>
     /// EN: Handles the Connect/Disconnect/Cancel button click. Manages connection state transitions.
-    /// TR: Ba�lan/Kes/�ptal buton t�klamas�n� y�netir. Ba�lant� durumu ge�i�lerini y�netir.
+    /// TR: Bağlan/Kes/İptal buton tıklamasını yönetir. Bağlantı durumu geçişlerini yönetir.
     /// </summary>
     private async void BtnConnect_Click(object sender, RoutedEventArgs e)
     {
-        // E�er ba�l�ysa, ba�lant�y� kes
+        // Eğer bağlıysa, bağlantıyı kes
         if (_plcService.IsConnected)
         {
             TxtStatus.Text = L.T("Status_Disconnecting");
@@ -1020,7 +1020,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        // E�er vazge� modundaysa, ba�lant�y� iptal et
+        // Eğer vazgeç modundaysa, bağlantıyı iptal et
         if (_connectionCancellationTokenSource != null)
         {
             _connectionCancellationTokenSource.Cancel();
@@ -1082,7 +1082,7 @@ public partial class MainWindow : Window
                     _plcService.ConnectedIpAddress, port,
                     _plcService.ConnectedRack, _plcService.ConnectedSlot);
 
-                // Ba�lant� ayarlar�n� kaydet
+                // Bağlantı ayarlarını kaydet
                 SaveConnectionSettings();
             }
             else
@@ -1108,7 +1108,7 @@ public partial class MainWindow : Window
         catch (Exception ex)
         {
             StatusIndicator.Fill = Brushes.Red;
-            TxtStatus.Text = "Hata olu�tu";
+            TxtStatus.Text = L.T("Status_Error");
             MessageDialog.Show(L.T("Msg_UnexpectedError", ex.Message), L.T("MsgTitle_Error"),
                 MessageBoxButton.OK, MessageBoxImage.Error, this);
             IconConnect.Glyph = "\uE703";
@@ -1124,7 +1124,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Reads the value from the PLC at the address entered in the read ComboBox.
-    /// TR: Okuma ComboBox'�nda girilen adresten PLC de�erini okur.
+    /// TR: Okuma ComboBox'ında girilen adresten PLC değerini okur.
     /// </summary>
     private async void BtnRead_Click(object sender, RoutedEventArgs e)
     {
@@ -1153,7 +1153,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// EN: Writes the entered value to the PLC at the address selected in the write ComboBox.
-    /// TR: Yazma ComboBox'�nda se�ilen adrese PLC'ye girilen de�eri yazar.
+    /// TR: Yazma ComboBox'ında seçilen adrese PLC'ye girilen değeri yazar.
     /// </summary>
     private async void BtnWrite_Click(object sender, RoutedEventArgs e)
     {
@@ -1173,23 +1173,23 @@ public partial class MainWindow : Window
             var symbolInfo = _plcService.SymbolMapper.GetSymbolInfo(address);
             object value;
 
-            // Veri tipine g�re uygun d�n���m yap
+            // Veri tipine göre uygun dönüşüm yap
             if (symbolInfo != null && !string.IsNullOrEmpty(symbolInfo.DataType))
             {
                 var dataType = symbolInfo.DataType.ToUpperInvariant();
 
-                // STRING[xx] ve WSTRING[xx] format�n� kontrol et
+                // STRING[xx] ve WSTRING[xx] formatını kontrol et
                 if (dataType.StartsWith("STRING") || dataType.StartsWith("WSTRING"))
                 {
                     value = valueText; // String olarak direkt kullan
                 }
                 else if (dataType == "CHAR" || dataType == "WCHAR")
                 {
-                    value = valueText; // PlcService'te byte/ushort'a d�n��t�r�lecek
+                    value = valueText; // PlcService'te byte/ushort'a dönüştürülecek
                 }
                 else if (dataType == "BOOL")
                 {
-                    // Bool i�in: "true", "false", "0", "1" kabul et
+                    // Bool için: "true", "false", "0", "1" kabul et
                     if (bool.TryParse(valueText, out var boolVal))
                         value = boolVal;
                     else if (int.TryParse(valueText, out var intVal))
@@ -1225,7 +1225,7 @@ public partial class MainWindow : Window
                          dataType == "DATE" || dataType == "TIME_OF_DAY" || dataType == "TOD" ||
                          dataType == "DATE_AND_TIME" || dataType == "DT" || dataType == "DTL")
                 {
-                    value = valueText; // PlcService'te uygun tipe d�n��t�r�lecek
+                    value = valueText; // PlcService'te uygun tipe dönüştürülecek
                 }
                 else if (dataType == "DWORD")
                 {
@@ -1241,13 +1241,13 @@ public partial class MainWindow : Window
                 }
                 else
                 {
-                    // Bilinmeyen tip, ak�ll� tahmin et
+                    // Bilinmeyen tip, akıllı tahmin et
                     value = SmartParseValue(valueText);
                 }
             }
             else
             {
-                // Sembol bilgisi yoksa, ak�ll� tahmin et
+                // Sembol bilgisi yoksa, akıllı tahmin et
                 value = SmartParseValue(valueText);
             }
 
@@ -1263,40 +1263,40 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// De�eri ak�ll�ca parse eder (tip bilinmiyorsa)
+    /// Değeri akıllıca parse eder (tip bilinmiyorsa)
     /// </summary>
     /// <summary>
     /// EN: Smartly parses a string value to the most appropriate .NET type (bool, double, int, or string).
-    /// TR: String de�eri en uygun .NET tipine (bool, double, int veya string) d�n��t�r�r.
+    /// TR: String değeri en uygun .NET tipine (bool, double, int veya string) dönüştürür.
     /// </summary>
     private object SmartParseValue(string valueText)
     {
-        // Bool kontrol�
+        // Bool kontrolü
         if (bool.TryParse(valueText, out var boolVal))
             return boolVal;
 
-        // Say� kontrol�
+        // Sayı kontrolü
         if (valueText.Contains(".") || valueText.Contains(","))
         {
-            // Ondal�kl� say�
+            // Ondalıklı sayı
             if (double.TryParse(valueText.Replace(',', '.'), System.Globalization.NumberStyles.Any, 
                 System.Globalization.CultureInfo.InvariantCulture, out var doubleVal))
                 return doubleVal;
         }
         else
         {
-            // Tam say�
+            // Tam sayı
             if (int.TryParse(valueText, out var intVal))
                 return intVal;
         }
 
-        // Hi�biri de�ilse string olarak kabul et
+        // Hiçbiri değilse string olarak kabul et
         return valueText;
     }
 
     /// <summary>
     /// EN: Appends a timestamped message to the log panel.
-    /// TR: Log paneline zaman damgal� mesaj ekler.
+    /// TR: Log paneline zaman damgalı mesaj ekler.
     /// </summary>
     private void AddLog(string message)
     {
@@ -1355,7 +1355,7 @@ public partial class MainWindow : Window
         {
             AddLog(L.T("Log_SymbolsUpdated", _plcService.SymbolMapper.GetAllSymbols().Count));
 
-            // ComboBox'lar� yeniden y�kle
+            // ComboBox'ları yeniden yükle
             LoadSymbolAddresses();
         }
     }
@@ -1381,7 +1381,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Tema se�im men�s�n� a�ar
+    /// Tema seçim menüsünü açar
     /// </summary>
     private void BtnToggleTheme_Click(object sender, RoutedEventArgs e)
     {
@@ -1395,7 +1395,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Tema men�s�nden se�im yap�ld���nda �a�r�l�r
+    /// Tema menüsünden seçim yapıldığında çağrılır
     /// </summary>
     private void ThemeMenuItem_Click(object sender, RoutedEventArgs e)
     {
@@ -1403,7 +1403,7 @@ public partial class MainWindow : Window
 
         var themeName = mi.Tag?.ToString() ?? "Light";
 
-        // Di�er item'lar�n i�aretini kald�r
+        // Diğer item'ların işaretini kaldır
         foreach (MenuItem item in BtnToggleTheme.ContextMenu.Items)
             item.IsChecked = item == mi;
 
@@ -1412,7 +1412,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Aktif temay� ayarlar dosyas�na kaydeder
+    /// Aktif temayı ayarlar dosyasına kaydeder
     /// </summary>
     private void SaveThemeSetting()
     {
@@ -1426,7 +1426,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Ba�lant� ayarlar�n� g�ster/gizle butonu
+    /// Bağlantı ayarlarını göster/gizle butonu
     /// </summary>
     private void BtnToggleSettings_Click(object sender, RoutedEventArgs e)
     {
@@ -1434,7 +1434,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Ba�lant� ayarlar�n� kapat butonu
+    /// Bağlantı ayarlarını kapat butonu
     /// </summary>
     private void BtnCloseSettings_Click(object sender, RoutedEventArgs e)
     {
@@ -1450,10 +1450,10 @@ public partial class MainWindow : Window
         base.OnClosed(e);
     }
 
-    // ComboBox i�in yard�mc� s�n�f
+    // ComboBox için yardımcı sınıf
     /// <summary>
     /// EN: Helper class for displaying CPU types in the ComboBox.
-    /// TR: ComboBox'ta CPU tiplerini g�stermek i�in yard�mc� s�n�f.
+    /// TR: ComboBox'ta CPU tiplerini göstermek için yardımcı sınıf.
     /// </summary>
     private class CpuTypeItem(string displayName, CpuType cpuType)
     {
@@ -1466,7 +1466,7 @@ public partial class MainWindow : Window
 
 /// <summary>
 /// EN: Tree node model for displaying symbolic addresses in a TreeView.
-/// TR: Sembolik adresleri TreeView'da g�stermek i�in a�a� node modeli.
+/// TR: Sembolik adresleri TreeView'da göstermek için ağaç node modeli.
 /// </summary>
 public class SymbolTreeNode
 {

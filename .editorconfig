@@ -1,0 +1,7 @@
+# Kaynak dosyalar UTF-8'dir. Windows-1254 (ANSI) kaydedilmiş bir dosya UTF-8 sanılarak açılıp
+# yeniden kaydedilirse Türkçe karakterler geri dönüşsüz U+FFFD'ye döner — cc66ce1'de
+# MainWindow.xaml.cs'in 85 satırı ve ekrandaki değer placeholder'ları bu yüzden bozulmuştu.
+root = true
+
+[*]
+charset = utf-8
