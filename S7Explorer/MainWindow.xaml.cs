@@ -783,7 +783,7 @@ public partial class MainWindow : Window
         {
             if (_allSymbols.TryGetValue(selectedAddress, out var symbolInfo))
             {
-                textBlock.Text = $"?? {symbolInfo.PhysicalAddress}  •  {symbolInfo.DataType}";
+                textBlock.Text = $"{symbolInfo.PhysicalAddress}  •  {symbolInfo.DataType}";
             }
             else
             {
